@@ -1,4 +1,4 @@
-import { JsonPlaceholderFetchApi } from "../../setup/Api.fetch"
+import { JsonPlaceholderApi } from '../../setup/Api'
 import { createSignal, ReadonlySignal } from "../../setup/Signal"
 import { createTodoPageModel, TodoPageModel } from "./TodoPageModel"
 
@@ -13,8 +13,11 @@ export interface AppModel {
   changePage: (name: ActivePage["name"]) => void
 }
 
-export function createAppModel(): AppModel {
-  const api = JsonPlaceholderFetchApi
+type Deps = {
+  api: JsonPlaceholderApi
+}
+
+export function createAppModel({ api }: Deps): AppModel {
   const activePage = createSignal<ActivePage>({
     name: "Todos",
     createModel: () => createTodoPageModel({ api }),

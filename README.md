@@ -283,24 +283,23 @@ describe('TodoListModel 1', () => {
 Okay. It looks fairly obvious that we will need to fetch stuff pretty often, so let’s create a `RemoteData` model.
 
 ```ts
-import { JsonPlaceholderApi, Todo } from '../../setup/Api'
-import { ReadonlySignal } from '../../setup/Signal'
-import { createRemoteAction, RemoteData } from './RemoteData'
+import { createSignal, ReadonlySignal } from '../../setup/Signal'
 
-export interface TodoListModel {
-  data: ReadonlySignal<RemoteData<Todo[]>>
-  getTodos(): Promise<void>; // trigger the fetch
+export type RemoteData<T> = 'pending' | Error | T
+
+export interface RemoteAction<T> {
+  data: ReadonlySignal<RemoteData<T>>
+  trigger: () => Promise<void>
 }
 
-type Deps = {
-  api: JsonPlaceholderApi
-}
-export function createTodoListModel({ api }: Deps): TodoListModel {
-  const action = createRemoteAction(() => api.getTodos())
+export function createRemoteAction<T>(action: () => Promise<T>): RemoteAction<T> {
+  const data = createSignal<RemoteData<T>>('pending')
   return {
-    data: action.data,
-    async getTodos() {
-      await action.trigger()
+    data,
+    async trigger() {
+      return action()
+        .then((value) => data.set(value))
+        .catch((error) => data.set(error))
     }
   }
 }
@@ -675,7 +674,7 @@ Because there is solely a remote action to confirm in there, I will not even bot
 Because yes, all this lives in an app after all. Let’s start with the `AppModel`:
 
 ```ts
-import { JsonPlaceholderFetchApi } from "../../setup/Api.fetch"
+import { JsonPlaceholderApi } from '../../setup/Api'
 import { createSignal, ReadonlySignal } from "../../setup/Signal"
 import { createTodoPageModel, TodoPageModel } from "./TodoPageModel"
 
@@ -690,8 +689,11 @@ export interface AppModel {
   changePage: (name: ActivePage["name"]) => void
 }
 
-export function createAppModel(): AppModel {
-  const api = JsonPlaceholderFetchApi
+type Deps = {
+  api: JsonPlaceholderApi
+}
+
+export function createAppModel({ api }: Deps): AppModel {
   const activePage = createSignal<ActivePage>({
     name: "Todos",
     createModel: () => createTodoPageModel({ api }),
@@ -742,43 +744,23 @@ export function createTodoPageModel({ api }: Deps): TodoPageModel {
 … And finally let’s test it:
 
 ```ts
-import { JsonPlaceholderFetchApi } from "../../setup/Api.fetch"
-import { createSignal, ReadonlySignal } from "../../setup/Signal"
-import { createTodoPageModel, TodoPageModel } from "./TodoPageModel"
+import { describe, expect, it } from 'vitest'
+import { createAppModel } from './AppModel'
 
-type ActivePage =
-  | { name: "NotFound" }
-  | { name: "Todos"; createModel: () => TodoPageModel }
+describe('AppModel', () => {
+  const make = () => createAppModel()
 
-export interface AppModel {
-  activePage: ReadonlySignal<ActivePage>
-
-  // later this will be handled by routing/history
-  changePage: (name: ActivePage["name"]) => void
-}
-
-export function createAppModel(): AppModel {
-  const api = JsonPlaceholderFetchApi
-  const activePage = createSignal<ActivePage>({
-    name: "Todos",
-    createModel: () => createTodoPageModel({ api }),
+  it('starts at TodoList page', () => {
+    const model = make()
+    expect(model.activePage.get().name).toBe("Todos")
   })
 
-  return {
-    activePage,
-    changePage(name) {
-      switch (name) {
-        case "NotFound":
-          return activePage.set({ name })
-        case "Todos":
-          return activePage.set({
-            name,
-            createModel: () => createTodoPageModel({ api }),
-          })
-      }
-    },
-  }
-}
+  it('changes to `NotFound`', () => {
+    const model = make()
+    model.changePage("NotFound")
+    expect(model.activePage.get().name).toBe("NotFound")
+  })
+})
 ```
 
 ### Step 5 – editing a todo item

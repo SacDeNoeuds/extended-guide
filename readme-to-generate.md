@@ -80,7 +80,7 @@ Done ✅. Now that we have a highly testable model, let’s test it !
 
 Okay. It looks fairly obvious that we will need to fetch stuff pretty often, so let’s create a `RemoteData` model.
 
-<!-- include [code:ts] ./steps/step-1/TodoListModel-2.ts -->
+<!-- include [code:ts] ./steps/step-1/RemoteData.ts -->
 
 Done ✅.
 Let’s refactor our `TodoList` model. Great, let’s re-test… all good!
@@ -157,7 +157,7 @@ Then the `TodoPageModel`:
 
 … And finally let’s test it:
 
-<!-- include [code:ts] ./steps/step-4/AppModel.ts -->
+<!-- include [code:ts] ./steps/step-4/AppModel.spec.ts -->
 
 ### Step 5 – editing a todo item
 
