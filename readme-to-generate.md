@@ -32,16 +32,25 @@ Let’s not re-invent the wheel and facade an existing library. We have a few op
 
 For the sake of poetry (NB: one of the first to push for signals), I will use S.js
 
-Great, now because it will be at the root of our project, let’s write a bunch of tests to avoid bad surprises. Done ✅
-
 <!-- include [code:ts] ./setup/Signal.ts -->
+
+Great, now because it will be at the root of our project, let’s write a bunch of tests to avoid bad surprises. Done ✅
 
 <details>
   <summary>
-    You can also check out the spec
+    Here is the spec …
   </summary>
 
 <!-- include [code:ts] ./setup/Signal.spec.ts -->
+
+</details>
+
+<details>
+  <summary>
+    … and here the facade
+  </summary>
+
+<!-- include [code:ts] ./setup/Signal.s-js.ts -->
 
 </details>
 

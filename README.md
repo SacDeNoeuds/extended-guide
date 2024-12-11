@@ -32,11 +32,7 @@ Let’s not re-invent the wheel and facade an existing library. We have a few op
 
 For the sake of poetry (NB: one of the first to push for signals), I will use S.js
 
-Great, now because it will be at the root of our project, let’s write a bunch of tests to avoid bad surprises. Done ✅
-
 ```ts
-import S from 's-js'
-
 export interface ReadonlySignal<T> {
   get: () => T
 }
@@ -50,44 +46,27 @@ type CreateSignalOptions<T> = {
   equals?: (a: T, b: T) => boolean
 }
 
-export function createSignal<T>(value: T, options?: CreateSignalOptions<T>): Signal<T> {
-  const signal = options?.equals ? S.value(value, options.equals) : S.data(value)
-  return {
-    get: signal,
-    set: (nextValue) => signal(nextValue),
-    update: (updater) => signal(updater(S.sample(signal)))
-  }
-}
-
-export function readonly<T>(signal: Signal<T>): ReadonlySignal<T> {
-  return { get: signal.get }
-}
+export type CreateSignal = <T>(initialValue: T, options?: CreateSignalOptions<T>) => Signal<T>
 
 type Cleanup = () => void
 type Dispose = () => void
 
-export function effect(callback: () => (void | Cleanup)): Dispose {
-  let disposeRef = () => {}
-  const dispose = () => disposeRef()
-  S.root((dispose) => {
-    disposeRef = dispose
-    S(() => {
-      const cleanup = callback()
-      if (typeof cleanup === 'function') S.cleanup(cleanup)
-    })
-  })
-  return dispose
-}
+export type Effect = (callback: () => (void | Cleanup)) => Dispose
+
+// the implementation complies to type upper.
+export { effect, createSignal } from './Signal.s-js'
 ```
+
+Great, now because it will be at the root of our project, let’s write a bunch of tests to avoid bad surprises. Done ✅
 
 <details>
   <summary>
-    You can also check out the spec
+    Here is the spec …
   </summary>
 
 ```ts
 import { afterAll, describe, expect, it } from 'vitest'
-import { createSignal, effect } from './Signal'
+import { createSignal, effect } from './Signal.s-js'
 
 describe('Signal', () => {
   const make = (initialCount = 0) => {
@@ -154,6 +133,40 @@ describe('Signal', () => {
 
 </details>
 
+<details>
+  <summary>
+    … and here the facade
+  </summary>
+
+```ts
+import S from 's-js'
+import { CreateSignal, Effect } from './Signal'
+
+export const createSignal: CreateSignal = (value, options) => {
+  const signal = options?.equals ? S.value(value, options.equals) : S.data(value)
+  return {
+    get: signal,
+    set: (nextValue) => signal(nextValue),
+    update: (updater) => signal(updater(S.sample(signal)))
+  }
+}
+
+export const effect: Effect = (callback) => {
+  let disposeRef = () => {}
+  const dispose = () => disposeRef()
+  S.root((dispose) => {
+    disposeRef = dispose
+    S(() => {
+      const cleanup = callback()
+      if (typeof cleanup === 'function') S.cleanup(cleanup)
+    })
+  })
+  return dispose
+}
+```
+
+</details>
+
 
 ### Step 3 – Let’s build a simple API
 
@@ -164,8 +177,6 @@ I will focus on the todo part: listing, toggling and maybe something else.
 Done, including the `fetch` implementation ✅
 
 ```ts
-import { delay } from './delay'
-
 export interface Todo {
   userId: number
   id: number
@@ -181,38 +192,11 @@ export const apiDefaults = {
 export interface JsonPlaceholderApi {
   getTodos: () => Promise<Todo[]>
   getTodo: (id: number) => Promise<Todo>
-  patchTodo: (id: number, data: Partial<Pick<Todo, 'title' | 'completed'>>) => Promise<void>
+  patchTodo: (
+    id: number,
+    data: Partial<Pick<Todo, "title" | "completed">>,
+  ) => Promise<void>
   deleteTodo: (id: number) => Promise<void>
-}
-
-export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
-  async getTodo(id) {
-    await delay(apiDefaults.preflightDelayInMs)
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
-    return response.json()
-  },
-
-  async getTodos() {
-    await delay(apiDefaults.preflightDelayInMs)
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos')
-    return response.json()
-  },
-
-  async patchTodo(id, data) {
-    await delay(apiDefaults.preflightDelayInMs)
-    await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-      method: 'PATCH',
-      body: JSON.stringify(data),
-      headers: { 'Content-type': 'application/json; charset=UTF-8' },
-    })
-  },
-
-  async deleteTodo(id) {
-    await delay(apiDefaults.preflightDelayInMs)
-    await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-      method: 'DELETE',
-    })
-  },
 }
 ```
 
@@ -691,7 +675,7 @@ Because there is solely a remote action to confirm in there, I will not even bot
 Because yes, all this lives in an app after all. Let’s start with the `AppModel`:
 
 ```ts
-import { JsonPlaceholderFetchApi } from "../../setup/Api"
+import { JsonPlaceholderFetchApi } from "../../setup/Api.fetch"
 import { createSignal, ReadonlySignal } from "../../setup/Signal"
 import { createTodoPageModel, TodoPageModel } from "./TodoPageModel"
 
@@ -758,7 +742,7 @@ export function createTodoPageModel({ api }: Deps): TodoPageModel {
 … And finally let’s test it:
 
 ```ts
-import { JsonPlaceholderFetchApi } from "../../setup/Api"
+import { JsonPlaceholderFetchApi } from "../../setup/Api.fetch"
 import { createSignal, ReadonlySignal } from "../../setup/Signal"
 import { createTodoPageModel, TodoPageModel } from "./TodoPageModel"
 
