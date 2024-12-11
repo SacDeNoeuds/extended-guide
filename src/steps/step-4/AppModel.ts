@@ -1,4 +1,4 @@
-import { JsonPlaceholderFetchApi } from "../../setup/Api"
+import { JsonPlaceholderFetchApi } from "../../setup/Api.fetch"
 import { createSignal, ReadonlySignal } from "../../setup/Signal"
 import { createTodoPageModel, TodoPageModel } from "./TodoPageModel"
 

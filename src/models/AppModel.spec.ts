@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createAppModel } from './AppModel'
 
 describe('AppModel', () => {
-  const make = () => createAppModel()
+  const make = () => createAppModel('react')
 
   it('starts at TodoList page', () => {
     const model = make()

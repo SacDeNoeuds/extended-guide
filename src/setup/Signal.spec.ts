@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from 'vitest'
-import { createSignal, effect } from './Signal'
+import { createSignal, effect } from './Signal.s-js'
 
 describe('Signal', () => {
   const make = (initialCount = 0) => {
