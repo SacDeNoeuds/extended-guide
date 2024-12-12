@@ -16,6 +16,6 @@ export interface JsonPlaceholderApi {
   patchTodo: (
     id: number,
     data: Partial<Pick<Todo, "title" | "completed">>,
-  ) => Promise<void>
+  ) => Promise<Todo>
   deleteTodo: (id: number) => Promise<void>
 }

@@ -16,11 +16,12 @@ export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
 
   async patchTodo(id, data) {
     await delay(apiDefaults.preflightDelayInMs)
-    await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     })
+    return response.json()
   },
 
   async deleteTodo(id) {

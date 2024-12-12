@@ -1,52 +1,24 @@
-import { AppRenderer, createAppModel } from './models/AppModel'
+import { renderApp } from './render-app-11'
 import { apiDefaults } from './setup/Api'
-import { effect } from './setup/Signal'
+// import { renderApp } from './render-app-10'
+// import { renderApp } from './render-app-9'
+// import { renderApp } from './render-app-8'
 
-apiDefaults.preflightDelayInMs = 1000
-const appRendererSelect = document.getElementById('app-renderer') as HTMLSelectElement | null
-if (!appRendererSelect) throw new Error('pff, no select really?')
+const selectElement = document.getElementById("app-renderer")
+if (!(selectElement instanceof HTMLSelectElement)) throw new Error("mmh…")
 
 
-appRendererSelect.value = 'react'
-const appModel = createAppModel(appRendererSelect.value as AppRenderer)
-
-appRendererSelect.addEventListener('change', () => {
-  appModel.renderer.set(appRendererSelect.value as AppRenderer)
+// let’s enforce a default value for testing
+selectElement.value = "vue"
+selectElement.addEventListener("change", () => {
+  void renderApp(selectElement.value)
 })
 
-const rootNode = document.getElementById('root')
-if (!rootNode) throw new Error('where is my root??')
-
-const renderer: Record<AppRenderer, () => Promise<void>> = {
-  react: async () => {
-    const [React, ReactDOM, { App }] = await Promise.all([
-      import('react'),
-      import('react-dom/client'),
-      import('./steps/step-6-react/App'),
-    ])
-    const root = ReactDOM.createRoot(rootNode)
-    root.render(React.createElement(App, { model: appModel }))
-  },
-  vue: async () => {
-    const [{ createApp }, { default: App }] = await Promise.all([
-      import('vue'),
-      import('./steps/step-7-vue/App.vue')
-    ])
-    const app = createApp(App, { model: appModel })
-    app.mount(rootNode)
-  },
-  solid: async () => {
-    console.info('render Solid app')
-  },
-}
-  
-effect(() => {
-  const target = appModel.renderer.get()
-  requestAnimationFrame(() => {
-    rootNode.replaceChildren()
-    const render = renderer[target]
-    requestAnimationFrame(() => {
-      render()
-    })
-  })
+const apiDelaySelect = document.getElementById('api-delay') as HTMLSelectElement
+apiDelaySelect.value = String(apiDefaults.preflightDelayInMs)
+apiDelaySelect.addEventListener('change', () => {
+  apiDefaults.preflightDelayInMs = parseInt(apiDelaySelect.value)
 })
+
+void renderApp(selectElement.value)
+

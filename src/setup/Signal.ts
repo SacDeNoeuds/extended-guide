@@ -18,6 +18,12 @@ type Dispose = () => void
 
 export type Effect = (callback: () => (void | Cleanup)) => Dispose
 
+export function computed<T>(callback: () => T): ReadonlySignal<T> {
+  return {
+    get: () => callback(),
+  }
+}
+
 // the implementation complies to type upper.
 export { effect, createSignal } from './Signal.s-js'
 

@@ -7,16 +7,33 @@
 </head>
 <body>
   <header>
-    <select id="app-renderer" value="vue">
-      <option value="react">React</option>
-      <option value="vue">Vue</option>
-      <option value="solid" disabled>Solid</option>
-    </select>
+    <label>
+      App Renderer:&nbsp;
+      <select id="app-renderer" value="vue">
+        <option value="react">React</option>
+        <option value="vue">Vue</option>
+        <option value="solid" disabled>Solid</option>
+      </select>
+    </label>
+    <span>&nbsp;·&nbsp;</span>
+    <label>
+      Api Preflight Delay:&nbsp;
+      <select id="api-delay">
+        <option value="0">None</option>
+        <option value="100">100ms</option>
+        <option value="500">500ms</option>
+        <option value="1000">1s</option>
+      </select>
+    </label>
   </header>
+  <hr>
   <main>
     <div id="root"></div>
   </main>
-  <footer>[Footer]</footer>
+  <hr>
+  <footer>
+    Made with ❤️ by <a href="https://github.com/SacDeNoeuds">SacDeNoeuds</a>
+  </footer>
   <script type="module" src="./main.ts"></script>
 </body>
 </html>

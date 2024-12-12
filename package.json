@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Demoing how to implement agnostic models and pipe them to view libraries like Vue, React, Svelte & Solid… and whatever comes next",
   "scripts": {
+    "start": "npx vite",
     "test": "vitest"
   },
   "repository": {

@@ -21,7 +21,9 @@ export function createJsonPlaceholderInMemoryApi(): JsonPlaceholderInMemoryApi {
     },
   
     async patchTodo(id, data) {
-      store.set(id, { ...(await this.getTodo(id)), ...data })
+      const nextTodo = { ...(await this.getTodo(id)), ...data }
+      store.set(id, nextTodo)
+      return nextTodo
     },
   
     async deleteTodo(id) {

@@ -1,8 +1,8 @@
 import { RemoteData } from "./RemoteData"
-import { createSignal, ReadonlySignal } from "./Signal"
+import { createSignal, Signal } from "./Signal"
 
-export interface RemoteAction<T, Args extends any[]> {
-  data: ReadonlySignal<RemoteData<T>>
+export interface RemoteAction<T, Args extends any[] = []> {
+  data: Signal<RemoteData<T>>
   trigger: (...args: Args) => Promise<void>
 }
 
