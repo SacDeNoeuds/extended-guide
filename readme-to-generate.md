@@ -4,7 +4,7 @@ Demoing how to implement agnostic models and pipe them to view libraries like Vu
 
 ## Introduction
 
-The model-view approach applies to any frontend application, as long as you have some client-side scripting and rendering. Could be in C & Qt as well as HTML/JS.
+The model-view approach applies to any frontend application, as long as you have some client-side scripting and rendering.
 
 Conceptually the model-view pattern is way simpler than it looks, yet diving into it is trickier than it seems IMO, which is why I am writing these series.
 
@@ -15,6 +15,16 @@ Basically, **the model should contain 2 things only**:
 - Interactions, in the shape of functions/methods.
 
 The data will change over time, therefore most of the data will be reactive.
+
+## The project
+
+We will consider a todo list app, powered by the [JsonPlaceholder API](https://jsonplaceholder.typicode.com/).
+
+We will feature:
+- Displaying a list of todos.
+- Toggling a todo.
+- Deleting a todo.
+- Editing a todo’s title.
 
 ## Setup
 

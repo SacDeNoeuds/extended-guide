@@ -19,7 +19,7 @@ export function TodoCheckboxList({
   return (
     <div>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} className='todo-item'>
           <input
             type="checkbox"
             checked={todo.completed}

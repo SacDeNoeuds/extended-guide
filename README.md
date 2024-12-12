@@ -939,7 +939,7 @@ export function App({ model }: Props) {
 
   return (
     <>
-      <p>React App</p>
+      <h2>React App</h2>
       {activePage.name === "NotFound" && <p>Page Not Found</p>}
       {activePage.name === "Todos" && (
         <TodoPage model={activePage.createModel()} />
@@ -1018,7 +1018,7 @@ import TodoPage from './TodoPage.vue'
 </script>
 
 <template>
-  <p>Vue App</p>
+  <h2>Vue App</h2>
   <p v-if="activePage.name === 'NotFound'">Page Not Found</p>
   <TodoPage
     v-if="activePage.name === 'Todos'"

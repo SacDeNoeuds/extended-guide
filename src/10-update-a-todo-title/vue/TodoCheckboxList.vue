@@ -19,7 +19,7 @@
 
 <template>
   <div>
-    <div v-for="todo in props.todos">
+    <div v-for="todo in props.todos" class='todo-item'>
       <input
         type="checkbox"
         :checked="todo.completed"

@@ -11,7 +11,7 @@ export function TodoCheckboxList({ todos, onToggle, disabled }: Props) {
   return (
     <div>
       {todos.map((todo) => (
-        <label key={todo.id} style={{ display: 'block' }}>
+        <label key={todo.id} className='todo-item'>
           <input
             type="checkbox"
             checked={todo.completed}

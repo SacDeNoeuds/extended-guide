@@ -12,14 +12,13 @@ export function TodoCheckboxList({ todos, onToggle, onTitleChanged, disabled }: 
   return (
     <div>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} className='todo-item'>
           <input
             type="checkbox"
             checked={todo.completed}
             onChange={() => onToggle(todo)}
             disabled={disabled}
           />
-          &emsp;
           <input
             type="text"
             disabled={disabled}
