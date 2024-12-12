@@ -10,7 +10,7 @@ I will use an HTML select to choose between Vue & React, and re-render upon sele
 
 We will create a function for each engine: React & Vue, and another one to switch between the engines.
 
-<!-- include [code:ts] ./render-app.ts -->
+<!-- include [code:ts] ./render-app-8.ts -->
 
 ## The entry point – main.ts
 
@@ -32,5 +32,5 @@ Tada 🎉
 
 Going further:
 - [Toggle a todo](./9-toggle-a-todo.md)
-- [Rename a todo item](./10-rename-a-todo-title.md)
+- [Update a todo title](./10-update-a-todo-title.md)
 - [Delete a todo](./11-delete-a-todo.md)

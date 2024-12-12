@@ -6,11 +6,11 @@ A deletion usually involves a confirmation step. Let’s model that first.
 
 The only difference with `RemoteAction<T>` is that we will add an intermediary step. `trigger(…)` will not execute anything yet and wait for a `confirm()`-ation or `cancel()`-ation.
 
-<!-- include [code:ts] ./10-delete-a-todo/RemoteActionToConfirm.ts -->
+<!-- include [code:ts] ./11-delete-a-todo/RemoteActionToConfirm.ts -->
 
 Great, now let’s test it properly:
 
-<!-- include [code:ts] ./10-delete-a-todo/RemoteActionToConfirm.spec.ts -->
+<!-- include [code:ts] ./11-delete-a-todo/RemoteActionToConfirm.spec.ts -->
 
 ## Updating the `TodoPageModel`
 
@@ -18,17 +18,17 @@ We need to update the `TodoPageModel` to include a `deleteTodo(id)` action, and 
 
 For readability, define all the effects in a dedicated `registerEffects` function which returns a `dispose` function.
 
-<!-- include [code:ts] ./10-delete-a-todo/TodoPageModel.ts -->
+<!-- include [code:ts] ./11-delete-a-todo/TodoPageModel.ts -->
 
 ## Updating React components
 
 Let’s add the delete button to the checkbox list:
 
-<!-- include [code:tsx] ./10-delete-a-todo/react/TodoCheckboxList.tsx -->
+<!-- include [code:tsx] ./11-delete-a-todo/react/TodoCheckboxList.tsx -->
 
 Now that we did, let’s create a `ConfirmActionDialog` to handle any `RemoteActionToConfirm`:
 
-<!-- include [code:tsx] ./10-delete-a-todo/react/ConfirmActionDialog.tsx -->
+<!-- include [code:tsx] ./11-delete-a-todo/react/ConfirmActionDialog.tsx -->
 
 Now we can render it like so in our `TodoPage` component:
 
@@ -44,11 +44,11 @@ Now we can render it like so in our `TodoPage` component:
 
 Let’s add the delete button to the checkbox list:
 
-<!-- include [code:vue] ./10-delete-a-todo/vue/TodoCheckboxList.vue -->
+<!-- include [code:vue] ./11-delete-a-todo/vue/TodoCheckboxList.vue -->
 
 Now that we did, let’s create a `ConfirmActionDialog` to handle any `RemoteActionToConfirm`:
 
-<!-- include [code:vue] ./10-delete-a-todo/vue/ConfirmActionDialog.vue -->
+<!-- include [code:vue] ./11-delete-a-todo/vue/ConfirmActionDialog.vue -->
 
 Now we can render it like so in our `TodoPage` component:
 

@@ -32,4 +32,4 @@ The `TodoPage` component:
 
 ---
 
-Next step: [rename a todo title](./10-rename-a-todo-title.md)
+Next step: [update a todo title](./10-update-a-todo-title.md)
