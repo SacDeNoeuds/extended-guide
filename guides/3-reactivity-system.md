@@ -2,7 +2,8 @@
 
 ## Step 1 – Define an agnostic reactivity system
 
-> [!Important] Why defining an agnostic reactivity system?
+> [!IMPORTANT]
+> Why defining an agnostic reactivity system?
 > 
 > Because it is the key to freedom. If you _own_ your reactivity system, you will be able to adapt it to _any framework_, making your code interoperable and highly resilient.
 

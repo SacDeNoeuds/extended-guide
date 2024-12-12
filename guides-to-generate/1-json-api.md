@@ -2,7 +2,8 @@
 
 ## The definition
 
-> [!Note] Why is it so useful to _define_ it instead of _implementing_ it directly?
+> [!NOTE]
+> Why is it so useful to _define_ it instead of _implementing_ it directly?
 >
 > Because I can have multiple implementations of the same concept. we will use the `fetch` implementation for production and the in-memory one for tests.
 
