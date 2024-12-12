@@ -5,7 +5,8 @@
 We can add a `toggleTodo` action on our `TodoPageModel`:
 
 ```ts
-// src/./9-toggle-todo/TodoPageModel-attempt-1.ts
+// src/9-toggle-todo/TodoPageModel-attempt-1.ts
+
 import { JsonPlaceholderApi, Todo } from "../setup/Api"
 import { createRemoteAction, RemoteAction } from "../setup/RemoteAction"
 
@@ -27,7 +28,8 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
 Great, now let’s update the list upon toggle-todo-success:
 
 ```ts
-// src/./9-toggle-todo/TodoPageModel.ts
+// src/9-toggle-todo/TodoPageModel.ts
+
 import { JsonPlaceholderApi, Todo } from "../setup/Api"
 import { createRemoteAction, RemoteAction } from "../setup/RemoteAction"
 import { effect } from "../setup/Signal"
@@ -75,7 +77,8 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
 Now instead of an unordered list, we will render a checkbox list:
 
 ```tsx
-// src/./9-toggle-todo/react/TodoCheckboxList.tsx
+// src/9-toggle-todo/react/TodoCheckboxList.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { Todo } from "../../setup/Api"
@@ -107,7 +110,8 @@ export function TodoCheckboxList({ todos, onToggle, disabled }: Props) {
 Let’s update our `TodoPage` component to render a checkbox list:
 
 ```tsx
-// src/./9-toggle-todo/react/TodoPage.tsx
+// src/9-toggle-todo/react/TodoPage.tsx
+
 /** @jsx React.createElement */
 import React from 'react'
 import { RemoteData } from '@/6-react-app/RemoteData'
@@ -156,7 +160,8 @@ export function TodoPage({ model }: Props) {
 The checkbox list components:
 
 ```tsx
-// src/./9-toggle-todo/vue/TodoCheckboxList.vue
+// src/9-toggle-todo/vue/TodoCheckboxList.vue
+
 <script setup lang="ts">
   import { Todo } from '@/setup/Api'
 
@@ -182,7 +187,8 @@ The checkbox list components:
 The `TodoPage` component:
 
 ```vue
-// src/./9-toggle-todo/vue/TodoPage.vue
+// src/9-toggle-todo/vue/TodoPage.vue
+
 <script setup lang="ts">
   import { onMounted, onUnmounted } from 'vue'
   import { signalRef } from '@/7-vue-app/signalRef'

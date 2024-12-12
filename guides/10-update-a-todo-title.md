@@ -5,7 +5,8 @@
 We can leverage a generic `patchTodo` action and use for both toggling a todo and changing a todo’s title:
 
 ```ts
-// src/./10-update-a-todo-title/TodoPageModel.ts
+// src/10-update-a-todo-title/TodoPageModel.ts
+
 import { RemoteData } from '@/setup/RemoteData'
 import { JsonPlaceholderApi, Todo } from "../setup/Api"
 import { createRemoteAction, RemoteAction } from "../setup/RemoteAction"
@@ -61,7 +62,8 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
 Now let’s update our `TodoCheckboxList` component to add an input:
 
 ```tsx
-// src/./10-update-a-todo-title/react/TodoCheckboxList.tsx
+// src/10-update-a-todo-title/react/TodoCheckboxList.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { Todo } from "../../setup/Api"
@@ -104,7 +106,8 @@ export function TodoCheckboxList({ todos, onToggle, onTitleChanged, disabled }: 
 Same, let’s update our `TodoCheckboxList` component to add an input:
 
 ```vue
-// src/./10-update-a-todo-title/vue/TodoCheckboxList.vue
+// src/10-update-a-todo-title/vue/TodoCheckboxList.vue
+
 <script setup lang="ts">
   import { Todo } from '@/setup/Api'
 

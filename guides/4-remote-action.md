@@ -11,7 +11,8 @@ By taking an async function (the action), it should:
 By expressing it this way, we can dive into implementation:
 
 ```ts
-// src/./setup/RemoteAction.ts
+// src/setup/RemoteAction.ts
+
 import { RemoteData } from "./RemoteData"
 import { createSignal, Signal } from "./Signal"
 
@@ -39,7 +40,8 @@ export function createRemoteAction<T, Args extends any[]>(
 To make sure it behaves as we expect, let’s write a test:
 
 ```ts
-// src/./setup/RemoteAction.spec.ts
+// src/setup/RemoteAction.spec.ts
+
 import { describe, expect, it } from 'vitest'
 import { createRemoteAction } from './RemoteAction'
 

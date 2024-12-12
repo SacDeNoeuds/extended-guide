@@ -5,7 +5,8 @@
 Because our `AppModel` is defined using our [reactivity system](./3-reactivity-system.md), we need to adapt it to Vue. Vue relies on the `ref` concept, so let’s adapt our signal:
 
 ```ts
-// src/./7-vue-app/signalRef.ts
+// src/7-vue-app/signalRef.ts
+
 import { onUnmounted, ref } from 'vue'
 import { effect, ReadonlySignal } from '../setup/Signal'
 
@@ -29,7 +30,8 @@ As you can see, the adapter is quite simple.
 We will adapt the `route` signal to a Vue state, and handle both cases `NotFound` and `TodoListPage`.
 
 ```vue
-// src/./7-vue-app/App.vue
+// src/7-vue-app/App.vue
+
 <script setup lang="ts">
   import { AppModel } from '../5-app-model/AppModel'
   import { signalRef } from './signalRef'
@@ -59,7 +61,8 @@ We will adapt the `route` signal to a Vue state, and handle both cases `NotFound
 We will adapt the `todos` signal to a React state, and display the remote list of todos, leveraging a yet-to-create `<RemoteData />` component.
 
 ```vue
-// src/./7-vue-app/TodoPage.vue
+// src/7-vue-app/TodoPage.vue
+
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import { TodoPageModel } from '../5-app-model/TodoPageModel'
@@ -93,7 +96,8 @@ We will adapt the `todos` signal to a React state, and display the remote list o
 This one is purely presentational, nothing much to say:
 
 ```vue
-// src/./7-vue-app/TodoUnorderedList.vue
+// src/7-vue-app/TodoUnorderedList.vue
+
 <script setup lang="ts">
   import { Todo } from '../setup/Api'
 
@@ -112,7 +116,8 @@ This one is purely presentational, nothing much to say:
 This one is key for readability, it also enables the possibility to handle all the errors at a dedicated place, while still allowing customization.
 
 ```vue
-// src/./7-vue-app/RemoteData.vue
+// src/7-vue-app/RemoteData.vue
+
 <script setup lang="ts" generic="T">
   import { RemoteData } from '../setup/RemoteData'
 

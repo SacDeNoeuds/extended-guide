@@ -23,7 +23,7 @@ function injectReferencedCode(readmeText) {
     (substring, ext, filePath) => {
       const pathFromRoot = path.join(process.cwd(), 'src', filePath)
       const content = readFileSync(pathFromRoot, 'utf-8').trim()
-      const code = `// src/${filePath}\n${content}`
+      const code = `// ${path.relative(process.cwd(), pathFromRoot)}\n\n${content}`
       const prefix = '```' + ext
       const suffix = '```'
       return [prefix, code, suffix].join('\n')

@@ -33,7 +33,8 @@ Since we are here, there are other problems:
 
 We can leverage a discriminated union for that:
 ```ts
-// src/./setup/RemoteData.ts
+// src/setup/RemoteData.ts
+
 export type RemoteData<T> =
   | { state: 'initial' }
   | { state: 'pending', progress?: number }

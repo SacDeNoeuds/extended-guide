@@ -7,7 +7,8 @@ A deletion usually involves a confirmation step. Let’s model that first.
 The only difference with `RemoteAction<T>` is that we will add an intermediary step. `trigger(…)` will not execute anything yet and wait for a `confirm()`-ation or `cancel()`-ation.
 
 ```ts
-// src/./11-delete-a-todo/RemoteActionToConfirm.ts
+// src/11-delete-a-todo/RemoteActionToConfirm.ts
+
 import { RemoteAction } from '@/setup/RemoteAction'
 import { RemoteData } from '@/setup/RemoteData'
 import { createSignal, ReadonlySignal, Signal } from '@/setup/Signal'
@@ -47,7 +48,8 @@ export function requireConfirmation<T, Args extends any[]>(
 Great, now let’s test it properly:
 
 ```ts
-// src/./11-delete-a-todo/RemoteActionToConfirm.spec.ts
+// src/11-delete-a-todo/RemoteActionToConfirm.spec.ts
+
 import { beforeAll, describe, expect, it } from 'vitest'
 import { requireConfirmation } from './RemoteActionToConfirm'
 import { createRemoteAction } from '@/setup/RemoteAction'
@@ -120,7 +122,8 @@ We need to update the `TodoPageModel` to include a `deleteTodo(id)` action, and 
 For readability, define all the effects in a dedicated `registerEffects` function which returns a `dispose` function.
 
 ```ts
-// src/./11-delete-a-todo/TodoPageModel.ts
+// src/11-delete-a-todo/TodoPageModel.ts
+
 import { JsonPlaceholderApi, Todo } from "@/setup/Api"
 import { createRemoteAction, RemoteAction } from "@/setup/RemoteAction"
 import { computed, effect, ReadonlySignal } from "@/setup/Signal"
@@ -205,7 +208,8 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
 Let’s add the delete button to the checkbox list:
 
 ```tsx
-// src/./11-delete-a-todo/react/TodoCheckboxList.tsx
+// src/11-delete-a-todo/react/TodoCheckboxList.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { Todo } from "../../setup/Api"
@@ -259,7 +263,8 @@ export function TodoCheckboxList({
 Now that we did, let’s create a `ConfirmActionDialog` to handle any `RemoteActionToConfirm`:
 
 ```tsx
-// src/./11-delete-a-todo/react/ConfirmActionDialog.tsx
+// src/11-delete-a-todo/react/ConfirmActionDialog.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { RemoteActionToConfirm } from "@/setup/RemoteActionToConfirm"
@@ -316,7 +321,8 @@ Now we can render it like so in our `TodoPage` component:
 Let’s add the delete button to the checkbox list:
 
 ```vue
-// src/./11-delete-a-todo/vue/TodoCheckboxList.vue
+// src/11-delete-a-todo/vue/TodoCheckboxList.vue
+
 <script setup lang="ts">
   import { Todo } from '@/setup/Api'
 
@@ -369,7 +375,8 @@ Let’s add the delete button to the checkbox list:
 Now that we did, let’s create a `ConfirmActionDialog` to handle any `RemoteActionToConfirm`:
 
 ```vue
-// src/./11-delete-a-todo/vue/ConfirmActionDialog.vue
+// src/11-delete-a-todo/vue/ConfirmActionDialog.vue
+
 <script setup lang="ts" generic="T, Args extends any[]">
 import { signalRef } from '@/7-vue-app/signalRef'
 import { RemoteActionToConfirm } from '../RemoteActionToConfirm'

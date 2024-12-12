@@ -8,7 +8,8 @@
 > Because I can have multiple implementations of the same concept. we will use the `fetch` implementation for production and the in-memory one for tests.
 
 ```ts
-// src/./setup/Api.ts
+// src/setup/Api.ts
+
 export interface Todo {
   userId: number
   id: number
@@ -37,7 +38,8 @@ export interface JsonPlaceholderApi {
 
 For the fetch implementation, we will add a global delay to simulate a network delay and have time to observe loading states.
 ```ts
-// src/./setup/Api.fetch.ts
+// src/setup/Api.fetch.ts
+
 import { apiDefaults, JsonPlaceholderApi } from './Api'
 import { delay } from './delay'
 
@@ -76,7 +78,8 @@ export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
 ## `InMemory` implementation
 
 ```ts
-// src/./setup/Api.InMemory.ts
+// src/setup/Api.InMemory.ts
+
 import { JsonPlaceholderApi, Todo } from './Api'
 
 interface JsonPlaceholderInMemoryApi extends JsonPlaceholderApi {

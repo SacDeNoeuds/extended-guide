@@ -11,7 +11,8 @@ I will use an HTML select to choose between Vue & React, and re-render upon sele
 We will create a function for each engine: React & Vue, and another one to switch between the engines.
 
 ```ts
-// src/./render-app-8.ts
+// src/render-app-8.ts
+
 import { makeAppModel } from './5-app-model/AppModel'
 import { JsonPlaceholderFetchApi } from './setup/Api.fetch'
 
@@ -61,7 +62,8 @@ Now our main is very simple: we get the value from the select and render the cor
 When the select value changes, we re-render the app.
 
 ```ts
-// src/./main.ts
+// src/main.ts
+
 import { renderApp } from "./render-app-11"
 import { apiDefaults } from "./setup/Api"
 // import { renderApp } from './render-app-10'

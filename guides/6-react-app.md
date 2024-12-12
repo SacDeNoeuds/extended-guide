@@ -5,7 +5,8 @@
 Because our `AppModel` is defined using our [reactivity system](./3-reactivity-system.md), we need to adapt it to React:
 
 ```ts
-// src/./6-react-app/useSignal.ts
+// src/6-react-app/useSignal.ts
+
 import { useEffect, useState } from 'react'
 import { effect, ReadonlySignal } from '../setup/Signal'
 
@@ -32,7 +33,8 @@ Now we will dive further and further in the app component tree, starting at the 
 We will adapt the `route` signal to a React state, and handle both cases `NotFound` and `TodoListPage`.
 
 ```tsx
-// src/./6-react-app/App.tsx
+// src/6-react-app/App.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { AppModel } from "../5-app-model/AppModel"
@@ -68,7 +70,8 @@ export function App({ model }: Props) {
 We will adapt the `todos` signal to a React state, and display the remote list of todos, leveraging a yet-to-create `<RemoteData />` component.
 
 ```tsx
-// src/./6-react-app/TodoPage.tsx
+// src/6-react-app/TodoPage.tsx
+
 /** @jsx React.createElement */
 import React, { useEffect } from "react"
 import { TodoPageModel } from "../5-app-model/TodoPageModel"
@@ -106,7 +109,8 @@ export function TodoPage({ model }: Props) {
 This one is purely presentational, nothing much to say:
 
 ```tsx
-// src/./6-react-app/TodoUnorderedList.tsx
+// src/6-react-app/TodoUnorderedList.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { Todo } from '../setup/Api'
@@ -130,7 +134,8 @@ export function TodoUnorderedList({ todos }: Props) {
 This one is key for readability, it also enables the possibility to handle all the errors at a dedicated place, while still allowing customization.
 
 ```tsx
-// src/./6-react-app/RemoteData.tsx
+// src/6-react-app/RemoteData.tsx
+
 /** @jsx React.createElement */
 import React from "react"
 import { RemoteData } from "../setup/RemoteData"

@@ -11,7 +11,8 @@ By _define_ the `Signal` or `State` concept, we will be in the position of swapp
 
 So here we go:
 ```ts
-// src/./setup/Signal.ts
+// src/setup/Signal.ts
+
 export interface ReadonlySignal<T> {
   get: () => T
 }
@@ -47,7 +48,8 @@ export { effect, createSignal } from './Signal.s-js'
 Let’s define what our reactivity system should comply to:
 
 ```ts
-// src/./setup/Signal.spec.ts
+// src/setup/Signal.spec.ts
+
 import { afterAll, describe, expect, it } from 'vitest'
 import { createSignal, effect } from './Signal.s-js'
 
@@ -129,7 +131,8 @@ For the sake of poetry, I will use S.js
 <small>NB: one of the first to push for signals</small>
 
 ```ts
-// src/./setup/Signal.s-js.ts
+// src/setup/Signal.s-js.ts
+
 import S from 's-js'
 import { CreateSignal, Effect } from './Signal'
 
