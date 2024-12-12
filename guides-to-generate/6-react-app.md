@@ -8,7 +8,7 @@ Because our `AppModel` is defined using our [reactivity system](./3-reactivity-s
 
 As you can see, the adapter is quite simple.
 
-Now we will dive further and further in the app component tree, starting at the top:
+Now we will dive further and further in the app component tree, starting from the top:
 
 ## The `App` component
 

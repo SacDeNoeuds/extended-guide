@@ -4,7 +4,50 @@
 
 I will use an HTML select to choose between Vue & React, and re-render upon select change.
 
-<!-- include [code:html] ./index.html -->
+```html
+// src/index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model View Demo</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <header>
+    <label>
+      App Renderer:&nbsp;
+      <select id="app-renderer" value="vue">
+        <option value="react">React</option>
+        <option value="vue">Vue</option>
+        <option value="solid" disabled>Solid</option>
+      </select>
+    </label>
+    <span>·</span>
+    <label>
+      Api Preflight Delay:&nbsp;
+      <select id="api-delay">
+        <option value="0">None</option>
+        <option value="100">100ms</option>
+        <option value="500">500ms</option>
+        <option value="1000">1s</option>
+      </select>
+    </label>
+  </header>
+
+  <main>
+    <div id="root"></div>
+  </main>
+
+  <footer>
+    <span>Made with ❤️ by</span><a href="https://github.com/SacDeNoeuds">SacDeNoeuds</a>
+  </footer>
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
+```
 
 ## The rendering process
 
@@ -90,7 +133,7 @@ apiDelaySelect.addEventListener("change", () => {
 void renderApp(selectElement.value)
 ```
 
-## Testing the whole
+## Testing the whole thing
 
 ```sh
 npm start

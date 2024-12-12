@@ -1,13 +1,14 @@
 import { afterAll, describe, expect, it } from 'vitest'
 import { createSignal, effect } from './Signal.s-js'
 
+const make = (initialCount = 0) => {
+  return createSignal(
+    { count: initialCount },
+    { equals: (a, b) => a.count === b.count }
+  )
+}
+
 describe('Signal', () => {
-  const make = (initialCount = 0) => {
-    return createSignal(
-      { count: initialCount },
-      { equals: (a, b) => a.count === b.count }
-    )
-  }
   it('gets the value', () => {
     const signal = make(0)
     expect(signal.get()).toEqual({ count: 0 })

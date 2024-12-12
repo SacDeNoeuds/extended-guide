@@ -19,7 +19,7 @@ mkdirSync(output)
  */
 function injectReferencedCode(readmeText) {
   return readmeText.replace(
-    /<!-- include \[code:(tsx|ts|vue)\] (.*) -->/g,
+    /<!-- include \[code:(tsx|ts|vue|html)\] (.*) -->/g,
     (substring, ext, filePath) => {
       const pathFromRoot = path.join(process.cwd(), 'src', filePath)
       const content = readFileSync(pathFromRoot, 'utf-8').trim()

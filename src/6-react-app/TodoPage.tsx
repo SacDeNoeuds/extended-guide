@@ -15,7 +15,7 @@ export function TodoPage({ model }: Props) {
   // fetch the todos on mount.
   useEffect(() => {
     void model.todos.trigger()
-    // explicitly mark the promise as non-awaiting with `void`
+    // explicitly mark the promise as non-awaited with `void`
   }, [])
 
   return (

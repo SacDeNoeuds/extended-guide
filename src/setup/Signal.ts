@@ -24,6 +24,6 @@ export function computed<T>(callback: () => T): ReadonlySignal<T> {
   }
 }
 
-// the implementation complies to type upper.
+// the implementation complies to type definitions upper.
 export { effect, createSignal } from './Signal.s-js'
 

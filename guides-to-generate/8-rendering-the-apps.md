@@ -20,7 +20,7 @@ When the select value changes, we re-render the app.
 
 <!-- include [code:ts] ./main.ts -->
 
-## Testing the whole
+## Testing the whole thing
 
 ```sh
 npm start

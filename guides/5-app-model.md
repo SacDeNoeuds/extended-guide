@@ -81,4 +81,4 @@ export function makeAppModel(api: JsonPlaceholderApi): AppModel {
 
 Great, now that we have our app model defined and implemented, let’s display it !
 
-We can start with [React]() then [Vue]()
+We can start with [React](./6-react-app.md) then [Vue](./7-vue-app.md)

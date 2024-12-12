@@ -421,3 +421,11 @@ Now we can render it like so in our `TodoPage` component:
   {(todo) => <>You are about to delete "{todo.title}", continue?</>}
 </ConfirmActionDialog>
 ```
+
+---
+
+Congrats, you have reached the end of the series!
+
+I hope everything got crystal clear and you are fully familiar with the concepts in this guide.
+
+If you have any feedback or suggestions, you can open an issue on [GitHub](https://github.com/SacDeNoeuds/model-view-demo/issues) or [create a PR](https://github.com/SacDeNoeuds/model-view-demo/pulls) ❤️.

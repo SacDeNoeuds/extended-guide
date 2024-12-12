@@ -24,7 +24,7 @@ Let’s update our `TodoPage` component to render a checkbox list:
 
 The checkbox list components:
 
-<!-- include [code:tsx] ./9-toggle-todo/vue/TodoCheckboxList.vue -->
+<!-- include [code:vue] ./9-toggle-todo/vue/TodoCheckboxList.vue -->
 
 The `TodoPage` component:
 

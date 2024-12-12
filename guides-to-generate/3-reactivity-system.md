@@ -7,7 +7,7 @@
 > 
 > Because it is the key to freedom. If you _own_ your reactivity system, you will be able to adapt it to _any framework_, making your code interoperable and highly resilient.
 
-By _define_ the `Signal` or `State` concept, we will be in the position of swapping the implementation detail anytime. At the cost of defining ourselves the API, but in that case it is fairly trivial because there are plethora of libraries out there and even a proposal.
+By _defining_ the `Signal` or `State` concept, we will be in the position of swapping the implementation detail anytime. At the cost of defining ourselves the API, but in that case it is fairly trivial because there are plethora of libraries out there and even a proposal.
 
 So here we go:
 <!-- include [code:ts] ./setup/Signal.ts -->
@@ -28,12 +28,14 @@ Let’s not re-invent the wheel and facade an existing library. We have a few op
 
 … and I am probably forgetting a ton of them.
 
-For the sake of poetry, I will use S.js
-
-<small>NB: one of the first to push for signals</small>
+For the sake of poetry, I will use S.js<br>
+**NB**: S.js is one of the first signal library out there.
 
 <!-- include [code:ts] ./setup/Signal.s-js.ts -->
 
 ---
 
-Reactivity system: Done. Remote Data: Done. Next: [Remote Action](./4-remote-action.md) !
+Reactivity system: Done.<br>
+Remote Data: Done.
+
+Next: [Remote Action](./4-remote-action.md) !

@@ -7,7 +7,7 @@
 > 
 > Because it is the key to freedom. If you _own_ your reactivity system, you will be able to adapt it to _any framework_, making your code interoperable and highly resilient.
 
-By _define_ the `Signal` or `State` concept, we will be in the position of swapping the implementation detail anytime. At the cost of defining ourselves the API, but in that case it is fairly trivial because there are plethora of libraries out there and even a proposal.
+By _defining_ the `Signal` or `State` concept, we will be in the position of swapping the implementation detail anytime. At the cost of defining ourselves the API, but in that case it is fairly trivial because there are plethora of libraries out there and even a proposal.
 
 So here we go:
 ```ts
@@ -39,7 +39,7 @@ export function computed<T>(callback: () => T): ReadonlySignal<T> {
   }
 }
 
-// the implementation complies to type upper.
+// the implementation complies to type definitions upper.
 export { effect, createSignal } from './Signal.s-js'
 ```
 
@@ -53,13 +53,14 @@ Let’s define what our reactivity system should comply to:
 import { afterAll, describe, expect, it } from 'vitest'
 import { createSignal, effect } from './Signal.s-js'
 
+const make = (initialCount = 0) => {
+  return createSignal(
+    { count: initialCount },
+    { equals: (a, b) => a.count === b.count }
+  )
+}
+
 describe('Signal', () => {
-  const make = (initialCount = 0) => {
-    return createSignal(
-      { count: initialCount },
-      { equals: (a, b) => a.count === b.count }
-    )
-  }
   it('gets the value', () => {
     const signal = make(0)
     expect(signal.get()).toEqual({ count: 0 })
@@ -126,9 +127,8 @@ Let’s not re-invent the wheel and facade an existing library. We have a few op
 
 … and I am probably forgetting a ton of them.
 
-For the sake of poetry, I will use S.js
-
-<small>NB: one of the first to push for signals</small>
+For the sake of poetry, I will use S.js<br>
+**NB**: S.js is one of the first signal library out there.
 
 ```ts
 // src/setup/Signal.s-js.ts
@@ -161,4 +161,7 @@ export const effect: Effect = (callback) => {
 
 ---
 
-Reactivity system: Done. Remote Data: Done. Next: [Remote Action](./4-remote-action.md) !
+Reactivity system: Done.<br>
+Remote Data: Done.
+
+Next: [Remote Action](./4-remote-action.md) !

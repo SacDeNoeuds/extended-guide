@@ -131,7 +131,7 @@ export function TodoPage({ model }: Props) {
   // fetch the todo list on mount.
   useEffect(() => {
     void model.getTodoList.trigger()
-    // explicitly mark the promise as non-awaiting with `void`
+    // explicitly mark the promise as non-awaited with `void`
   }, [])
 
   // dispose on unmount.
@@ -159,7 +159,7 @@ export function TodoPage({ model }: Props) {
 
 The checkbox list components:
 
-```tsx
+```vue
 // src/9-toggle-todo/vue/TodoCheckboxList.vue
 
 <script setup lang="ts">

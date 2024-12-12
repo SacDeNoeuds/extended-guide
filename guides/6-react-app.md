@@ -26,7 +26,7 @@ export function useSignal<T>(signal: ReadonlySignal<T>): T {
 
 As you can see, the adapter is quite simple.
 
-Now we will dive further and further in the app component tree, starting at the top:
+Now we will dive further and further in the app component tree, starting from the top:
 
 ## The `App` component
 
@@ -89,7 +89,7 @@ export function TodoPage({ model }: Props) {
   // fetch the todos on mount.
   useEffect(() => {
     void model.todos.trigger()
-    // explicitly mark the promise as non-awaiting with `void`
+    // explicitly mark the promise as non-awaited with `void`
   }, [])
 
   return (

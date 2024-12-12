@@ -12,7 +12,7 @@ export function createRemoteAction<T, Args extends any[]>(
   const data = createSignal<RemoteData<T>>({ state: "initial" })
   return {
     data,
-    async trigger(...args) {
+    trigger: async (...args) => {
       data.set({ state: "pending" })
       return action(...args)
         .then((value) => data.set({ state: "success", value }))
