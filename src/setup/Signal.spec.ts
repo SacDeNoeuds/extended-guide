@@ -1,13 +1,6 @@
 import { afterAll, describe, expect, it } from 'vitest'
 import { createSignal, effect } from './Signal.s-js'
 
-const make = (initialCount = 0) => {
-  return createSignal(
-    { count: initialCount },
-    { equals: (a, b) => a.count === b.count }
-  )
-}
-
 describe('Signal', () => {
   it('gets the value', () => {
     const signal = make(0)
@@ -38,13 +31,8 @@ describe('Signal', () => {
     signal.set({ count: 1 })
     afterAll(dispose)
 
-    it('listens to changes', () => {
-      expect(value).toBe(1)
-    })
-  
-    it('cleans up', () => {
-      expect(cleaned).toBe(true)
-    })
+    it('listens to changes', () => expect(value).toBe(1))
+    it('cleans up', () => expect(cleaned).toBe(true))
   })
 
   it('works with nested conditions', () => {
@@ -63,3 +51,10 @@ describe('Signal', () => {
     dispose()
   })
 })
+
+function make(initialCount = 0) {
+  return createSignal(
+    { count: initialCount },
+    { equals: (a, b) => a.count === b.count }
+  )
+}

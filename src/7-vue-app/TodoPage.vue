@@ -8,10 +8,10 @@
   const props = defineProps<{ model: TodoPageModel }>()
   const model = props.model
 
-  const todos = signalRef(model.todos.data)
+  const todos = signalRef(model.getTodoList.data)
 
   // fetch the todos on mount.
-  onMounted(() => void model.todos.trigger())
+  onMounted(() => void model.getTodoList.trigger())
 </script>
 
 <template>

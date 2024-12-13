@@ -1,5 +1,5 @@
-import { JsonPlaceholderApi } from '../setup/Api'
-import { createSignal, ReadonlySignal } from '../setup/Signal'
+import { JsonPlaceholderApi } from '@/setup/Api'
+import { createSignal, ReadonlySignal } from '@/setup/Signal'
 import { makeTodoPageModel, TodoPageModel } from './TodoPageModel'
 
 export type AppRoute =

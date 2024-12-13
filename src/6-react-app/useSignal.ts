@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { effect, ReadonlySignal } from '../setup/Signal'
+import { effect, ReadonlySignal } from '@/setup/Signal'
 
 export function useSignal<T>(signal: ReadonlySignal<T>): T {
   const [state, setState] = useState(signal.get())

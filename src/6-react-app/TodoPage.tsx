@@ -10,11 +10,11 @@ interface Props {
 }
 
 export function TodoPage({ model }: Props) {
-  const todos = useSignal(model.todos.data)
+  const todos = useSignal(model.getTodoList.data)
 
   // fetch the todos on mount.
   useEffect(() => {
-    void model.todos.trigger()
+    void model.getTodoList.trigger()
     // explicitly mark the promise as non-awaited with `void`
   }, [])
 

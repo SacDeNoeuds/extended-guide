@@ -18,9 +18,17 @@ type Dispose = () => void
 
 export type Effect = (callback: () => (void | Cleanup)) => Dispose
 
-export function computed<T>(callback: () => T): ReadonlySignal<T> {
+/**
+ * @example
+ * ```ts
+ * const price = createSignal(0)
+ * const tax = createSignal(0.4)
+ * const total = computed(() => price.get() * (1 + tax.get()))
+ * ```
+ */
+export function computed<T>(compute: () => T): ReadonlySignal<T> {
   return {
-    get: () => callback(),
+    get: () => compute(),
   }
 }
 

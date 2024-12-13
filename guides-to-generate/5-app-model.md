@@ -18,7 +18,7 @@ And to display such a list, we will use the `JsonPlaceholderApi`.
 
 ## Going back to the `AppModel` to implement it
 
-<!-- include [code:ts] ./5-app-model/AppModel.ts -->
+<!-- diff-between [code:ts] ./5-app-model/AppModel.ts ./5-app-model/AppModel-attempt-1.ts -->
 
 ---
 

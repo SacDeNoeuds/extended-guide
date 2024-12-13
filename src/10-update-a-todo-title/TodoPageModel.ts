@@ -1,7 +1,6 @@
-import { RemoteData } from '@/setup/RemoteData'
-import { JsonPlaceholderApi, Todo } from "../setup/Api"
-import { createRemoteAction, RemoteAction } from "../setup/RemoteAction"
-import { computed, effect, ReadonlySignal, Signal } from "@/setup/Signal"
+import { JsonPlaceholderApi, Todo } from "@/setup/Api"
+import { createRemoteAction, RemoteAction } from "@/setup/RemoteAction"
+import { computed, effect, ReadonlySignal } from "@/setup/Signal"
 
 export interface TodoPageModel {
   getTodoList: RemoteAction<Todo[]>

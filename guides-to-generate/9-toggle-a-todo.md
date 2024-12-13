@@ -4,11 +4,11 @@
 
 We can add a `toggleTodo` action on our `TodoPageModel`:
 
-<!-- include [code:ts] ./9-toggle-todo/TodoPageModel-attempt-1.ts -->
+<!-- diff-between [code:ts] ./9-toggle-todo/TodoPageModel-attempt-1.ts ./5-app-model/TodoPageModel.ts -->
 
 Great, now let’s update the list upon toggle-todo-success:
 
-<!-- include [code:ts] ./9-toggle-todo/TodoPageModel.ts -->
+<!-- diff-between [code:ts] ./9-toggle-todo/TodoPageModel.ts ./9-toggle-todo/TodoPageModel-attempt-1.ts -->
 
 ## Updating the React components
 

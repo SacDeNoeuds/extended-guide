@@ -1,10 +1,16 @@
-
-const { readFileSync, writeFileSync, readdirSync, rmSync, mkdirSync } = require("fs")
+const {
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+  rmSync,
+  mkdirSync,
+} = require("fs")
 const path = require("path")
+const diff = require("diff")
 
-const isDryRun = process.argv.includes('--dry-run')
+const isDryRun = process.argv.includes("--dry-run")
 
-const output = path.resolve(process.cwd(), 'guides')
+const output = path.resolve(process.cwd(), "guides")
 rmSync(output, { recursive: true })
 mkdirSync(output)
 
@@ -18,29 +24,73 @@ mkdirSync(output)
  * @returns {string}
  */
 function injectReferencedCode(readmeText) {
-  return readmeText.replace(
-    /<!-- include \[code:(tsx|ts|vue|html)\] (.*) -->/g,
-    (substring, ext, filePath) => {
-      const pathFromRoot = path.join(process.cwd(), 'src', filePath)
-      const content = readFileSync(pathFromRoot, 'utf-8').trim()
-      const code = `// ${path.relative(process.cwd(), pathFromRoot)}\n\n${content}`
-      const prefix = '```' + ext
-      const suffix = '```'
-      return [prefix, code, suffix].join('\n')
-    }
-  )
+  return readmeText
+    .replace(
+      /<!-- include \[code:(tsx|ts|vue|html)\] (.*) -->/g,
+      (substring, ext, filePath) => {
+        const paths = getPathsFromRoot(filePath)
+        const content = readFileSync(paths.absolute, "utf-8").trim()
+        return makeCodeBlock(paths.relative, ext, content)
+      },
+    )
+    .replace(
+      /<!-- diff-between \[code:(tsx|ts|vue)\] .\/(.*) .\/(.*) -->/g,
+      (substring, ext, newFilePath, oldFilePath) => {
+        const newPaths = getPathsFromRoot(newFilePath)
+        const oldPaths = getPathsFromRoot(oldFilePath)
+        const newContent = readFileSync(newPaths.absolute, "utf-8").trim()
+        const oldContent = readFileSync(oldPaths.absolute, "utf-8").trim()
+        const difference = diff.diffLines(oldContent, newContent, {
+          ignoreNewlineAtEof: true,
+          ignoreWhitespace: true,
+          ignoreCase: true,
+        })
+        const code = difference.reduce((acc, line) => {
+          const suffix = line.added ? ' // [!code ++]' : line.removed ? ' // [!code --]' : ''
+          const lines = line.value.split('\n').map((line) => line ? `${line}${suffix}` : line)
+          return `${acc.trim()}\n${lines.join('\n')}`
+        }, '').trim()
+
+        console.e
+
+        return makeCodeBlock(newPaths.relative, ext, code)
+      },
+    )
 }
 
-const guides = readdirSync('./guides-to-generate')
+/**
+ * @param {string} relativeFilePath
+ * @param {string} ext
+ * @param {string} code
+ */
+function makeCodeBlock(relativeFilePath, ext, code) {
+  const content = `// ${relativeFilePath}\n\n${code}`
+  const prefix = "```" + ext
+  const suffix = "```"
+  return [prefix, content, suffix].join("\n")
+}
+
+/**
+ * @param {string} filePath
+ * @return {{ absolute: string, relative: string }}
+ */
+function getPathsFromRoot(filePath) {
+  const absolute = path.join(process.cwd(), "src", filePath)
+  const relative = path.relative(process.cwd(), absolute)
+  return { absolute, relative }
+}
+
+const guides = readdirSync("./guides-to-generate")
 if (isDryRun) {
-  console.info('guides to generate:\n -', guides.join('\n - '))
+  console.info("guides to generate:\n -", guides.join("\n - "))
   process.exit(0)
 }
 
 for (const guide of guides) {
-  const guideText = readFileSync(`./guides-to-generate/${guide}`, 'utf-8')
+  const guideText = readFileSync(`./guides-to-generate/${guide}`, "utf-8")
   const newGuideText = injectReferencedCode(guideText)
-  writeFileSync(`./guides/${guide}`, newGuideText, 'utf-8')
+  writeFileSync(`./guides/${guide}`, newGuideText, "utf-8")
   console.info(`generated: guides/${guide}`)
 }
-console.info('\nDone ✅')
+
+console.info("\nDone ✅")

@@ -1,5 +1,5 @@
 import { onUnmounted, ref } from 'vue'
-import { effect, ReadonlySignal } from '../setup/Signal'
+import { effect, ReadonlySignal } from '@/setup/Signal'
 
 export function signalRef<T>(signal: ReadonlySignal<T>) {
   const value = ref(signal.get())
