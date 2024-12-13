@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Todo } from '@/setup/Api'
+import { Todo } from '@/setup/TodoApi'
 
 const props = defineProps<{
   todos: Todo[]

@@ -21,7 +21,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Setup',
-        items: [{ text: 'The Json Placeholder API', link: '/1-json-api.html' }],
+        items: [{ text: 'The Todo API', link: '/1-todo-api.html' }],
       },
       {
         text: 'Defining the models',

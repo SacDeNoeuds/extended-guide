@@ -1,4 +1,4 @@
-import { JsonPlaceholderApi } from '@/setup/Api'
+import { TodoApi } from '@/setup/TodoApi'
 import { createSignal, ReadonlySignal } from '@/setup/Signal'
 import { makeTodoPageModel, TodoPageModel } from './TodoPageModel'
 
@@ -11,7 +11,7 @@ export interface AppModel {
   goToTodos: () => void
 }
 
-export function makeAppModel(api: JsonPlaceholderApi): AppModel {
+export function makeAppModel(api: TodoApi): AppModel {
   const route = createSignal<AppRoute>({ name: 'NotFound' })
 
   return {

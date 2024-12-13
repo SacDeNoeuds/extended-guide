@@ -1,10 +1,10 @@
-import { JsonPlaceholderApi, Todo } from './Api'
+import { TodoApi, Todo } from './TodoApi'
 
-interface JsonPlaceholderInMemoryApi extends JsonPlaceholderApi {
+interface TodoInMemoryApi extends TodoApi {
   createTodo: (todo: Todo) => void
 }
 
-export function createJsonPlaceholderInMemoryApi(): JsonPlaceholderInMemoryApi {
+export function makeTodoInMemoryApi(): TodoInMemoryApi {
   const store = new Map<number, Todo>()
   return {
     createTodo(todo: Todo) {

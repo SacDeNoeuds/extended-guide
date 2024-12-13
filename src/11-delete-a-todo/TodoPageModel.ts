@@ -1,4 +1,4 @@
-import { JsonPlaceholderApi, Todo } from '@/setup/Api'
+import { TodoApi, Todo } from '@/setup/TodoApi'
 import { createRemoteAction, RemoteAction } from '@/setup/RemoteAction'
 import { computed, effect, ReadonlySignal } from '@/setup/Signal'
 import {
@@ -17,7 +17,7 @@ export interface TodoPageModel {
   dispose: () => void
 }
 
-export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
+export function makeTodoPageModel(api: TodoApi): TodoPageModel {
   const getTodoList = createRemoteAction(api.getTodos.bind(api))
 
   const patchTodo = createRemoteAction(api.patchTodo.bind(api))

@@ -1,9 +1,9 @@
-import { apiDefaults, JsonPlaceholderApi } from './Api'
-import { delay } from './delay'
+import { delayApiCall } from './api-latency'
+import { TodoApi } from './TodoApi'
 
-export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
+export const todoFetchApi: TodoApi = {
   async getTodo(id) {
-    await delay(apiDefaults.preflightDelayInMs)
+    await delayApiCall()
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/todos/${id}`,
     )
@@ -11,13 +11,13 @@ export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
   },
 
   async getTodos() {
-    await delay(apiDefaults.preflightDelayInMs)
+    await delayApiCall()
     const response = await fetch('https://jsonplaceholder.typicode.com/todos')
     return response.json()
   },
 
   async patchTodo(id, data) {
-    await delay(apiDefaults.preflightDelayInMs)
+    await delayApiCall()
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/todos/${id}`,
       {
@@ -30,7 +30,7 @@ export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
   },
 
   async deleteTodo(id) {
-    await delay(apiDefaults.preflightDelayInMs)
+    await delayApiCall()
     await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
       method: 'DELETE',
     })

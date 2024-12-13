@@ -1,4 +1,4 @@
-import { JsonPlaceholderApi, Todo } from '@/setup/Api'
+import { TodoApi, Todo } from '@/setup/TodoApi'
 import { createRemoteAction, RemoteAction } from '@/setup/RemoteAction'
 
 export interface TodoPageModel {
@@ -6,7 +6,7 @@ export interface TodoPageModel {
   toggleTodo: RemoteAction<Todo, [todo: Todo]>
 }
 
-export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
+export function makeTodoPageModel(api: TodoApi): TodoPageModel {
   const getTodoList = createRemoteAction(api.getTodos.bind(api))
 
   const toggleTodo = createRemoteAction((todo: Todo) => {

@@ -1,4 +1,4 @@
-# The JsonPlaceholder API
+# The JsonPlaceholder-backed `TodoApi`
 
 ## The definition
 
@@ -7,17 +7,23 @@
 >
 > Because I can have multiple implementations of the same concept. we will use the `fetch` implementation for production and the in-memory one for tests.
 
-<!-- include [code:ts] ./setup/Api.ts -->
+<!-- include [code:ts] ./setup/TodoApi.ts -->
 
-## `Fetch` implementation
+<details>
+<summary>Fetch implementation</summary>
 
 For the fetch implementation, we will add a global delay to simulate a network delay and have time to observe loading states.
 
-<!-- include [code:ts] ./setup/Api.fetch.ts -->
+<!-- include [code:ts] ./setup/TodoApi.fetch.ts -->
 
-## `InMemory` implementation
+</details>
 
-<!-- include [code:ts] ./setup/Api.InMemory.ts -->
+<details>
+<summary>In-memory implementation</summary>
+
+<!-- include [code:ts] ./setup/TodoApi.InMemory.ts -->
+
+</details>
 
 ---
 

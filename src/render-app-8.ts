@@ -1,10 +1,10 @@
 import { makeAppModel } from './5-app-model/AppModel'
-import { JsonPlaceholderFetchApi } from './setup/Api.fetch'
+import { todoFetchApi } from './setup/TodoApi.fetch'
 
 const rootNode = document.getElementById('root') as HTMLElement
 if (!rootNode) throw new Error('where is my root??')
 
-const appModel = makeAppModel(JsonPlaceholderFetchApi)
+const appModel = makeAppModel(todoFetchApi)
 
 export async function renderApp(kind: string) {
   // clear the root node

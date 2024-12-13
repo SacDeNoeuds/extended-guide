@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /1-json-api.html
+      link: /1-todo-api.html
 
 features:
   - title: Defining models
@@ -43,7 +43,7 @@ The data will change over time, therefore most of the data will be reactive.
 
 ## Get Started
 
-Head to [Json Placeholder API setup](./1-json-api.md).
+Head to [Todo API setup](./1-todo-api.md).
 
 I hope you will enjoy this series,<br>
 Have a nice journey 👋

@@ -5,12 +5,7 @@ export interface Todo {
   completed: boolean
 }
 
-export const apiDefaults = {
-  /** used to slow down the api calls, to see the loading states */
-  preflightDelayInMs: 0,
-}
-
-export interface JsonPlaceholderApi {
+export interface TodoApi {
   getTodos: () => Promise<Todo[]>
   getTodo: (id: number) => Promise<Todo>
   patchTodo: (
