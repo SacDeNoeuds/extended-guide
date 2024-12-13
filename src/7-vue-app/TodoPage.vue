@@ -8,7 +8,7 @@ import TodoUnorderedList from './TodoUnorderedList.vue'
 const props = defineProps<{ model: TodoPageModel }>()
 const model = props.model
 
-const todos = signalRef(model.getTodoList.data)
+const todoList = signalRef(model.getTodoList.data)
 
 // fetch the todos on mount.
 onMounted(() => void model.getTodoList.trigger())
@@ -17,7 +17,7 @@ onMounted(() => void model.getTodoList.trigger())
 <template>
   <div>
     <p>Todo Page in Vue</p>
-    <RemoteData :data="todos">
+    <RemoteData :data="todoList">
       <template #success="{ value }">
         <TodoUnorderedList :todos="value" />
       </template>
