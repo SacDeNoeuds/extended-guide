@@ -1,11 +1,13 @@
 import { defineConfig } from 'vitepress'
 
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Model View Demo',
   description: 'A series on how to model-view to stay free any framework',
   srcDir: './guides',
-
+  base: isGithubActions ? '/model-view-demo/' : undefined,
   outDir: './docs',
   themeConfig: {
     nav: [
