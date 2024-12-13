@@ -26,7 +26,6 @@ function maybeEmitTitleChanged(todo: Todo, event: FocusEvent) {
         :disabled="props.disabled"
         @change="emit('toggle', todo)"
       />
-      &emsp;
       <input
         type="text"
         :value="todo.title"

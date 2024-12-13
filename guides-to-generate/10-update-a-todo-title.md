@@ -4,19 +4,19 @@
 
 We can leverage a generic `patchTodo` action and use for both toggling a todo and changing a todo’s title:
 
-<!-- include [code:ts] ./10-update-a-todo-title/TodoPageModel.ts -->
+<!-- diff-between [code:ts] ./10-update-a-todo-title/TodoPageModel.ts ./9-toggle-todo/TodoPageModel.ts -->
 
 ## Updating the React components
 
 Now let’s update our `TodoCheckboxList` component to add an input:
 
-<!-- include [code:tsx] ./10-update-a-todo-title/react/TodoCheckboxList.tsx -->
+<!-- diff-between [code:tsx] ./10-update-a-todo-title/react/TodoCheckboxList.tsx ./9-toggle-todo/react/TodoCheckboxList.tsx -->
 
 ## Updating the Vue components
 
 Same, let’s update our `TodoCheckboxList` component to add an input:
 
-<!-- include [code:vue] ./10-update-a-todo-title/vue/TodoCheckboxList.vue -->
+<!-- diff-between [code:vue] ./10-update-a-todo-title/vue/TodoCheckboxList.vue ./9-toggle-todo/vue/TodoCheckboxList.vue -->
 
 ---
 

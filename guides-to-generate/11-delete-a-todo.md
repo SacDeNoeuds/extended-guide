@@ -6,9 +6,11 @@ A deletion usually involves a confirmation step. Let’s model that first.
 
 The only difference with `RemoteAction<T>` is that we will add an intermediary step. `trigger(…)` will not execute anything yet and wait for a `confirm()`-ation or `cancel()`-ation.
 
+### Definition & Implementation
+
 <!-- include [code:ts] ./11-delete-a-todo/RemoteActionToConfirm.ts -->
 
-Great, now let’s test it properly:
+### Specification/Test
 
 <!-- include [code:ts] ./11-delete-a-todo/RemoteActionToConfirm.spec.ts -->
 
@@ -18,13 +20,13 @@ We need to update the `TodoPageModel` to include a `deleteTodo(id)` action, and 
 
 For readability, define all the effects in a dedicated `registerEffects` function which returns a `dispose` function.
 
-<!-- include [code:ts] ./11-delete-a-todo/TodoPageModel.ts -->
+<!-- diff-between [code:ts] ./11-delete-a-todo/TodoPageModel.ts ./10-update-a-todo-title/TodoPageModel.ts -->
 
 ## Updating React components
 
 Let’s add the delete button to the checkbox list:
 
-<!-- include [code:tsx] ./11-delete-a-todo/react/TodoCheckboxList.tsx -->
+<!-- diff-between [code:tsx] ./11-delete-a-todo/react/TodoCheckboxList.tsx ./10-update-a-todo-title/react/TodoCheckboxList.tsx -->
 
 Now that we did, let’s create a `ConfirmActionDialog` to handle any `RemoteActionToConfirm`:
 
@@ -44,7 +46,7 @@ Now we can render it like so in our `TodoPage` component:
 
 Let’s add the delete button to the checkbox list:
 
-<!-- include [code:vue] ./11-delete-a-todo/vue/TodoCheckboxList.vue -->
+<!-- diff-between [code:vue] ./11-delete-a-todo/vue/TodoCheckboxList.vue ./10-update-a-todo-title/vue/TodoCheckboxList.vue -->
 
 Now that we did, let’s create a `ConfirmActionDialog` to handle any `RemoteActionToConfirm`:
 

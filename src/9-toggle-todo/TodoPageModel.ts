@@ -16,25 +16,28 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
     return api.patchTodo(todo.id, { completed: !todo.completed })
   })
 
-  const dispose = effect(() => {
-    const data = toggleTodo.data.get()
-    if (data.state !== 'success') return
-    // update the current todo list:
-    getTodoList.data.update((list) => {
-      if (list.state !== 'success') return list
-
-      // replace the todo in the list by the patched todo
-      const nextList = list.value.map((todo) => {
-        return todo.id === data.value.id ? data.value : todo
-      })
-
-      return { state: 'success', value: nextList }
-    })
-  })
-
   return {
     getTodoList,
     toggleTodo,
-    dispose,
+    dispose: registerEffects(),
+  }
+
+  function registerEffects() {
+    const dispose = effect(() => {
+      const data = toggleTodo.data.get()
+      if (data.state !== 'success') return
+      // update the current todo list:
+      getTodoList.data.update((list) => {
+        if (list.state !== 'success') return list
+
+        // replace the todo in the list by the patched todo
+        const nextList = list.value.map((todo) => {
+          return todo.id === data.value.id ? data.value : todo
+        })
+
+        return { state: 'success', value: nextList }
+      })
+    })
+    return dispose
   }
 }

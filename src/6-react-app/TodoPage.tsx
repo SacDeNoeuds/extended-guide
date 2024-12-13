@@ -10,9 +10,9 @@ interface Props {
 }
 
 export function TodoPage({ model }: Props) {
-  const todos = useSignal(model.getTodoList.data)
+  const todoList = useSignal(model.getTodoList.data)
 
-  // fetch the todos on mount.
+  // fetch the todo list on mount.
   useEffect(() => {
     void model.getTodoList.trigger()
     // explicitly mark the promise as non-awaited with `void`
@@ -22,7 +22,7 @@ export function TodoPage({ model }: Props) {
     <div>
       <p>Todo Page in React</p>
       <RemoteData
-        data={todos}
+        data={todoList}
         success={(todos) => <TodoUnorderedList todos={todos} />}
       />
     </div>

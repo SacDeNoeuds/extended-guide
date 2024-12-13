@@ -17,22 +17,6 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
 
   const patchTodo = createRemoteAction(api.patchTodo.bind(api))
 
-  const dispose = effect(() => {
-    const data = patchTodo.data.get()
-    if (data.state !== 'success') return
-    // update the current todo list:
-    getTodoList.data.update((list) => {
-      if (list.state !== 'success') return list
-
-      // replace the todo in the list by the patched todo
-      const nextList = list.value.map((todo) => {
-        return todo.id === data.value.id ? data.value : todo
-      })
-
-      return { state: 'success', value: nextList }
-    })
-  })
-
   return {
     getTodoList,
     canPatchAnyTodo: computed(() => patchTodo.data.get().state !== 'pending'),
@@ -42,6 +26,25 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
     changeTodoTitle: (todo, title) => {
       return patchTodo.trigger(todo.id, { title })
     },
-    dispose,
+    dispose: registerEffects(),
+  }
+
+  function registerEffects() {
+    const dispose = effect(() => {
+      const data = patchTodo.data.get()
+      if (data.state !== 'success') return
+      // update the current todo list:
+      getTodoList.data.update((list) => {
+        if (list.state !== 'success') return list
+
+        // replace the todo in the list by the patched todo
+        const nextList = list.value.map((todo) => {
+          return todo.id === data.value.id ? data.value : todo
+        })
+
+        return { state: 'success', value: nextList }
+      })
+    })
+    return dispose
   }
 }

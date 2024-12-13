@@ -11,7 +11,7 @@ const diff = require('diff')
 const isDryRun = process.argv.includes('--dry-run')
 
 const output = path.resolve(process.cwd(), 'guides')
-rmSync(output, { recursive: true })
+rmSync(output, { recursive: true, force: true })
 mkdirSync(output)
 
 /**

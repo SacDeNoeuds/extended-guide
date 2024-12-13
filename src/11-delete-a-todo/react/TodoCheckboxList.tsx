@@ -26,7 +26,6 @@ export function TodoCheckboxList({
             onChange={() => onToggle(todo)}
             disabled={disabled}
           />
-          &emsp;
           <input
             type="text"
             disabled={disabled}
@@ -37,7 +36,6 @@ export function TodoCheckboxList({
               return onTitleChanged(todo, nextTitle)
             }}
           />
-          &emsp;
           <button
             type="button"
             onClick={() => onDelete(todo)}

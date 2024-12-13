@@ -4,13 +4,14 @@ Demoing how to implement agnostic models and pipe them to view libraries like Vu
 
 ## Introduction
 
-The model-view approach applies to any frontend application, as long as you have some client-side scripting and rendering. Could be in C & Qt as well as HTML/JS.
+The model-view approach applies to any frontend application, as long as you have some client-side scripting and rendering.
 
 Conceptually the model-view pattern is way simpler than it looks, yet diving into it is trickier than it seems IMO, which is why I am writing these series.
 
 There are different flavors, AKA level of details one put in their model, therefore I’ll give mine straight away: To me, the model is about data and behavior _only_, as a result there are no classes or UI-related data in there.
 
 Basically, **the model should contain 2 things only**:
+
 - Data to be displayed
 - Interactions, in the shape of functions/methods.
 
