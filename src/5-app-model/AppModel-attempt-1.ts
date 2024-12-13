@@ -1,8 +1,8 @@
-import { ReadonlySignal } from "@/setup/Signal"
+import { ReadonlySignal } from '@/setup/Signal'
 
 export type AppRoute =
   | { name: 'NotFound' }
-  | { name: 'TodoListPage', make: () => TodoPageModel }
+  | { name: 'TodoListPage'; make: () => TodoPageModel }
 
 export interface AppModel {
   route: ReadonlySignal<AppRoute>

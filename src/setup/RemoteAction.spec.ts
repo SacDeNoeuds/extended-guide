@@ -18,7 +18,7 @@ describe('createRemoteAction', () => {
     expect(action.data.get()).toEqual({ state: 'pending' })
     resolve()
   })
-  
+
   it('reports failures', async () => {
     const error = new Error('oops')
     const action = createRemoteAction(() => Promise.reject(error))

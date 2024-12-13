@@ -22,7 +22,7 @@ describe('Signal', () => {
   describe('reactivity', () => {
     const signal = make(0)
     let value = signal.get().count
-    let cleaned = false;
+    let cleaned = false
 
     const dispose = effect(() => {
       value = signal.get().count
@@ -55,6 +55,6 @@ describe('Signal', () => {
 function make(initialCount = 0) {
   return createSignal(
     { count: initialCount },
-    { equals: (a, b) => a.count === b.count }
+    { equals: (a, b) => a.count === b.count },
   )
 }

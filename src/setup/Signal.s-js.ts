@@ -2,11 +2,13 @@ import S from 's-js'
 import { CreateSignal, Effect } from './Signal'
 
 export const createSignal: CreateSignal = (value, options) => {
-  const signal = options?.equals ? S.value(value, options.equals) : S.data(value)
+  const signal = options?.equals
+    ? S.value(value, options.equals)
+    : S.data(value)
   return {
     get: signal,
     set: (nextValue) => signal(nextValue),
-    update: (updater) => signal(updater(S.sample(signal)))
+    update: (updater) => signal(updater(S.sample(signal))),
   }
 }
 

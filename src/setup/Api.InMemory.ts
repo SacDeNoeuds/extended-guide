@@ -15,17 +15,17 @@ export function createJsonPlaceholderInMemoryApi(): JsonPlaceholderInMemoryApi {
       if (!todo) throw new Error(`todo ${id} not found`)
       return todo
     },
-  
+
     async getTodos() {
       return Array.from(store.values())
     },
-  
+
     async patchTodo(id, data) {
       const nextTodo = { ...(await this.getTodo(id)), ...data }
       store.set(id, nextTodo)
       return nextTodo
     },
-  
+
     async deleteTodo(id) {
       store.delete(id)
     },

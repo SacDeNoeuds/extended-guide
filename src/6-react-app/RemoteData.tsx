@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
-import React from "react"
-import { RemoteData } from "@/setup/RemoteData"
+import React from 'react'
+import { RemoteData } from '@/setup/RemoteData'
 
 interface Props<T> {
   data: RemoteData<T>
@@ -16,10 +16,12 @@ export function RemoteData<T>({
   failure = (error) => <div>Error: {error.message}</div>,
   success,
 }: Props<T>) {
-  return <>
-    {data.state === 'initial' && initial()}
-    {data.state === 'pending' && pending(data.progress)}
-    {data.state === 'failure' && failure(data.error)}
-    {data.state === 'success' && success(data.value)}
-  </>
+  return (
+    <>
+      {data.state === 'initial' && initial()}
+      {data.state === 'pending' && pending(data.progress)}
+      {data.state === 'failure' && failure(data.error)}
+      {data.state === 'success' && success(data.value)}
+    </>
+  )
 }

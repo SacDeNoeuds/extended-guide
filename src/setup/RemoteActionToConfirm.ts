@@ -1,5 +1,5 @@
-import { RemoteAction } from "./RemoteAction"
-import { RemoteData } from "./RemoteData"
+import { RemoteAction } from './RemoteAction'
+import { RemoteData } from './RemoteData'
 import { createSignal, ReadonlySignal, Signal } from './Signal'
 
 export interface RemoteActionToConfirm<T, Args extends any[]> {
@@ -29,6 +29,6 @@ export function requireConfirmation<T, Args extends any[]>(
       if (action.data.get().state === 'success') {
         this.pendingApproval.set(undefined)
       }
-    }
+    },
   }
 }

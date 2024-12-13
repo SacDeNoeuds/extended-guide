@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue'
-  import { TodoPageModel } from '../5-app-model/TodoPageModel'
-  import { signalRef } from './signalRef'
-  import RemoteData from './RemoteData.vue'
-  import TodoUnorderedList from './TodoUnorderedList.vue'
+import { onMounted } from 'vue'
+import { TodoPageModel } from '../5-app-model/TodoPageModel'
+import { signalRef } from './signalRef'
+import RemoteData from './RemoteData.vue'
+import TodoUnorderedList from './TodoUnorderedList.vue'
 
-  const props = defineProps<{ model: TodoPageModel }>()
-  const model = props.model
+const props = defineProps<{ model: TodoPageModel }>()
+const model = props.model
 
-  const todos = signalRef(model.getTodoList.data)
+const todos = signalRef(model.getTodoList.data)
 
-  // fetch the todos on mount.
-  onMounted(() => void model.getTodoList.trigger())
+// fetch the todos on mount.
+onMounted(() => void model.getTodoList.trigger())
 </script>
 
 <template>

@@ -2,12 +2,12 @@
 import { signalRef } from '@/7-vue-app/signalRef'
 import { RemoteActionToConfirm } from '../RemoteActionToConfirm'
 
-  const props = defineProps<{
-    action: RemoteActionToConfirm<T, Args>
-  }>()
+const props = defineProps<{
+  action: RemoteActionToConfirm<T, Args>
+}>()
 
-  const pendingApproval = signalRef(props.action.pendingApproval)
-  const data = signalRef(props.action.data)
+const pendingApproval = signalRef(props.action.pendingApproval)
+const data = signalRef(props.action.data)
 </script>
 
 <template>
@@ -17,9 +17,7 @@ import { RemoteActionToConfirm } from '../RemoteActionToConfirm'
     <slot v-if="pendingApproval" :value="pendingApproval"></slot>
 
     <footer>
-      <button type="button" @click="() => action.cancel()">
-        Cancel
-      </button>
+      <button type="button" @click="() => action.cancel()">Cancel</button>
 
       <button
         type="button"

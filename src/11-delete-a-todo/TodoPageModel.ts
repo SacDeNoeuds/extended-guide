@@ -1,7 +1,10 @@
-import { JsonPlaceholderApi, Todo } from "@/setup/Api"
-import { createRemoteAction, RemoteAction } from "@/setup/RemoteAction"
-import { computed, effect, ReadonlySignal } from "@/setup/Signal"
-import { RemoteActionToConfirm, requireConfirmation } from "./RemoteActionToConfirm"
+import { JsonPlaceholderApi, Todo } from '@/setup/Api'
+import { createRemoteAction, RemoteAction } from '@/setup/RemoteAction'
+import { computed, effect, ReadonlySignal } from '@/setup/Signal'
+import {
+  RemoteActionToConfirm,
+  requireConfirmation,
+} from './RemoteActionToConfirm'
 
 export interface TodoPageModel {
   getTodoList: RemoteAction<Todo[]>
@@ -28,8 +31,10 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
   return {
     getTodoList,
     canPatchAnyTodo: computed(() => {
-      return patchTodo.data.get().state !== "pending" &&
+      return (
+        patchTodo.data.get().state !== 'pending' &&
         deleteTodo.data.get().state !== 'pending'
+      )
     }),
     deleteTodo,
     toggleTodo: (todo) => {
@@ -44,31 +49,31 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
   function registerEffects() {
     const disposeEffectOnPatch = effect(() => {
       const data = patchTodo.data.get()
-      if (data.state !== "success") return
+      if (data.state !== 'success') return
       // update the current todo list:
       getTodoList.data.update((list) => {
-        if (list.state !== "success") return list
-  
+        if (list.state !== 'success') return list
+
         // replace the todo in the list by the patched todo
         const nextList = list.value.map((todo) => {
           return todo.id === data.value.id ? data.value : todo
         })
-  
-        return { state: "success", value: nextList }
+
+        return { state: 'success', value: nextList }
       })
     })
 
     const disposeEffectOnDelete = effect(() => {
       const data = deleteTodo.data.get()
-      if (data.state !== "success") return
+      if (data.state !== 'success') return
       // update the current todo list:
       getTodoList.data.update((list) => {
-        if (list.state !== "success") return list
+        if (list.state !== 'success') return list
         const nextList = list.value.filter((todo) => todo.id !== data.value.id)
-        return { state: "success", value: nextList }
+        return { state: 'success', value: nextList }
       })
     })
-    
+
     return () => {
       disposeEffectOnPatch()
       disposeEffectOnDelete()

@@ -26,15 +26,22 @@ body {
   background-color: #f5f5f5;
   display: grid;
   min-block-size: 100dvh;
-  grid-template-areas: "page-header" "page-main" "page-footer";
+  grid-template-areas: 'page-header' 'page-main' 'page-footer';
   grid-template-rows: min-content 1fr min-content;
 }
 
-body > header { grid-area: page-header; }
-body > main { grid-area: page-main; }
-body > footer { grid-area: page-footer; }
+body > header {
+  grid-area: page-header;
+}
+body > main {
+  grid-area: page-main;
+}
+body > footer {
+  grid-area: page-footer;
+}
 
-body > header, body > footer {
+body > header,
+body > footer {
   background: var(--primary-color);
   color: var(--background-color);
   padding: 1rem;
@@ -46,19 +53,21 @@ body > header, body > footer {
   border-block: 2px solid #fff;
   box-shadow: 0 0 6px -3px var(--border-color);
 
-  & a { color: var(--background-color); }
+  & a {
+    color: var(--background-color);
+  }
 }
 
 body > main {
   inline-size: min(min-content, 50%, 50rem);
   margin-inline: auto;
-  padding-block: var(--space-m)
+  padding-block: var(--space-m);
 }
 
 input {
   accent-color: var(--primary-color);
 }
-input:not([type="checkbox"]) {
+input:not([type='checkbox']) {
   font: inherit;
   border: none;
   border-block-end: 2px solid transparent;
@@ -68,7 +77,8 @@ input:not([type="checkbox"]) {
   block-size: var(--control-height);
   min-inline-size: 100%;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-block-end: 2px solid var(--text-light);
     outline: none;
   }
@@ -86,12 +96,13 @@ button {
   /* align-items: center; */
   /* block-size: var(--control-height); */
   font-variant: small-caps;
-  
+
   &:not(:disabled) {
     cursor: pointer;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     filter: brightness(0.9);
   }
 
@@ -107,9 +118,13 @@ button {
   gap: var(--space-s);
   padding: 1px;
 
-  & + .todo-item { margin-block-start: 1px; }
+  & + .todo-item {
+    margin-block-start: 1px;
+  }
 
-  & button { font-size: 0.6rem; }
+  & button {
+    font-size: 0.6rem;
+  }
 }
 
 dialog {
@@ -123,7 +138,9 @@ dialog {
   inline-size: min(90vi, 30rem);
   background: var(--background-color);
 
-  &::backdrop { backdrop-filter: blur(2px) contrast(0.7); }
+  &::backdrop {
+    backdrop-filter: blur(2px) contrast(0.7);
+  }
 
   & header {
     font-size: 1.25rem;

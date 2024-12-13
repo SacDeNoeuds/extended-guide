@@ -29,6 +29,6 @@ export function requireConfirmation<T, Args extends any[]>(
       if (action.data.get().state === 'success') {
         this.pendingApproval.set(undefined)
       }
-    }
+    },
   }
 }

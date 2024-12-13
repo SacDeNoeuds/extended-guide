@@ -4,7 +4,9 @@ import { delay } from './delay'
 export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
   async getTodo(id) {
     await delay(apiDefaults.preflightDelayInMs)
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${id}`,
+    )
     return response.json()
   },
 
@@ -16,11 +18,14 @@ export const JsonPlaceholderFetchApi: JsonPlaceholderApi = {
 
   async patchTodo(id, data) {
     await delay(apiDefaults.preflightDelayInMs)
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-      method: 'PATCH',
-      body: JSON.stringify(data),
-      headers: { 'Content-type': 'application/json; charset=UTF-8' },
-    })
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${id}`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify(data),
+        headers: { 'Content-type': 'application/json; charset=UTF-8' },
+      },
+    )
     return response.json()
   },
 

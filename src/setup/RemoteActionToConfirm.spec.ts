@@ -14,7 +14,7 @@ describe('RemoteActionToConfirm', () => {
     const actionToConfirm = make(updateCount)
     expect(actionToConfirm.data.get()).toEqual({ state: 'initial' })
   })
-  
+
   it('waits for confirmation', () => {
     const actionToConfirm = make(updateCount)
     actionToConfirm.ask(12)
@@ -35,7 +35,7 @@ describe('RemoteActionToConfirm', () => {
       const actionToConfirm = make(updateCount)
       actionToConfirm.ask(12)
       beforeAll(() => actionToConfirm.confirm())
-  
+
       it('reports success', () => {
         expect(actionToConfirm.data.get()).toEqual({ state: 'success' })
       })
@@ -50,7 +50,7 @@ describe('RemoteActionToConfirm', () => {
       const actionToConfirm = make(() => Promise.reject(error))
       actionToConfirm.ask(12)
       beforeAll(() => actionToConfirm.confirm())
-  
+
       it('reports failure', () => {
         expect(actionToConfirm.data.get()).toEqual({ state: 'failure', error })
       })

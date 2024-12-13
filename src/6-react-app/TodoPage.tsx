@@ -1,9 +1,9 @@
 /** @jsx React.createElement */
-import React, { useEffect } from "react"
-import { TodoPageModel } from "../5-app-model/TodoPageModel"
-import { useSignal } from "./useSignal"
-import { RemoteData } from "./RemoteData"
-import { TodoUnorderedList } from "./TodoUnorderedList"
+import React, { useEffect } from 'react'
+import { TodoPageModel } from '../5-app-model/TodoPageModel'
+import { useSignal } from './useSignal'
+import { RemoteData } from './RemoteData'
+import { TodoUnorderedList } from './TodoUnorderedList'
 
 interface Props {
   model: TodoPageModel

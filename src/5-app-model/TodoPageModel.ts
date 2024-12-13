@@ -7,7 +7,7 @@ export interface TodoPageModel {
 
 export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
   const getTodoList = createRemoteAction(api.getTodos.bind(api))
-  
+
   return {
     getTodoList,
   }

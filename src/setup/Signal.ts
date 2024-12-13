@@ -3,7 +3,7 @@ export interface ReadonlySignal<T> {
 }
 
 export interface Signal<T> extends ReadonlySignal<T> {
-  set: (value: T) => void;
+  set: (value: T) => void
   update: (updater: (value: T) => T) => void
 }
 
@@ -11,12 +11,15 @@ type CreateSignalOptions<T> = {
   equals?: (a: T, b: T) => boolean
 }
 
-export type CreateSignal = <T>(initialValue: T, options?: CreateSignalOptions<T>) => Signal<T>
+export type CreateSignal = <T>(
+  initialValue: T,
+  options?: CreateSignalOptions<T>,
+) => Signal<T>
 
 type Cleanup = () => void
 type Dispose = () => void
 
-export type Effect = (callback: () => (void | Cleanup)) => Dispose
+export type Effect = (callback: () => void | Cleanup) => Dispose
 
 /**
  * @example
@@ -34,4 +37,3 @@ export function computed<T>(compute: () => T): ReadonlySignal<T> {
 
 // the implementation complies to type definitions upper.
 export { effect, createSignal } from './Signal.s-js'
-

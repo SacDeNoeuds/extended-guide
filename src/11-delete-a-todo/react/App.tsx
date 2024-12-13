@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
-import React from "react"
-import { TodoPage } from "./TodoPage"
+import React from 'react'
+import { TodoPage } from './TodoPage'
 import { useSignal } from '@/6-react-app/useSignal'
 import { AppModel } from '../AppModel'
 
@@ -14,15 +14,15 @@ export function App({ model }: Props) {
   return (
     <div>
       <h2>React App</h2>
-      {route.name === "NotFound" && (
+      {route.name === 'NotFound' && (
         <p>
-          {"Page Not Found "}
+          {'Page Not Found '}
           <button type="button" onClick={model.goToTodos}>
-            {"Go to todos"}
+            {'Go to todos'}
           </button>
         </p>
       )}
-      {route.name === "TodoListPage" && <TodoPage model={route.make()} />}
+      {route.name === 'TodoListPage' && <TodoPage model={route.make()} />}
     </div>
   )
 }

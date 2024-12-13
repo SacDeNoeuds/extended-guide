@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
-import React from "react"
-import { RemoteActionToConfirm } from "@/setup/RemoteActionToConfirm"
+import React from 'react'
+import { RemoteActionToConfirm } from '@/setup/RemoteActionToConfirm'
 import { useSignal } from '@/6-react-app/useSignal'
 
 interface Props<T, Args extends any[]> {
@@ -29,7 +29,7 @@ export function ConfirmActionDialog<T, Args extends any[]>({
         <button
           type="button"
           onClick={() => action.confirm()}
-          disabled={data.state === "pending"}
+          disabled={data.state === 'pending'}
         >
           Confirm
         </button>

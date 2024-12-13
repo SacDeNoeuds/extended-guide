@@ -4,7 +4,7 @@ import { makeTodoPageModel, TodoPageModel } from './TodoPageModel'
 
 export type AppRoute =
   | { name: 'NotFound' }
-  | { name: 'TodoListPage', make: () => TodoPageModel }
+  | { name: 'TodoListPage'; make: () => TodoPageModel }
 
 export interface AppModel {
   route: ReadonlySignal<AppRoute>
@@ -16,9 +16,10 @@ export function makeAppModel(api: JsonPlaceholderApi): AppModel {
 
   return {
     route,
-    goToTodos: () => route.set({
-      name: 'TodoListPage',
-      make: () => makeTodoPageModel(api),
-    }),
+    goToTodos: () =>
+      route.set({
+        name: 'TodoListPage',
+        make: () => makeTodoPageModel(api),
+      }),
   }
 }

@@ -1,5 +1,5 @@
-import { JsonPlaceholderApi, Todo } from "@/setup/Api"
-import { createRemoteAction, RemoteAction } from "@/setup/RemoteAction"
+import { JsonPlaceholderApi, Todo } from '@/setup/Api'
+import { createRemoteAction, RemoteAction } from '@/setup/RemoteAction'
 
 export interface TodoPageModel {
   getTodoList: RemoteAction<Todo[]>
@@ -12,7 +12,7 @@ export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
   const toggleTodo = createRemoteAction((todo: Todo) => {
     return api.patchTodo(todo.id, { completed: !todo.completed })
   })
-  
+
   return {
     getTodoList,
     toggleTodo,

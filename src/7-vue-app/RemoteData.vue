@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
-  import { RemoteData } from '@/setup/RemoteData'
+import { RemoteData } from '@/setup/RemoteData'
 
-  defineProps<{ data: RemoteData<T> }>()
+defineProps<{ data: RemoteData<T> }>()
 </script>
 
 <template>

@@ -11,9 +11,9 @@ export async function renderApp(kind: string) {
   rootNode.replaceChildren()
 
   switch (kind) {
-    case "react":
+    case 'react':
       return renderReactApp()
-    case "vue":
+    case 'vue':
       return renderVueApp()
     default:
       throw new Error(`unknown app kind "${kind}"`)
@@ -22,9 +22,9 @@ export async function renderApp(kind: string) {
 
 async function renderReactApp() {
   const [React, ReactDOM, { App }] = await Promise.all([
-    import("react"),
-    import("react-dom/client"),
-    import("./6-react-app/App"),
+    import('react'),
+    import('react-dom/client'),
+    import('./6-react-app/App'),
   ])
   const root = ReactDOM.createRoot(rootNode)
   root.render(React.createElement(App, { model: appModel }))
@@ -33,7 +33,7 @@ async function renderReactApp() {
 async function renderVueApp() {
   const [{ createApp }, { default: App }] = await Promise.all([
     import('vue'),
-    import('./7-vue-app/App.vue')
+    import('./7-vue-app/App.vue'),
   ])
   const app = createApp(App, { model: appModel })
   app.mount(rootNode)

@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
-import React from "react"
-import { Todo } from "@/setup/Api"
+import React from 'react'
+import { Todo } from '@/setup/Api'
 
 interface Props {
   todos: Todo[]
@@ -11,7 +11,7 @@ export function TodoCheckboxList({ todos, onToggle, disabled }: Props) {
   return (
     <div>
       {todos.map((todo) => (
-        <label key={todo.id} className='todo-item'>
+        <label key={todo.id} className="todo-item">
           <input
             type="checkbox"
             checked={todo.completed}

@@ -7,7 +7,7 @@ export function signalRef<T>(signal: ReadonlySignal<T>) {
   const dispose = effect(() => {
     value.value = signal.get()
   })
-  
+
   onUnmounted(dispose)
 
   return value

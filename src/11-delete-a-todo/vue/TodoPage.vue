@@ -1,21 +1,21 @@
 <script setup lang="ts">
-  import { onMounted, onUnmounted } from 'vue'
-  import { signalRef } from '@/7-vue-app/signalRef'
-  import RemoteData from '@/7-vue-app/RemoteData.vue'
-  import TodoCheckboxList from './TodoCheckboxList.vue'
-  import { TodoPageModel } from '../TodoPageModel'
-  import ConfirmActionDialog from './ConfirmActionDialog.vue'
+import { onMounted, onUnmounted } from 'vue'
+import { signalRef } from '@/7-vue-app/signalRef'
+import RemoteData from '@/7-vue-app/RemoteData.vue'
+import TodoCheckboxList from './TodoCheckboxList.vue'
+import { TodoPageModel } from '../TodoPageModel'
+import ConfirmActionDialog from './ConfirmActionDialog.vue'
 
-  const props = defineProps<{ model: TodoPageModel }>()
-  const model = props.model
+const props = defineProps<{ model: TodoPageModel }>()
+const model = props.model
 
-  const todoList = signalRef(model.getTodoList.data)
-  const canPatchAnyTodo = signalRef(model.canPatchAnyTodo)
+const todoList = signalRef(model.getTodoList.data)
+const canPatchAnyTodo = signalRef(model.canPatchAnyTodo)
 
-  // fetch the todos on mount.
-  onMounted(() => void model.getTodoList.trigger())
+// fetch the todos on mount.
+onMounted(() => void model.getTodoList.trigger())
 
-  onUnmounted(model.dispose)
+onUnmounted(model.dispose)
 </script>
 
 <template>
@@ -27,7 +27,7 @@
         You are about to delete "{{ todo.title }}", continue?
       </template>
     </ConfirmActionDialog>
-    
+
     <RemoteData :data="todoList">
       <template #success="{ value }">
         <TodoCheckboxList

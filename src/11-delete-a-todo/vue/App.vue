@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { signalRef } from '@/7-vue-app/signalRef'
-  import { AppModel } from '../AppModel'
-  import TodoPage from './TodoPage.vue'
+import { signalRef } from '@/7-vue-app/signalRef'
+import { AppModel } from '../AppModel'
+import TodoPage from './TodoPage.vue'
 
-  const props = defineProps<{ model: AppModel }>()
-  const model = props.model
+const props = defineProps<{ model: AppModel }>()
+const model = props.model
 
-  const route = signalRef(model.route)
+const route = signalRef(model.route)
 </script>
 
 <template>
@@ -15,8 +15,5 @@
     Page Not Found
     <button type="button" @click="model.goToTodos">Go to todos</button>
   </p>
-  <TodoPage
-    v-if="route.name === 'TodoListPage'"
-    :model="route.make()"
-  />
+  <TodoPage v-if="route.name === 'TodoListPage'" :model="route.make()" />
 </template>
