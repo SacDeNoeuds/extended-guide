@@ -10,7 +10,7 @@ export interface TodoPageModel {
 }
 
 export function makeTodoPageModel(api: JsonPlaceholderApi): TodoPageModel {
-  const getTodoList = createRemoteAction(() => api.getTodos())
+  const getTodoList = createRemoteAction(api.getTodos.bind(api))
 
   const toggleTodo = createRemoteAction((todo: Todo) => {
     return api.patchTodo(todo.id, { completed: !todo.completed })
