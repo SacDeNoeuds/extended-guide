@@ -7,14 +7,14 @@ export default defineConfig({
   title: 'Model View Demo',
   description: 'A series on how to model-view to stay free any framework',
   srcDir: './guides',
-  base: isGithubActions ? '/model-view-demo/' : undefined,
+  base: isGithubActions ? '/extended-guide/' : undefined,
   outDir: './docs',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
       {
         text: 'GitHub',
-        link: 'https://github.com/SacDeNoeuds/model-view-demo',
+        link: 'https://github.com/SacDeNoeuds/extended-guide',
       },
     ],
 
