@@ -7,18 +7,19 @@ Let’s define it first.
 ## Definition & Implementation
 
 By taking an async function (the action), it should:
+
 - be able to trigger the action.
 - hold the state of the action (remote data + reactivity).
 
 By expressing it this way, we can dive into implementation:
 
-<!-- include [code:ts] ./setup/RemoteAction.ts -->
+<!-- include [code:ts] ./spa-client-side/setup/RemoteAction.ts -->
 
 ## Testing
 
 To make sure it behaves as we expect, let’s write a test:
 
-<!-- include [code:ts] ./setup/RemoteAction.spec.ts -->
+<!-- include [code:ts] ./spa-client-side/setup/RemoteAction.spec.ts -->
 
 ## Evaluating the API
 

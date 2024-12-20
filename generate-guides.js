@@ -10,7 +10,7 @@ const diff = require('diff')
 
 const isDryRun = process.argv.includes('--dry-run')
 
-const output = path.resolve(process.cwd(), 'guides')
+const output = path.resolve(process.cwd(), 'dist', 'guides')
 rmSync(output, { recursive: true, force: true })
 mkdirSync(output)
 
@@ -34,7 +34,7 @@ function injectReferencedCode(readmeText) {
       },
     )
     .replace(
-      /<!-- diff-between \[code:(tsx|ts|vue)\] .\/(.*) .\/(.*) -->/g,
+      /<!-- diff \[code:(tsx|ts|vue)\] .\/(.*) .\/(.*) -->/g,
       (substring, ext, newFilePath, oldFilePath) => {
         const newPaths = getPathsFromRoot(newFilePath)
         const oldPaths = getPathsFromRoot(oldFilePath)
@@ -58,8 +58,6 @@ function injectReferencedCode(readmeText) {
             return `${acc.trim()}\n${lines.join('\n')}`
           }, '')
           .trim()
-
-        console.e
 
         return makeCodeBlock(newPaths.relative, ext, code)
       },
@@ -88,17 +86,53 @@ function getPathsFromRoot(filePath) {
   return { absolute, relative }
 }
 
-const guides = readdirSync('./guides-to-generate')
+/**
+ * @param {object} options
+ * @param {string} options.root
+ * @param {(dirPath: string) => void} options.traverseDir
+ * @param {(filePath: string) => void} options.traverseFile
+ */
+function traverseDirectoriesOfMarkdown({ root, traverseDir, traverseFile }) {
+  if (root.endsWith('.md')) return traverseFile(root)
+
+  traverseDir(root)
+
+  const filePaths = readdirSync(root)
+  for (const filePath of filePaths) {
+    const fileScopedPath = path.join(root, filePath)
+    traverseDirectoriesOfMarkdown({
+      root: fileScopedPath,
+      traverseDir,
+      traverseFile,
+    })
+  }
+}
+const guides = readdirSync('./guides')
 if (isDryRun) {
   console.info('guides to generate:\n -', guides.join('\n - '))
   process.exit(0)
 }
 
-for (const guide of guides) {
-  const guideText = readFileSync(`./guides-to-generate/${guide}`, 'utf-8')
-  const newGuideText = injectReferencedCode(guideText)
-  writeFileSync(`./guides/${guide}`, newGuideText, 'utf-8')
-  console.info(`generated: guides/${guide}`)
+/**
+ * @param {string} path
+ * @returns {string}
+ */
+function getOutputPath(path) {
+  return path.replace('guides/', 'dist/guides/')
 }
+
+traverseDirectoriesOfMarkdown({
+  root: './guides',
+  traverseDir: (dirPath) => {
+    mkdirSync(getOutputPath(dirPath), { recursive: true })
+  },
+  traverseFile: (filePath) => {
+    const guideText = readFileSync(filePath, 'utf-8')
+    const newGuideText = injectReferencedCode(guideText)
+    const guideFilePath = getOutputPath(filePath)
+    writeFileSync(guideFilePath, newGuideText, 'utf-8')
+    console.info(`generated: ${guideFilePath}`)
+  },
+})
 
 console.info('\nDone ✅')

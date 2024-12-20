@@ -17,6 +17,7 @@ type RemoteTodo = RemoteData<Todo[]> // ✅
 ```
 
 Okay, but now it is flawed. What happens if we do:
+
 ```ts
 type ApprovalStatus = 'pending' | 'approved'
 type Test = RemoteData<ApprovalStatus>
@@ -28,11 +29,13 @@ Therefore we need to be more specific.
 ## Refining the definition
 
 Since we are here, there are other problems:
+
 - the `pending` state might take some `progress`
 - we might trigger the action later and not at the start (form submission for instance), therefore it will not be `pending` straight away but something like `notSent` or `initial`.
 
 We can leverage a discriminated union for that:
-<!-- include [code:ts] ./setup/RemoteData.ts -->
+
+<!-- include [code:ts] ./spa-client-side/setup/RemoteData.ts -->
 
 The final type could still be polished a bit, it is good enough for the demo.
 
@@ -41,6 +44,7 @@ To go further, the pending state could have a `stale` value for instance, in cas
 ---
 
 Now that we have our beautiful type, we will need our state to _evolve_ over time. Our states will transition to
+
 ```
 initial -> pending -> (failure (Error) | success (T)) -> pending (refetch) -> …
 ```
