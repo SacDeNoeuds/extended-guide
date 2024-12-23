@@ -1,6 +1,13 @@
-import { TodoApi, Todo } from '@/setup/TodoApi'
-import { createRemoteAction, RemoteAction } from '@/setup/RemoteAction'
-import { computed, effect, ReadonlySignal } from '@/setup/Signal'
+import { TodoApi, Todo } from '@/spa-client-side/setup/TodoApi'
+import {
+  createRemoteAction,
+  RemoteAction,
+} from '@/spa-client-side/setup/RemoteAction'
+import {
+  computed,
+  effect,
+  ReadonlySignal,
+} from '@/spa-client-side/setup/Signal'
 
 export interface TodoPageModel {
   getTodoList: RemoteAction<Todo[]>

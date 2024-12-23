@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Todo } from '@/setup/TodoApi'
+import { Todo } from '@/spa-client-side/setup/TodoApi'
 
 const props = defineProps<{
   todos: Todo[]

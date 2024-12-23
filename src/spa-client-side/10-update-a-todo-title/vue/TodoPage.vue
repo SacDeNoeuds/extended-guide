@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-import { signalRef } from '@/7-vue-app/signalRef'
+import { signalRef } from '@/spa-client-side/7-vue-app/signalRef'
 import TodoCheckboxList from './TodoCheckboxList.vue'
 import { TodoPageModel } from '../TodoPageModel'
-import RemoteData from '@/7-vue-app/RemoteData.vue'
+import RemoteData from '@/spa-client-side/7-vue-app/RemoteData.vue'
 
 const props = defineProps<{ model: TodoPageModel }>()
 const model = props.model

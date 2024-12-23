@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T, Args extends any[]">
-import { signalRef } from '@/7-vue-app/signalRef'
+import { signalRef } from '@/spa-client-side/7-vue-app/signalRef'
 import { RemoteActionToConfirm } from '../RemoteActionToConfirm'
 
 const props = defineProps<{

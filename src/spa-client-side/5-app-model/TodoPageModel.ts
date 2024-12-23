@@ -1,5 +1,8 @@
-import { TodoApi, Todo } from '@/setup/TodoApi'
-import { createRemoteAction, RemoteAction } from '@/setup/RemoteAction'
+import { TodoApi, Todo } from '@/spa-client-side/setup/TodoApi'
+import {
+  createRemoteAction,
+  RemoteAction,
+} from '@/spa-client-side/setup/RemoteAction'
 
 export interface TodoPageModel {
   getTodoList: RemoteAction<Todo[]>

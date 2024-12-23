@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
 import React from 'react'
-import { Todo } from '@/setup/TodoApi'
+import { Todo } from '@/spa-client-side/setup/TodoApi'
 
 interface Props {
   todos: Todo[]

@@ -1,6 +1,6 @@
 /** @jsx React.createElement */
 import React from 'react'
-import { RemoteData } from '@/setup/RemoteData'
+import { RemoteData } from '@/spa-client-side/setup/RemoteData'
 
 interface Props<T> {
   data: RemoteData<T>

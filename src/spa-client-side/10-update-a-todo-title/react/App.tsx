@@ -1,7 +1,7 @@
 /** @jsx React.createElement */
 import React from 'react'
 import { TodoPage } from './TodoPage'
-import { useSignal } from '@/6-react-app/useSignal'
+import { useSignal } from '@/spa-client-side/6-react-app/useSignal'
 import { AppModel } from '../AppModel'
 
 interface Props {

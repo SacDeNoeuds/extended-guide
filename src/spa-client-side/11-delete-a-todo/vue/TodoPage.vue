@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-import { signalRef } from '@/7-vue-app/signalRef'
-import RemoteData from '@/7-vue-app/RemoteData.vue'
+import { signalRef } from '@/spa-client-side/7-vue-app/signalRef'
+import RemoteData from '@/spa-client-side/7-vue-app/RemoteData.vue'
 import TodoCheckboxList from './TodoCheckboxList.vue'
 import { TodoPageModel } from '../TodoPageModel'
 import ConfirmActionDialog from './ConfirmActionDialog.vue'

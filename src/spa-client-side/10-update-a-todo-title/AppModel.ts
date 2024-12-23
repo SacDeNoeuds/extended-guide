@@ -1,5 +1,5 @@
-import { TodoApi } from '@/setup/TodoApi'
-import { createSignal, ReadonlySignal } from '@/setup/Signal'
+import { TodoApi } from '@/spa-client-side/setup/TodoApi'
+import { createSignal, ReadonlySignal } from '@/spa-client-side/setup/Signal'
 import { makeTodoPageModel, TodoPageModel } from './TodoPageModel'
 
 export type AppRoute =

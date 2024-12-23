@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { requireConfirmation } from './RemoteActionToConfirm'
-import { createRemoteAction } from '@/setup/RemoteAction'
+import { createRemoteAction } from '@/spa-client-side/setup/RemoteAction'
 
 const updateCount = (_count: number) => Promise.resolve()
 const make = (updateCount: (count: number) => Promise<void>) => {

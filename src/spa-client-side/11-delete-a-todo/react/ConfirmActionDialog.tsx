@@ -1,7 +1,7 @@
 /** @jsx React.createElement */
 import React from 'react'
-import { RemoteActionToConfirm } from '@/setup/RemoteActionToConfirm'
-import { useSignal } from '@/6-react-app/useSignal'
+import { RemoteActionToConfirm } from '@/spa-client-side/setup/RemoteActionToConfirm'
+import { useSignal } from '@/spa-client-side/6-react-app/useSignal'
 
 interface Props<T, Args extends any[]> {
   action: RemoteActionToConfirm<T, Args>

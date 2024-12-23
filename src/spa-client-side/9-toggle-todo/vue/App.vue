@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { signalRef } from '@/7-vue-app/signalRef'
+import { signalRef } from '@/spa-client-side/7-vue-app/signalRef'
 import { AppModel } from '../AppModel'
 import TodoPage from './TodoPage.vue'
 

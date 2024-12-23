@@ -1,7 +1,7 @@
 /** @jsx React.createElement */
 import React from 'react'
-import { RemoteData } from '@/6-react-app/RemoteData'
-import { useSignal } from '@/6-react-app/useSignal'
+import { RemoteData } from '@/spa-client-side/6-react-app/RemoteData'
+import { useSignal } from '@/spa-client-side/6-react-app/useSignal'
 import { useEffect } from 'react'
 import { TodoPageModel } from '../TodoPageModel'
 import { TodoCheckboxList } from './TodoCheckboxList'

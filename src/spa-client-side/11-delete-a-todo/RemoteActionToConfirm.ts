@@ -1,6 +1,10 @@
-import { RemoteAction } from '@/setup/RemoteAction'
-import { RemoteData } from '@/setup/RemoteData'
-import { createSignal, ReadonlySignal, Signal } from '@/setup/Signal'
+import { RemoteAction } from '@/spa-client-side/setup/RemoteAction'
+import { RemoteData } from '@/spa-client-side/setup/RemoteData'
+import {
+  createSignal,
+  ReadonlySignal,
+  Signal,
+} from '@/spa-client-side/setup/Signal'
 
 export interface RemoteActionToConfirm<T, Args extends any[]> {
   readonly data: ReadonlySignal<RemoteData<T>>

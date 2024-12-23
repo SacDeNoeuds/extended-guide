@@ -1,4 +1,4 @@
-import { ReadonlySignal } from '@/setup/Signal'
+import { ReadonlySignal } from '@/spa-client-side/setup/Signal'
 
 export type AppRoute =
   | { name: 'NotFound' }
