@@ -1,0 +1,3 @@
+## Going further
+
+To go further, you can write handlers to edit an item’s name, toggle it, etc…

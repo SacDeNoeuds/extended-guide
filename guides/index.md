@@ -22,12 +22,57 @@ features:
     details: We will add features over time, like authentication, toggling a todo, changing its title or deleting it.
 ---
 
-## Introduction
+## What this guide is about
 
 > [!WARNING]
 > ⚠️ These series are still work-in-progress 🚧
 
-Let’s start with 2 definitions – yes, they come from me 🤓:
+This is a walkthrough writing high-paced quality software by using frameworks in a decoupled way. In this page I start with observations and detail how I curate dependencies. Then I will dig into writing framework-decoupled software.
+
+If you want to get started straight away, check out the [Get Started](#get-started) section.
+
+## Introduction – The starting point
+
+Across my jobs & experiences in the web (and JS) world, I have seen the traditional cycles of project development:
+1. High pace, the first 2-3 years
+2. Moderate pace, the next 2-3 years
+3. Low pace, the rest of project life
+4. Unmaintainable: abandon ship and start again ; go back to step 1.
+
+And to me, the pace-killer is – drum roll 🥁 – migrations. Either frameworks releasing major upgrades, either rewrites from framework A to framework B because framework A is unmaintained – or has been for years, hello sails.js 👋 – or has lost traction – hello Backbone, Ember, … 👋.
+
+> [!INFO]
+> Each tool or technology comes with a cost. Of maintenance.
+
+I have read this, experienced it. Which led to ask myself: how avoidable is that? At what cost? I investigated.
+
+### Language choices
+
+Most languages have major version releases: Python, Go (v2 will come someday 🥱), PHP, …
+
+Yet the *web platform* – HTML, CSS & JS – is designed to be breaking-change-free. A weakness for some, a strength for me.
+
+### Databases
+
+A DB can be narrowed down to 2 operations: read and write.<br>
+Every DB solution allows to write.<br>
+Their differentiator is on how data can be accessed (read): indexation.
+
+Then you have boring technology like SQL or key-value stores like Redis. Tested by time, large communities and good support.
+
+And you have more esoteric technologies like MongoDB/DynamoDB or ElasticSearch/Algolia in their times. Requires to learn new paradigms, potentially professional support only.
+
+NB: I like learning new stuff, but you know what I like better? Learning stuff I can re-use.
+
+Some data will be essential to your project, choose wisely.
+
+### Hosting
+
+Thankfully we have Docker now, therefore it has become uncommon to upgrade personally OS versions. Although it may still happen, I will not dig into this.
+
+### Frameworks
+
+Let’s start with 2 definitions – yes, they come from me 🤓:
 
 > **Web Platform**: A technology which decided to **never introduce breaking changes**.<br>
 > **Web Framework**: A technology which **introduce breaking changes ~ once every 2 to 5 years**.
@@ -44,43 +89,7 @@ Because the **web platform** is so stable and gaining tons of features, I want t
 
 The worst bet I am making now is using TypeScript, considering it is on the verge to became an actual web standard.
 
-## A bit of background
-
-**Over my _first_ 5 years** as web developer, I went through 3+ big migrations ; migrations which takes something like weeks or months … on the web platform that **never introduces breaking changes**, WTF ??
-
-Then I got into some architecture "good practices" like inversion of control to abstract away stuff like databases. you may recognize by names like "Repository", "Stores", "Clean Architecture", "Hexagonal Architecture", "Domain-Driven Design", ….
-
-It has proven to work fine. Then I figured: could we apply these kind of practices for frameworks too? How hard would it be? So I tried.
-
-That was the starting point of re-thinking web development at project-level, and I asked myself:
-- What if I could migrate my frontend framework in days?
-- What if I could migrate my backend framework in one function?
-
-This series is the result of my experiments.
-
-My thinking led me to other understandings regarding web project in general, see below if you are interested.
-
-<details>
-<summary><strong>How I would web project now</strong></summary>
-
-So far, I identified 2 families of web projects: **local-first** and **server-first**.<br>
-**Local-first** matches needs for offline capacities, which incidentally allows to port websites to mobile apps – and vice-versa.<br>
-**Server-first** matches any other project. Here I am especially finger-pointing back-offices.
-
-Bare in mind that local-first and server-first can also be *combined*. You may have server-first website for a back-office ***and*** a local-first app under a sub-path.<br>
-In any case, a unit of business (business rules, domain, …) should exist in one place only: server-side for server-first ; client-side for local-first – you better trust your client devices ⚠️.
-
-> [!NOTE]
-> There is a special case for event-sourcing, I will not dig into that for 2 reasons:
-> 1. It’s a rabbit hole subject
-> 2. It’s – at the moment – way out my league.
-
-I would argue – now – that server-first should be the default.<br>
-If I rephrase that: you should have an **extremely good reason** to start a single-page app project, offline needs is one of them.
-
-</details>
-
-## What the dep? The ones I worry about
+### What the dep? The ones I worry about
 
 An IT project will have frontends (web/mobile apps), backends, databases, potentially in different languages. Which means we start this game with already our share of major upgrades:
 - Language upgrades
@@ -154,21 +163,68 @@ These numbers should only serve as warnings, make the decision by reading Migrat
 
 For instance: tanstack query or form, 😒. When I look at their usage, there’s no way to test anything outside the framework world ; Big 🟡 flag.
 
+### The green flags ✅ – libraries I am fine using
+
+Libraries which are framework-agnostic and a small API surface. For example:
+- fuse.js (fzf-js, …): I would encourage to add them to an `array` std, however the API is simple. If I ever need to migrate that, it will take me less than a day. Especially if part of my std (facaded).
+- floating-ui
+- [is-email](https://www.npmjs.com/package/is-email)
+- [just-*](https://github.com/angus-c/just), just-pipe, just-omit, just-pick. Facaded in an std.
+- [qs-esm](https://www.npmjs.com/package/qs-esm)
+
 ### Final word: we will need dependencies
 
 That being said, we cannot avoid installing some of those dependencies.
-However, we can **chose** framework-free dependencies. This is a pre-requisite to be able to use frameworks in a decoupled way.
+However, we can **choose** framework-free dependencies. This is a pre-requisite to be able to use frameworks in a decoupled way.
 
 ## Get Started
 
 For demo purposes, we will build a collaborative Todo product. Before anything, we will [model our product]() (if you are interested in Domain-Driven Design) by defining entities and use cases. Then here’s the roadmap:
-- [Building the product using the server-first approach](./server-first/index.md) – AKA multi-page app
-- [Building the product using the local-first approach](./spa-client-side/index.md) – AKA single-page app
+- [Building the product using the server-first approach](./server-first/index.md) – AKA multi-page app
+- [Building the product using the local-first approach](./spa-client-side/index.md) – AKA single-page app
+- Take the detour through [modeling the domain](./domain/index.md)
 
 The cool thing about this project is that both approaches are relevant, it all goes down to your expectations.
 
 I hope you will enjoy this series,<br>
 Have a nice journey 👋
+
+## A bit of background
+
+**Over my _first_ 5 years** as web developer, I went through 3+ big migrations ; migrations which takes something like weeks or months … on the web platform that **never introduces breaking changes**, WTF ??
+
+Then I got into some architecture "good practices" like inversion of control to abstract away stuff like databases. you may recognize by names like "Repository", "Stores", "Clean Architecture", "Hexagonal Architecture", "Domain-Driven Design", ….
+
+It has proven to work fine. Then I figured: could we apply these kind of practices for frameworks too? How hard would it be? So I tried.
+
+That was the starting point of re-thinking web development at project-level, and I asked myself:
+- What if I could migrate my frontend framework in days?
+- What if I could migrate my backend framework in one function?
+
+This series is the result of my experiments.
+
+My thinking led me to other understandings regarding web project in general, see below if you are interested.
+
+<details>
+<summary><strong>How I would web project now</strong></summary>
+
+So far, I identified 2 families of web projects: **local-first** and **server-first**.<br>
+**Local-first** matches needs for offline capacities, which incidentally allows to port websites to mobile apps – and vice-versa.<br>
+**Server-first** matches any other project. Here I am especially finger-pointing back-offices.
+
+Bare in mind that local-first and server-first can also be *combined*. You may have server-first website for a back-office ***and*** a local-first app under a sub-path.<br>
+In any case, a unit of business (business rules, domain, …) should exist in one place only: server-side for server-first ; client-side for local-first – you better trust your client devices ⚠️.
+
+> [!NOTE]
+> There is a special case for event-sourcing, I will not dig into that for 2 reasons:
+> 1. It’s a rabbit hole subject
+> 2. It’s – at the moment – way out my league.
+
+I would argue – now – that server-first should be the default.<br>
+If I rephrase that: you should have an **extremely good reason** to start a single-page app project, offline needs is one of them.
+
+</details>
+
 
 ---
 
