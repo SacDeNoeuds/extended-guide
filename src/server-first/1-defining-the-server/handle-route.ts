@@ -1,6 +1,6 @@
 import * as x from 'unhoax'
-import { PathParameters } from './PathParameters'
-import { HtmlRoute } from './html-route'
+import { PathParameters } from '../definition/PathParameters'
+import { HtmlRoute } from '../definition/html-route'
 
 export interface HtmlHandlerInput<R extends HtmlRoute> {
   headers: Headers

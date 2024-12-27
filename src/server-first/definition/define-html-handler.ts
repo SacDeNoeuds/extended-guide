@@ -1,4 +1,7 @@
-import { HtmlHandlerInput, HtmlHandlerOutput } from './handle-route'
+import {
+  HtmlHandlerInput,
+  HtmlHandlerOutput,
+} from '../1-defining-the-server/handle-route'
 import { HtmlRoute } from './html-route'
 
 export function defineHtmlHandler<R extends HtmlRoute>(

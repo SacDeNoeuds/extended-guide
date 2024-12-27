@@ -55,7 +55,7 @@ function injectReferencedCode(readmeText) {
             const lines = line.value
               .split('\n')
               .map((line) => (line ? `${line}${suffix}` : line))
-            return `${acc.trim()}\n${lines.join('\n')}`
+            return `${acc}${lines.join('\n')}`
           }, '')
           .trim()
 
@@ -127,11 +127,16 @@ traverseDirectoriesOfMarkdown({
     mkdirSync(getOutputPath(dirPath), { recursive: true })
   },
   traverseFile: (filePath) => {
-    const guideText = readFileSync(filePath, 'utf-8')
-    const newGuideText = injectReferencedCode(guideText)
-    const guideFilePath = getOutputPath(filePath)
-    writeFileSync(guideFilePath, newGuideText, 'utf-8')
-    console.info(`generated: ${guideFilePath}`)
+    try {
+      const guideText = readFileSync(filePath, 'utf-8')
+      const newGuideText = injectReferencedCode(guideText)
+      const guideFilePath = getOutputPath(filePath)
+      writeFileSync(guideFilePath, newGuideText, 'utf-8')
+      console.info(`generated: ${guideFilePath}`)
+    } catch (error) {
+      console.info('failed generating', filePath)
+      throw error
+    }
   },
 })
 

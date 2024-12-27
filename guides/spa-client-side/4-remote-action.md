@@ -26,7 +26,7 @@ To make sure it behaves as we expect, let’s write a test:
 Aaand there we go, that was quick. If we test it with our API:
 
 ```ts
-import { JsonPlaceholderFetchApi as api } from '@/setup/Api.fetch'
+import { JsonPlaceholderFetchApi as api } from '@/spa-client-side/setup/Api.fetch'
 
 const action = createRemoteAction(api.getTodo.bind(api))
 

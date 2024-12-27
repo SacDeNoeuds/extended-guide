@@ -51,4 +51,6 @@ And in the end it will empower me to:
 
 Ready to get started? Let’s [define an HTML server](./1-defining-the-server.html).
 
-We will move forward step-by-step and refine our definition as needs arise (GET, POST, cookie-based authentication, …)
+We will move forward step-by-step and refine our definition as needs arise (GET, POST, cookie-based authentication, …).
+
+Things will get ugly but no worries: as soon as we support a satisfying amount of features we will polish the API.
