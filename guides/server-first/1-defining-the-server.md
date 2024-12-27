@@ -29,28 +29,73 @@ The outputs are:
 
 We can start by defining _how_ we want to define our route:
 
-<!-- include [code:ts] ./server-first/1-defining-the-server/greet-handler.tsx -->
+<!-- include [code:ts] ./server-first/1-defining-the-server/greet-handler-1.tsx -->
 
-## The server and its adapter
+## Refactoring
 
-A server is solely router – a collection of route and handlers – exposed on a port:
+It looks like there’s a ton of plumbing in there: the usage is getting verbose and complicated. When stuff is optional, the _builder pattern_ can help graciously. Here’s how I would like to use it:
 
-<!-- include [code:ts] ./server-first/1-defining-the-server/router.ts -->
+```tsx
+export const greetHandler = HandlerBuilder
+  .get('/hello/:name')
+  .params(…, () => {}) // optional
+  .query(schema, () => {}) // optional
+  .body(…, () => {}) // optional
+  .handle(async () => { … }) // builds the route and its handler.
+```
 
-Now let’s implement the adapter:
+Let’s see it in action for our first route:
+
+<!-- include [code:ts] ./server-first/1-defining-the-server/greet-handler-2.tsx -->
+
+Great, that looks **much** cleaner.
+
+## Unit test
+
+Did you notice? I didn’t even need _anything_ to start testing!<br>
+Since our handler is pure JS, it’s incredibly simple to test it:
+
+<!-- include [code:ts] ./server-first/1-defining-the-server/greet-handler.spec.ts -->
+
+Which outputs:
+
+```sh
+ ✓ server-first/1-defining-the-server/greet-handler.spec.ts (1) 514ms
+   ✓ greetHandler – simple version (1) 514ms
+     ✓ responds with 200, a blue div & x-server header 514ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  19:12:33
+   Duration  525ms
+```
+
+## Defining the adapter
+
+A server is solely a collection of route handlers exposed on a port:
+
+<!-- include [code:ts] ./server-first/1-defining-the-server/server-adapter.ts -->
+
+## Implementing the H3 server adapter
 
 <!-- include [code:ts] ./server-first/1-defining-the-server/h3-adapter.ts -->
 
-And finally let’s define our server and boot it using the h3 adapter:
+## Boot the server using the H3 adapter
 
 <!-- include [code:ts] ./server-first/1-defining-the-server/server.ts -->
 
-## Testing
+## End-to-End Testing
 
 ```sh
 npx tsx ./src/server-first/1-defining-the-server/server.ts
 ```
 
-And open your browser at http://localhost:6600/hello/John
+Let’s test it:
+
+```sh
+$ curl http://localhost:6600/hello/John
+<div style="color: blue">Hello, John</div>%
+# ✅
+```
 
 All good!

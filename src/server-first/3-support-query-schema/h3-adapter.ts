@@ -1,41 +1,39 @@
-import { createApp, createRouter, defineEventHandler, getQuery } from 'h3'
+import {
+  createApp,
+  createRouter,
+  defineEventHandler,
+  getQuery,
+  readBody,
+  toNodeListener,
+} from 'h3'
 import { createServer } from 'node:http'
-import { toNodeListener } from 'h3'
-import { Router } from './router'
-import { HtmlHandlerOutput } from './handle-route'
+import { ServerAdapter } from './server-adapter'
+import { Handler, HandlerOutput } from './handler'
 
-export function serveH3NodeApp(options: { router: Router; port: number }) {
+export const createH3NodeServer: ServerAdapter = (options: {
+  handlers: Handler[]
+  port: number
+}) => {
   const app = createApp({ debug: true })
   const router = createRouter()
-  app.use(router) // mount the router on a base path using app.use('/base', router)
 
-  for (const { route, handler } of options.router) {
-    // FIXME: handle POST requests.
-    if (route.method === 'POST') throw new Error('unimplemented')
+  // mount the router on a base path using app.use('/base', router)
+  app.use(router)
 
-    router.get(
+  for (const { handle, ...route } of options.handlers) {
+    const routerFn = route.method === 'GET' ? router.get : router.post
+
+    routerFn.call(
+      router, // provide `router` to unbounded router method
       route.path,
       defineEventHandler(async (event) => {
-        const uncheckedParams = event.context.params ?? {}
-        const params = route.params
-          ? route.params.parse(uncheckedParams)
-          : ({ success: true, value: uncheckedParams } as const)
-
-        if (!params.success)
-          return makeResponse(await handler.handleInvalidParams!(params.error))
-
-        const query = route.query
-          ? route.query.parse(getQuery(event))
-          : ({ success: true, value: {} } as const)
-
-        if (!query.success)
-          return makeResponse(await handler.handleInvalidQuery!(query.error))
-
-        const result = await handler.handle({
-          query: query.value,
+        const result = await handle({
+          query: getQuery(event),
           headers: event.headers,
-          body: undefined,
-          params: params.value,
+          body: event.headers.has('content-type')
+            ? await readBody(event)
+            : undefined,
+          params: event.context.params ?? {},
         })
 
         return makeResponse(result)
@@ -52,7 +50,7 @@ export function serveH3NodeApp(options: { router: Router; port: number }) {
   })
 }
 
-function makeResponse(result: HtmlHandlerOutput) {
+function makeResponse(result: HandlerOutput) {
   const headers = new Headers(result.headers)
   headers.set('content-type', 'text/html')
 

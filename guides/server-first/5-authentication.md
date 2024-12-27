@@ -33,7 +33,7 @@ I obviously need to **inject** some inputs, so let’s define that.
 
 ## Adding a `Context` to the route handler input
 
-<!-- diff [code:ts] ./server-first/5-authentication/handle-route.ts ./server-first/4-support-body-schema/handle-route.ts -->
+<!-- diff [code:ts] ./server-first/5-authentication/handle-route.ts ./server-first/4-support-body-schema/handler-builder.ts -->
 
 ## Update our `greet` handler to require a `name` context
 

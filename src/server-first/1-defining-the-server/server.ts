@@ -1,11 +1,11 @@
-import { handleGreet, greetRoute } from './greet-handler'
-import { serveH3NodeApp } from './h3-adapter'
+import { greetHandler } from './greet-handler-2'
+import { createH3NodeServer } from './h3-adapter'
 
 async function createServer() {
   const port = 6600
-  await serveH3NodeApp({
+  await createH3NodeServer({
     port,
-    handlers: [{ route: greetRoute, handle: handleGreet }],
+    handlers: [greetHandler],
   })
   console.info('Server listening on port', port)
 }

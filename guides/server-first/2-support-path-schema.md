@@ -6,31 +6,31 @@ In the previous example, we allowed to pass any path parameter. Now we will redu
 
 The schema for that is `x.literal('John', 'Michelle')`, let’s enable support for that.
 
-<!-- diff [code:tsx] ./server-first/2-support-path-schema/greet-handler-1.tsx ./server-first/1-defining-the-server/greet-handler.tsx -->
+<!-- diff [code:tsx] ./server-first/2-support-path-schema/greet-handler.tsx ./server-first/1-defining-the-server/greet-handler-2.tsx -->
 
-## Parsing path parameters in the adapter
+## Fixing the `HandlerBuilder`
 
-Great, so if I add support to my adapter, let’s see how it goes:
+<!-- diff [code:ts] ./server-first/2-support-path-schema/handler-builder.ts ./server-first/1-defining-the-server/handler-builder.ts -->
 
-<!-- diff [code:ts] ./server-first/2-support-path-schema/h3-adapter-1.ts ./server-first/1-defining-the-server/h3-adapter.ts -->
+## Unit testing
 
-Now I have a big problem: we allowed to specify a schema for the path parameters, but how do we handle errors? Our route handler does not specify that, so let’s refine it.
+<!-- include [code:ts] ./server-first/2-support-path-schema/greet-handler.spec.ts -->
 
-## Fixing the route handler definition
+Result:
 
-<!-- diff [code:ts] ./server-first/2-support-path-schema/handle-route.ts ./server-first/1-defining-the-server/handle-route.ts -->
+```sh
+ ✓ server-first/2-support-path-schema/greet-handler.spec.ts (2) 507ms
+   ✓ greetHandler – with params (2) 507ms
+     ✓ fails with 400 when params are invalid
+     ✓ responds with 200 & a blue div 501ms
 
-## Fixing our `greet` handler
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  19:16:54
+   Duration  519ms
+```
 
-At this stage, our handler should fail type checking, we can update it:
-
-<!-- diff [code:tsx] ./server-first/2-support-path-schema/greet-handler-2.tsx ./server-first/2-support-path-schema/greet-handler-1.tsx -->
-
-## Rendering errors in the adapter
-
-<!-- diff [code:ts] ./server-first/2-support-path-schema/h3-adapter-2.ts ./server-first/2-support-path-schema/h3-adapter-1.ts -->
-
-## Testing
+## End-to-End Testing
 
 Ok we should be settled now, let’s run and test:
 
@@ -39,12 +39,12 @@ npx tsx ./src/server-first/2-support-path-schema/server.ts
 ```
 
 ```sh
-$ curl http://localhost:6600/hello/John
-<div style="color: blue">Hello, John</div>
+$ curl http://localhost:6600/hello/Jack
+<div style="color: red">Name must be “John” or “Michelle”</div>
 # ✅
 
-$ curl http://localhost:6600/hello/Jack
-<div style="color: red">Invalid name, expected "John" or "Michelle"</div>
+$ curl http://localhost:6600/hello/John
+<div style="color: blue">Hello, John</div>
 # ✅
 ```
 
