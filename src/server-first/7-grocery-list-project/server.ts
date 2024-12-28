@@ -7,7 +7,7 @@ import { makeCreateGroceryListHandler } from './post/create-grocery-list'
 
 async function createServer() {
   const port = 6600
-  const authenticate = makeFakeAuthenticate('John')
+  const authenticate = makeFakeAuthenticate()
   const repository = makeGroceryListInMemoryRepository()
 
   await createH3NodeServer({

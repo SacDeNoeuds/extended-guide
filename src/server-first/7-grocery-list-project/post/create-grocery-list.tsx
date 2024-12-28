@@ -21,8 +21,8 @@ export function makeCreateGroceryListHandler(ports: Ports) {
         </Html>,
       )
     })
-    .handleWith(async ({ headers, body }) => {
-      const member = await ports.authenticate(headers)
+    .handleWith(async ({ cookies, body }) => {
+      const member = await ports.authenticate(cookies)
 
       await ports.createGroceryList(member.id, body.listName)
 

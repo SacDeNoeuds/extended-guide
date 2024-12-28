@@ -15,7 +15,7 @@ In terms of handlers, that means:
 2. `POST /create-list` to create a new grocery list
 3. `POST /archive-list/:listName` to archive a grocery list – we can only use HTML form methods, thus no `DELETE`.
 
-For demo purposes, I will default the member id to `'John'`.
+For demo purposes, I will cheat regarding the authentication and use the query parameter `memberId` when getting the home page.
 
 ## Defining the domain
 
@@ -48,7 +48,7 @@ Here it is quite simple, I will settle for just one file:
 npx tsx ./src/server-first/7-grocery-list-project/server.ts
 ```
 
-Let’s test our handlers, head to http://localhost:6600
+Let’s test our handlers, head to http://localhost:6600/?memberId=John
 
 It looks like it all works like a charm 😘
 

@@ -16,4 +16,5 @@ export interface HandlerInput<Params, Query, Body> {
   params: Params
   query: Query
   body: Body
+  cookies: Record<string, string>
 }

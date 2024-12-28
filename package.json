@@ -46,6 +46,7 @@
     "@hono/node-server": "^1.13.7",
     "@vitejs/plugin-vue": "^5.2.1",
     "body-parser": "^1.20.3",
+    "cookie": "^1.0.2",
     "express": "^4.21.2",
     "h3": "^1.13.0",
     "hono": "^4.6.14",

@@ -11,8 +11,8 @@ type Ports = {
 
 export function makeArchiveGroceryListHandler(ports: Ports) {
   return HandlerBuilder.post('/archive-list/:listName').handleWith(
-    async ({ headers, params }) => {
-      const member = await ports.authenticate(headers)
+    async ({ cookies, params }) => {
+      const member = await ports.authenticate(cookies)
 
       await ports.archiveGroceryList(member.id, params.listName)
 

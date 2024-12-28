@@ -2,7 +2,9 @@ import {
   createApp,
   createRouter,
   defineEventHandler,
+  getCookie,
   getQuery,
+  parseCookies,
   readBody,
   toNodeListener,
 } from 'h3'
@@ -34,6 +36,7 @@ export const createH3NodeServer: ServerAdapter = (options: {
             ? await readBody(event)
             : undefined,
           params: event.context.params ?? {},
+          cookies: parseCookies(event),
         }).catch((error) => {
           if (error instanceof Response) return error
           throw error

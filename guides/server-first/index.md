@@ -34,7 +34,7 @@ I will focus solely on what matters to _our_ situation: modeling a server contai
 Why not aiming at universality?
 
 1. Because it is difficult.
-2. Because it is **not my concern**. It is a language or framework concern (NodeJS/Express). Defining more than _I_ need is a trap. **Defining just what I need is key**.
+2. Because it is **not my concern**. It is a language or framework concern (NodeJS/Express). Defining **more than I need is a trap**. Defining **just what I need is key**.
 
 > But, but… it is not future-proof: you can’t build a JSON API for instance!
 
@@ -49,8 +49,8 @@ And in the end it will empower me to:
 2. switch the technology by writing another adapter – typically in case of performance issues.
 3. Most importantly: Absorb framework migrations in a dedicated place, the adapters.
 
+---
+
 Ready to get started? Let’s [define an HTML server](./1-defining-the-server.html).
 
 We will move forward step-by-step and refine our definition as needs arise (GET, POST, cookie-based authentication, …).
-
-Things will get ugly but no worries: as soon as we support a satisfying amount of features we will polish the API.

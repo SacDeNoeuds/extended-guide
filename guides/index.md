@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /spa-client-side/1-todo-api.html
+      link: /server-first/
 
 features:
   - title: Multi-page app / server-first approach
@@ -172,17 +172,18 @@ Libraries which are framework-agnostic and a small API surface. For example:
 - [just-*](https://github.com/angus-c/just), just-pipe, just-omit, just-pick. Facaded in an std.
 - [qs-esm](https://www.npmjs.com/package/qs-esm)
 
-### Final word: we will need dependencies
+### Final word: we will need frameworks & libraries
 
-That being said, we cannot avoid installing some of those dependencies.
+That being said, we cannot avoid installing some of those.
 However, we can **choose** framework-free dependencies. This is a pre-requisite to be able to use frameworks in a decoupled way.
 
 ## Get Started
 
-For demo purposes, we will build a collaborative Todo product. Before anything, we will [model our product]() (if you are interested in Domain-Driven Design) by defining entities and use cases. Then here’s the roadmap:
+For demo purposes, we will build a Grocery List project. Here’s the roadmap:
 - [Building the product using the server-first approach](./server-first/index.md) – AKA multi-page app
 - [Building the product using the local-first approach](./spa-client-side/index.md) – AKA single-page app
-- Take the detour through [modeling the domain](./domain/index.md)
+- Take the detour through [modeling the domain](./domain/index.md) if you are interested in Domain-Driven Design
+- Traditional SPA + API – 🚧
 
 The cool thing about this project is that both approaches are relevant, it all goes down to your expectations.
 
