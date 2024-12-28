@@ -50,6 +50,35 @@ Let’s see it in action for our first route:
 
 Great, that looks **much** cleaner.
 
+## `Response` utilities
+
+Behind the scene I implemented response factories with the following API (yes I really like the builder pattern 😇):
+
+```tsx
+import { response } from '@/utils/response'
+
+respondWith.status(201).html(<div>Hello!</div>) // Response
+respondWith
+  .status(201)
+  .headers({ 'X-Server': 'Meeee' })
+  .html(<div>Hello!</div>) // Response
+
+// defaults to 200
+respondWith.headers({ 'X-Server': 'Meeee' }).html(<div>Hello!</div>) // Response
+
+respondWith.html(<div>Hello!</div>) // Response
+
+// See Other = 303 redirect
+respondWith.seeOther('/there/or/here')
+```
+
+<details>
+<summary>Source Code</summary>
+
+<!-- include [code:ts] ./server-first/definition/response.ts -->
+
+</details>
+
 ## Unit test
 
 Did you notice? I didn’t even need _anything_ to start testing!<br>
@@ -63,11 +92,6 @@ Which outputs:
  ✓ server-first/1-defining-the-server/greet-handler.spec.ts (1) 514ms
    ✓ greetHandler – simple version (1) 514ms
      ✓ responds with 200, a blue div & x-server header 514ms
-
- Test Files  1 passed (1)
-      Tests  1 passed (1)
-   Start at  19:12:33
-   Duration  525ms
 ```
 
 ## Defining the adapter

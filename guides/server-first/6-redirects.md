@@ -12,16 +12,6 @@ My main use-case is to redirect after a form post, therefore I will focus on `30
 >
 > **Typical use case**: Used to redirect after a PUT or a POST, so that refreshing the result page doesn't re-trigger the operation.
 
-## Change the `RouteHandler` definition
-
-We need to add a redirect as a possible handler output:
-
-<!-- diff [code:ts] ./server-first/6-redirects/handle-route.ts ./server-first/5-authentication/handle-route.ts -->
-
-## Update the H3 adapter
-
-<!-- diff [code:ts] ./server-first/6-redirects/h3-adapter.ts ./server-first/5-authentication/h3-adapter.ts -->
-
 ## Adding a POST greet handler
 
 <!-- include [code:tsx] ./server-first/6-redirects/post-greet-handler.tsx -->
@@ -30,7 +20,7 @@ We need to add a redirect as a possible handler output:
 
 <!-- diff [code:ts] ./server-first/6-redirects/server.ts ./server-first/4-support-body-schema/server.ts -->
 
-## Testing
+## End-to-End Testing
 
 ```sh
 npx tsx ./src/server-first/6-redirects/server.ts
@@ -51,9 +41,9 @@ $ curl -X POST http://localhost:6600/hello/Toto --verbose
 > Accept: */*
 >
 * Request completely sent off
-< HTTP/1.1 303 See Other
-< location: /hello/Toto
-< Date: Fri, 27 Dec 2024 10:27:52 GMT
+< HTTP/1.1 303 See Other               # <-- ✅
+< location: /hello/Toto                # <-- ✅
+< Date: Sat, 28 Dec 2024 05:13:51 GMT
 < Connection: keep-alive
 < Keep-Alive: timeout=5
 < Content-Length: 0

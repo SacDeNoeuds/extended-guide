@@ -21,11 +21,6 @@ Result:
    ✓ greetHandler – with query (2)
      ✓ fails with 400 when query is invalid
      ✓ responds with 200 & a blue div
-
- Test Files  1 passed (1)
-      Tests  2 passed (2)
-   Start at  19:41:36
-   Duration  169ms
 ```
 
 ## End-to-End Testing

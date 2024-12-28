@@ -23,11 +23,6 @@ Result:
    ✓ greetHandler – with params (2) 507ms
      ✓ fails with 400 when params are invalid
      ✓ responds with 200 & a blue div 501ms
-
- Test Files  1 passed (1)
-      Tests  2 passed (2)
-   Start at  19:16:54
-   Duration  519ms
 ```
 
 ## End-to-End Testing
