@@ -8,7 +8,7 @@ export interface Handler<
 > {
   method: HttpMethod
   path: Path
-  handle(input: HandlerInput<Params, Query, Body>): Promise<HandlerOutput>
+  handle(input: HandlerInput<Params, Query, Body>): Promise<Response>
 }
 
 export interface HandlerInput<Params, Query, Body> {
@@ -16,13 +16,4 @@ export interface HandlerInput<Params, Query, Body> {
   params: Params
   query: Query
   body: Body
-}
-
-export interface HandlerOutput {
-  status: number
-  headers?: HeadersInit
-  body: {
-    // we only need something serializable to a string.
-    toString(): string
-  }
 }

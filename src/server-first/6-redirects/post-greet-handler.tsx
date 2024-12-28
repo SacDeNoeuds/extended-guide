@@ -1,20 +1,12 @@
 /** @jsxImportSource hono/jsx */
 import { delay } from '@/utils/delay'
-import { HtmlRoute } from '../definition/html-route'
-import { RouteHandler } from './handle-route'
+import { HandlerBuilder } from './handler-builder'
+import { respondWith } from '../definition/response'
 
-export const postGreetRoute = {
-  method: 'POST',
-  path: '/hello/:name',
-} as const satisfies HtmlRoute
-type PostGreetRoute = typeof postGreetRoute
+export const postGreetHandler = HandlerBuilder.post('/hello/:name').handleWith(
+  async ({ params, ...input }) => {
+    await delay(150) // mimic DB access.
 
-export const postGreetHandler: RouteHandler<PostGreetRoute> = {
-  handle: async ({ params }) => {
-    await delay(500) // mimic DB access.
-    return {
-      status: 303,
-      location: `/hello/${params.name}`,
-    }
+    return respondWith.seeOther(`/hello/${params.name}`)
   },
-}
+)

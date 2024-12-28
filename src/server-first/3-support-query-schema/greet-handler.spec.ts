@@ -10,7 +10,7 @@ describe('greetHandler – with query', () => {
       headers: new Headers(),
     })
     expect(result.status).toBe(400)
-    expect(result.body.toString()).toBe(
+    expect(await result.text()).toBe(
       '<div style="color: red">Name must be “John” or “Michelle”</div>',
     )
   })
@@ -23,7 +23,7 @@ describe('greetHandler – with query', () => {
       headers: new Headers(),
     })
     expect(result.status).toBe(200)
-    expect(result.body.toString()).toBe(
+    expect(await result.text()).toBe(
       '<div style="color: blue">Hello, John</div>',
     )
   })

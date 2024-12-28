@@ -1,21 +1,15 @@
-import { authenticated } from './authenticated'
-import { greetHandler, greetRoute } from './greet-handler'
-import { serveH3NodeApp } from './h3-adapter'
 import * as x from 'unhoax'
+import { makeAuthenticate } from './authenticate'
+import { makeGreetHandler } from './greet-handler'
+import { createH3NodeServer } from './h3-adapter'
 
 async function createServer() {
   const port = 6600
-  const johnOrMichelle = x.literal('John', 'Michelle')
-  await serveH3NodeApp({
+  const authenticate = makeAuthenticate(x.literal('John', 'Michelle'))
+
+  await createH3NodeServer({
     port,
-    router: [
-      {
-        route: greetRoute,
-        // handler: greetHandler, // fails, context is not `{}`
-        // handler: authenticated(x.literal('John', 'Jack'), greetHandler), // fails, the handler requires names to be 'Michelle' or 'John'
-        handler: authenticated(johnOrMichelle, greetHandler),
-      },
-    ],
+    handlers: [makeGreetHandler({ authenticate })],
   })
   console.info('Server listening on port', port)
 }

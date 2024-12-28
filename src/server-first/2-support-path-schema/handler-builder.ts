@@ -1,7 +1,7 @@
 import * as x from 'unhoax'
 import { PathParameters } from '../definition/PathParameters'
 import { HttpMethod } from '../definition/html-route'
-import { Handler, HandlerInput, HandlerOutput } from './handler'
+import { Handler, HandlerInput } from './handler'
 
 function createHandlerBuilder(method: HttpMethod) {
   return <Path extends `/${string}`>(path: Path) => {
@@ -18,7 +18,7 @@ function createHandlerBuilder(method: HttpMethod) {
           method,
           path,
           handle: async (input) => {
-            const params = guardWith(paramsGuard, input.params, {})
+            const params = guardWith(paramsGuard, input.params, input.params)
             if (!params.success) return params.error
 
             return handle({
@@ -50,20 +50,18 @@ interface HandlerBuilder<
   ): HandlerBuilder<Path, P, Query, Body>
 
   handleWith(
-    handler: (
-      input: HandlerInput<Params, Query, Body>,
-    ) => Promise<HandlerOutput>,
+    handler: (input: HandlerInput<Params, Query, Body>) => Promise<Response>,
   ): Handler<Path, Params, Query, Body>
 }
 
-type OnInvalid = (error: x.ParseError) => HandlerOutput | Promise<HandlerOutput>
+type OnInvalid = (error: x.ParseError) => Response | Promise<Response>
 
 interface GuardConfig {
   schema: x.Schema<unknown>
   onInvalid: OnInvalid
 }
 type GuardResult =
-  | { success: false; error: HandlerOutput | Promise<HandlerOutput> }
+  | { success: false; error: ReturnType<OnInvalid> }
   | { success: true; value: unknown }
 
 function guardWith<F>(

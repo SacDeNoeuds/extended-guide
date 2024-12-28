@@ -1,6 +1,6 @@
 import { PathParameters } from '../definition/PathParameters'
 import { HttpMethod } from '../definition/html-route'
-import { Handler, HandlerInput, HandlerOutput } from './handler'
+import { Handler, HandlerInput } from './handler'
 
 function createHandlerBuilder(method: HttpMethod) {
   return <Path extends `/${string}`>(path: Path) => {
@@ -29,8 +29,6 @@ interface HandlerBuilder<
   Body = undefined,
 > {
   handleWith(
-    handler: (
-      input: HandlerInput<Params, Query, Body>,
-    ) => Promise<HandlerOutput>,
+    handler: (input: HandlerInput<Params, Query, Body>) => Promise<Response>,
   ): Handler<Path, Params, Query, Body>
 }

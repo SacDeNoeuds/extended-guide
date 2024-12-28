@@ -1,23 +1,20 @@
 /** @jsxImportSource hono/jsx */
 import { delay } from '@/utils/delay'
-import { HtmlRoute } from '../definition/html-route'
-import { RouteHandler } from './handle-route'
+import { HandlerBuilder } from './handler-builder'
+import { Authenticate } from './authenticate'
+import { respondWith } from '../definition/response'
 
-export const greetRoute = {
-  method: 'GET',
-  path: '/hello',
-} as const satisfies HtmlRoute
-type GreetRoute = typeof greetRoute
+type Ports = {
+  authenticate: Authenticate<'John' | 'Michelle'>
+}
 
-export const greetHandler: RouteHandler<
-  GreetRoute,
-  { name: 'John' | 'Michelle' }
-> = {
-  handle: async ({ context }) => {
-    await delay(500) // mimic DB access.
-    return {
-      status: 200,
-      body: <div style="color: blue">Hello, {context.name}</div>,
-    }
-  },
+export const makeGreetHandler = (ports: Ports) => {
+  return HandlerBuilder.get('/hello').handleWith(async ({ headers }) => {
+    // will throw if unauthenticated
+    const { name } = await ports.authenticate(headers)
+
+    await delay(150) // mimic DB access.
+
+    return respondWith.html(<div style="color: blue">Hello, {name}</div>)
+  })
 }

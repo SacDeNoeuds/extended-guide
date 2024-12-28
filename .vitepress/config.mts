@@ -48,12 +48,12 @@ export default defineConfig({
             link: '/server-first/6-redirects.html',
           },
           {
-            text: 'Improving our API',
-            link: '/server-first/7-improving-our-api.html',
+            text: 'Grocery List Project',
+            link: '/server-first/7-grocery-list-project.html',
           },
           {
-            text: 'GET/POST a grocery list',
-            link: '/server-first/8-get-post-grocery-list.html',
+            text: 'Writing more adapters',
+            link: '/server-first/8-writing-more-adapters.html',
           },
           {
             text: 'Going Further',

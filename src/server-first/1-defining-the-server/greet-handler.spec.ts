@@ -10,7 +10,7 @@ describe('greetHandler – simple version', () => {
       headers: new Headers(),
     })
     expect(result.status).toBe(200)
-    expect(result.body.toString()).toBe(
+    expect(await result.text()).toBe(
       '<div style="color: blue">Hello, Toto</div>',
     )
     const headers = new Headers(result.headers)

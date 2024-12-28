@@ -8,7 +8,7 @@ import {
 } from 'h3'
 import { createServer } from 'node:http'
 import { ServerAdapter } from './server-adapter'
-import { Handler, HandlerOutput } from './handler'
+import { Handler } from './handler'
 
 export const createH3NodeServer: ServerAdapter = (options: {
   handlers: Handler[]
@@ -27,7 +27,7 @@ export const createH3NodeServer: ServerAdapter = (options: {
       router, // provide `router` to unbounded router method
       route.path,
       defineEventHandler(async (event) => {
-        const result = await handle({
+        return handle({
           query: getQuery(event),
           headers: event.headers,
           body: event.headers.has('content-type')
@@ -35,8 +35,6 @@ export const createH3NodeServer: ServerAdapter = (options: {
             : undefined,
           params: event.context.params ?? {},
         })
-
-        return makeResponse(result)
       }),
     )
   }
@@ -47,15 +45,5 @@ export const createH3NodeServer: ServerAdapter = (options: {
     server.listen(options.port, () => {
       resolve(server)
     })
-  })
-}
-
-function makeResponse(result: HandlerOutput) {
-  const headers = new Headers(result.headers)
-  headers.set('content-type', 'text/html')
-
-  return new Response(result.body.toString(), {
-    status: result.status,
-    headers,
   })
 }
