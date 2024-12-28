@@ -55,17 +55,15 @@ Yet the *web platform* – HTML, CSS & JS – is designed to be breaking-change-
 
 ### Databases
 
-A DB can be narrowed down to 2 operations: read and write.<br>
-Every DB solution allows to write.<br>
-Their differentiator is on how data can be accessed (read): indexation.
+A DB can be narrowed down to 2 operations: read and write. Every DB allows to read & write.<br>
+To me their main differentiator is on how data can be accessed (read): indexation.
 
-Then you have boring technology like SQL or key-value stores like Redis. Tested by time, large communities and good support.
+You have boring technology like SQL or key-value stores like Redis. Tested by time, large communities and good support.
 
-And you have more esoteric technologies like MongoDB/DynamoDB or ElasticSearch/Algolia in their times. Requires to learn new paradigms, potentially professional support only.
-
+And you have more esoteric technologies like MongoDB/DynamoDB or ElasticSearch/Algolia in their times. Requires to learn new paradigms, potentially only with professional support.<br>
 NB: I like learning new stuff, but you know what I like better? Learning stuff I can re-use.
 
-Some data will be essential to your project, choose wisely.
+Data is essential to any project, choose wisely.
 
 ### Hosting
 
@@ -88,7 +86,7 @@ To me it’s near 100%. In that way, the JavaScript world is particularly contra
 
 Because the **web platform** is so stable and gaining tons of features, I want to bet on it.
 
-The worst bet I am making now is using TypeScript, considering it is on the verge to became an actual web standard.
+The biggest gamble I am making nowadays is using TypeScript, considering it is on the verge to become an actual web standard.
 
 ### What the dep? The ones I worry about
 
@@ -144,6 +142,7 @@ Check out the npm `versions` tab. Why: I don't want to be dependent on someone c
 Let’s compare:
 
 React has released 4 major versions in 9 years (completely changing paradigms twice).<br>
+Anguar has released 18 major versions in 9 years, including Angular v1 -> v2<br>
 Vue has released 3 major versions in 9 years.<br>
 Svelte has released 5 major versions in 8 years (changing completely paradigms for v5).<br>
 Solid has released 1 major version in 3 years.
