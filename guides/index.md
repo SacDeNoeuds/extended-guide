@@ -24,15 +24,15 @@ features:
 
 ## What this guide is about
 
-> [!WARNING]
-> ⚠️ These series are still work-in-progress 🚧
-
 This is a walkthrough writing high-paced quality software by using frameworks in a decoupled way. In this page I start with observations and detail how I curate dependencies. Then I will dig into writing framework-decoupled software.
 
 > [!NOTE]
 > You want to get started straight away? Check out the [Get Started](#get-started) section.
 
 ## Introduction – The starting point
+
+> [!WARNING]
+> ⚠️ These series are still work-in-progress 🚧
 
 Across my jobs & experiences in the web (and JS) world, I have seen the traditional cycles of project development:
 1. High pace, the first 2-3 years
