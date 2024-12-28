@@ -9,6 +9,8 @@ export default defineConfig({
   srcDir: './dist/guides',
   base: isGithubActions ? '/extended-guide/' : undefined,
   outDir: './dist/website',
+  // ignore dead links because I point out to http://localhost:6600 at some point…
+  ignoreDeadLinks: true,
   themeConfig: {
     nav: [
       { text: 'server-first', link: '/server-first/' },
