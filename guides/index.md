@@ -29,7 +29,8 @@ features:
 
 This is a walkthrough writing high-paced quality software by using frameworks in a decoupled way. In this page I start with observations and detail how I curate dependencies. Then I will dig into writing framework-decoupled software.
 
-If you want to get started straight away, check out the [Get Started](#get-started) section.
+> [!NOTE]
+> You want to get started straight away? Check out the [Get Started](#get-started) section.
 
 ## Introduction – The starting point
 
