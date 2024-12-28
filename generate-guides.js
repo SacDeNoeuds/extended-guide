@@ -12,7 +12,7 @@ const isDryRun = process.argv.includes('--dry-run')
 
 const output = path.resolve(process.cwd(), 'dist', 'guides')
 rmSync(output, { recursive: true, force: true })
-mkdirSync(output)
+mkdirSync(output, { recursive: true })
 
 /**
  * What this function does: it replaces text in the readme file. The replacements:
