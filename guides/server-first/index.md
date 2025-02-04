@@ -5,7 +5,7 @@ layout: home
 hero:
   name: How to server-first
   text: with a fully working example
-  tagline: Building a Todo app using a multi-page app approach.
+  tagline: Building a Grocery List using a multi-page app approach.
   actions:
     - theme: brand
       text: Get Started

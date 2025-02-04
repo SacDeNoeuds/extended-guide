@@ -3,17 +3,17 @@
 layout: home
 
 hero:
-  name: Extended guide on how to web project
+  name: Designing a resilient web project
   text: A collection of fully working examples
   tagline: In different environments ; client-side, server-side, multi-page apps, single-page apps, …
   actions:
     - theme: brand
       text: Get Started
-      link: /server-first/
+      link: /designing-a-resilient-system/
 
 features:
   - title: Multi-page app / server-first approach
-    details: Particularly relevant for project like back-offices, we will bet into the platform and use shiny HTML/CSS features to enhance user experiences.
+    details: Particularly relevant for project like back-offices, we will bet on the platform and use shiny HTML/CSS features to enhance user experiences.
   - title: Single-page app / local-first approach
     details: Particularly relevant for projects requiring offline capabilities, we will see how to implement frontend project with <em>decoupled</em> frameworks.
   - title: Using front & back frameworks in a <em>decoupled</em> way
@@ -40,150 +40,34 @@ Across my jobs & experiences in the web (and JS) world, I have seen the traditio
 3. Low pace, the rest of project life
 4. Unmaintainable: abandon ship and start again ; go back to step 1.
 
-And to me, the pace-killer is – drum roll 🥁 – migrations. Either frameworks releasing major upgrades, either rewrites from framework A to framework B because framework A is unmaintained – or has been for years, hello sails.js 👋 – or has lost traction – hello Backbone, Ember, … 👋.
+Lots of people have dug into identifying pace-killers, in the literature it can be known as **software entropy**, a beautiful word to describe the **measure of chaos**.<br>
+A great resource is _No Silver Bullet — Essence and Accidents of Software Engineering_ by Fred Brooks.
 
-> [!INFO]
-> Each tool or technology comes with a cost. Of maintenance.
+It is a full subject in itself and I will not dive into it here, only jump to conclusions. Two types of complexities are identified:
+1. **Domain complexity**, which can be reduced by spending time on understanding matters and concising them to the maximum. **It is an exercise of concision**.
+2. **Accidental complexity**, the one which is introduced but is not desired.
 
-I have read this, experienced it. Which led to ask myself: how avoidable is that? At what cost? I investigated.
+This accidental complexity can come from various places:
+1. **Humans** coming with their understanding of the system and evolving it. Hence the importance of understanding the domain, again.
+2. A constantly **changing environment**, bringing every decade and every year its share of super-mega tremendously innovative tools & technologies we adopt on the way.
+3. **Intertwined domain and technologies**: if, to change the domain, you need to change the technology … you are kind of doomed: any technology upgrade/update might break your domain.
 
-### Language choices
+This observations lead to the following conclusions (that’s not from me):
+- Decouple domain from technology
+- Design your system to make it resilient to changes of technology AND domain
 
-Most languages have major version releases: Python, Go (v2 will come someday 🥱), PHP, …
+Designing a system like so has **many MANY** impacts on the architecture, and also embeds the idea that **deployment strategies** is a **detail** and should not in any case mold your system’s core.
 
-Yet the *web platform* – HTML, CSS & JS – is designed to be breaking-change-free. A weakness for some, a strength for me.
-
-### Databases
-
-A DB can be narrowed down to 2 operations: read and write. Every DB allows to read & write.<br>
-To me their main differentiator is on how data can be accessed (read): indexation.
-
-You have boring technology like SQL or key-value stores like Redis. Tested by time, large communities and good support.
-
-And you have more esoteric technologies like MongoDB/DynamoDB or ElasticSearch/Algolia in their times. Requires to learn new paradigms, potentially only with professional support.<br>
-NB: I like learning new stuff, but you know what I like better? Learning stuff I can re-use.
-
-Data is essential to any project, choose wisely.
-
-### Hosting
-
-Thankfully we have Docker now, therefore it has become uncommon to upgrade personally OS versions. Although it may still happen, I will not dig into this.
-
-### Frameworks
-
-Let’s start with 2 definitions – yes, they come from me 🤓:
-
-> **Web Platform**: A technology which decided to **never introduce breaking changes**.<br>
-> **Web Framework**: A technology which **introduce breaking changes ~ once every 2 to 5 years**.
-
-If I rephrase that:<br>
-Let’s say you are working at a company whose first project was bootstrapped 3 or 5 years ago. What are the chances that you have migrated – or need to migrate – one of your frameworks?
-
-To me it’s near 100%. In that way, the JavaScript world is particularly contradictory:
-
-1. The **web platform** decided at its very beginning it would **never introduce breaking changes**. Websites from the 2000s are still up & running!<br>Although it may have some drawbacks (like keeping `null` and `undefined` 😒), this **philosophy drove trust**, thus **wide adoption**.
-2. The **web frameworks**, on the contrary, have introduced _countless_ breaking changes, inducing migrations and impacted teams on their way to delivering features, therefore driving less revenue. Either that or your framework is too newbie 😄.
-
-Because the **web platform** is so stable and gaining tons of features, I want to bet on it.
-
-The biggest gamble I am making nowadays is using TypeScript, considering it is on the verge to become an actual web standard.
-
-### What the dep? The ones I worry about
-
-An IT project will have frontends (web/mobile apps), backends, databases, potentially in different languages. Which means we start this game with already our share of major upgrades:
-- Language upgrades
-- Database upgrades
-- OS upgrades (my linux server from 18.04 to 20.04 then 22.04, …)
-- Provider plan changes
-- Development tool upgrades: vite/rollup/TypeScript/Capacitor/Netlify/CloudflareWorkers/GCP/…
-
-That already represent a certain amount of maintenance work, doesn’t it?
-
-My main goal now is to diminish the number of other major – breaking – upgrades I will encounter. For that I have a few strategies.
-
-### Red flags 🚩
-
-#### 🚩 1. _diminish as much as possible_ the number of dependencies
-
-It seems obvious, but I still see some projects where `object-assign` or `pad-left` are installed.
-
-#### 🚩 2. Avoid framework satellites
-
-vue-\*, react-\*, express-\*, you get the drill.
-
-Routing or i18n do not require Vue nor React.<br>
-Parsing a request body does not require Express nor Fastify.<br>
-I could go on for a while.
-
-Any library like this you install will couple you further to the parent framework: The parent framework has a major version release? Your satellite library will have one too. 2+ major upgrades for the price of 1, yey 🙌
-
-There is **no good reason to install a framework satellite**, hiding behind ~the ease of use~ your laziness will not help.
-
-Bottom line: favor framework-agnostic libraries, best-in-class are those with adapters like fullcalendar, body-parser, i18next/FormatJS/Fluent, floating-ui, etc….
-
-#### 🚩 3. Avoid libraries bringing their own standards
-
-`fp-ts`, `effect`, `ramda`, `Angular`, `NestJS`, etc… Using such libraries makes you _completely_ tied to them by giving capabilities other libs don’t. That is their key to keep you in ; There’s no going back.
-
-Abstractions are good but favor your own, or smaller ones. Unless you facade everything, creating your own std library with a patchwork of tools, why not.
-
-### Yellow flags ⚠️
-
-#### ⚠️ 1. Native APIs duplicates
-
-The web platform is improving super fast, making some (parts of) libraries stale: lodash, underscore, MoutJS, Ramda, BigJS (-> bigint), …
-
-To fill web platform gaps, favor polyfills if possible (see polyfill.io), smaller libraries otherwise (like [just-*](https://github.com/angus-c/just) collection).
-
-#### ⚠️ 2. Lots of major versions in short amount of time
-
-Check out the npm `versions` tab. Why: I don't want to be dependent on someone changing their mind. React I look at you, but not only.
-
-Let’s compare:
-
-React has released 4 major versions in 9 years (completely changing paradigms twice).<br>
-Anguar has released 18 major versions in 9 years, including Angular v1 -> v2<br>
-Vue has released 3 major versions in 9 years.<br>
-Svelte has released 5 major versions in 8 years (changing completely paradigms for v5).<br>
-Solid has released 1 major version in 3 years.
-
-i18next has released 24 major versions in 11 years.<br>
-@formatjs/intl has released 3 major versions in 4 years.<br>
-
-This gives you an idea of the pace.
-
-These numbers should only serve as warnings, make the decision by reading Migration Guides and/or changelogs..
-
-1. Breaking changes are overall anecdotic -> ✅.
-2. Breaking changes include paradigms shifts **once** -> ⚠️, check for how long the last shift has lasted.
-3. Breaking changes include paradigms shifts **more than once** -> big ⚠️.
-4. No changelog nor migration guide -> 🚩.
-
-#### ⚠️ 3. Libraries encouraging hard-to-test code practices
-
-For instance: tanstack query or form, 😒. When I look at their usage, there’s no way to test anything outside the framework world ; Big 🟡 flag.
-
-### The green flags ✅ – libraries I am fine using
-
-Libraries which are framework-agnostic and a small API surface. For example:
-- fuse.js (fzf-js, …): I would encourage to add them to an `array` std, however the API is simple. If I ever need to migrate that, it will take me less than a day. Especially if part of my std (facaded).
-- floating-ui
-- [is-email](https://www.npmjs.com/package/is-email)
-- [just-*](https://github.com/angus-c/just), just-pipe, just-omit, just-pick. Facaded in an std.
-- [qs-esm](https://www.npmjs.com/package/qs-esm)
-
-### Final word: we will need frameworks & libraries
-
-That being said, we cannot avoid installing some of those.
-However, we can **choose** framework-free dependencies. This is a pre-requisite to be able to use frameworks in a decoupled way.
+Therefore, this series will focus on 2 major aspects: domain modeling and how to design a system resilient to changes. Then I will bootstrap projects to demonstrate how it plays over time.
 
 ## Get Started
 
-For demo purposes, we will build a Grocery List project. Here’s the roadmap:
+For demo purposes, we will build a Grocery List project in various fashions. Here’s the roadmap:
+- [Designing a resilient system](./designing-a-resilient-system/index.md) to make conscious technical choices
+- [Domain modeling](./domain/index.md) to define concisely domain complexity
 - [Building the product using the server-first approach](./server-first/index.md) – AKA multi-page app
 - [Building the product using the local-first approach](./spa-client-side/index.md) – AKA single-page app
-- Take the detour through [modeling the domain](./domain/index.md) if you are interested in Domain-Driven Design
-- Traditional SPA + API – 🚧
+- Traditional SPA + API – if I find the time 🚧
 
 The cool thing about this project is that both approaches are relevant, it all goes down to your expectations.
 

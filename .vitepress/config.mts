@@ -13,6 +13,11 @@ export default defineConfig({
   ignoreDeadLinks: true,
   themeConfig: {
     nav: [
+      { text: 'Domain Modeling', link: '/domain/' },
+      {
+        text: 'Designing a resilient system',
+        link: '/designing-a-resilient-system/',
+      },
       { text: 'server-first', link: '/server-first/' },
       { text: 'local-first', link: '/spa-client-side/' },
       {
@@ -23,7 +28,40 @@ export default defineConfig({
 
     sidebar: [
       {
+        text: 'Designing a resilient system',
+        link: '/designing-a-resilient-system/',
+        items: [
+          {
+            text: 'What is technology',
+            link: '/designing-a-resilient-system/1-what-is-technology.html',
+          },
+          {
+            text: 'Technical choices',
+            link: '/designing-a-resilient-system/2-technical-choices.html',
+          },
+          {
+            text: 'How to choose dependencies',
+            link: '/designing-a-resilient-system/3-how-to-choose-dependencies.html',
+          },
+        ],
+      },
+      {
+        text: 'Domain Modeling',
+        link: '/domain/',
+        items: [
+          {
+            text: 'Branded Types',
+            link: '/domain/1-branded-types.html',
+          },
+          {
+            text: 'Specifying Constraints',
+            link: '/domain/2-specify-constraints.html',
+          },
+        ],
+      },
+      {
         text: 'Server First',
+        link: '/server-first/',
         items: [
           {
             text: 'Defining the server',
@@ -65,6 +103,7 @@ export default defineConfig({
       },
       {
         text: 'Local First',
+        link: '/spa-client-side/',
         items: [
           {
             text: 'Setup',
