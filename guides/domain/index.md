@@ -20,6 +20,14 @@ features:
     details: We will represent <em>all</em> the business before even mounting an in-memory or database repository.
 ---
 
+## What is domain and what is not?
+
+Here is a simple decision tree:
+Is it a concept that can live outside your company?
+
+- Yes -> not domain
+- No -> domain
+
 ## OOP, that traitor
 
 To me, Object-Oriented Programming is a paradigm imported by the video game industry because it suited them there. But it does not suit regular business in my opinion.
