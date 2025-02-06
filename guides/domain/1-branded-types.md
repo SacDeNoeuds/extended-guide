@@ -54,6 +54,10 @@ A branded type is a way to increase specificity on primitives, it serves 3 purpo
 2. **Guarantee** that the type is correct and has been verified, usually at our system’s boundaries (API route handler or client for instance).
 3. **Hints**: a branded type only exist in our safe domain world we defined, where every behavior is intended and predictable.
 
+Finally, it **prevents accidental comparisons**: In our case, before branding my types, I was able to compare `listName` and `itemName` because both are strings, which is would be a particularly suspicious to do, right?
+
+Now that this specificity is enforced via the TypeScript type system, any comparison will be raised by TS:
+
 ```ts
 import type { Branded } from '…'
 
