@@ -1,10 +1,17 @@
-export interface ActiveGroceryList {
-  kind: 'ActiveGroceryList'
+export interface GroceryList {
   id: string
+  state: State
 }
-export interface ArchivedGroceryList extends Omit<ActiveGroceryList, 'kind'> {
-  kind: 'ArchivedGroceryList'
-  archivedAt: Date | null
+
+type State = ActiveState | ArchivedState
+type ActiveState = { name: 'active' }
+type ArchivedState = { name: 'archived'; date: Date }
+
+export interface ActiveGroceryList extends Omit<GroceryList, 'state'> {
+  state: ActiveState
+}
+export interface ArchivedGroceryList extends Omit<GroceryList, 'state'> {
+  state: ArchivedState
 }
 
 declare function archiveList(list: ActiveGroceryList): ArchivedGroceryList
