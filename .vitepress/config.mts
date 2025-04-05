@@ -1,9 +1,19 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, HeadConfig } from 'vitepress'
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  head: [
+    isGithubActions && [
+      'script',
+      {
+        'data-goatcounter': 'https://sacdenoeuds.goatcounter.com/count',
+        'async': 'true',
+        'src': '//gc.zgo.at/count.js',
+      },
+    ],
+  ].filter(Boolean) as HeadConfig[],
   title: 'Extended Guide',
   description: 'A series on how to model-view to stay free any framework',
   srcDir: './dist/guides',
