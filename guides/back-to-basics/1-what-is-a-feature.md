@@ -15,27 +15,39 @@ Scenario: Subscriber with a paid subscription can access both free and paid arti
   …
 ```
 
-Now the mist is fading. Our feature was:
+Now the mist is fading. Let’s break down our feature, we want to be able to:
+
+- list team members
+- add team members
+- remove team members
+
+Is "listing team members" sufficient on its own? Let’s say the business says "Well, team members can view the list, but only admins can edit the list".
+
+There we have our features:
+
+- Viewing team members
+- Managing a team.
 
 ```gherkin
-Feature: An admin can manage their teams
-Scenario: See a list of team members
-  …
-Scenario: Add a new team member
-  …
-Scenario: Remove an existing team member
-  …
-```
+Feature: View team members
+  Scenario: Get the list of team members
+    …
 
-There, we have it, our feature is "_Admin can manage their teams_".
+Feature: An admin can manage their teams
+  Scenario: Add a new team member
+    …
+  Scenario: Remove an existing team member
+    …
+```
 
 ## Anatomy of a feature
 
 So it appears a feature is structured this way:
 
 ```txt
+Feature – View team members
+└── Scenario #1 – List team members
 Feature – Admin can manage their teams
-├── Scenario #1 – List team members, add, remove, etc… team members
 ├── Scenario #2 – Add team member
 └── Scenario #3 – Remove team member
 ```
@@ -78,3 +90,84 @@ The code should be executed in a reasonable amount of time. This can be measured
 
 We have to make sure that our features or invulnerable to SQL injections or XSS for instance.
 Where to test that? It depends, sorry.
+
+## Full dive
+
+The number of scenarios can rapidly grow 😅.
+
+```gherkin
+Feature: Get a list of team members
+  As a team member
+  I want to see my teammates
+  So that I can contact them in case of emergency
+
+  Background:
+    Given Mary is an A-team admin
+    And Jack is an A-team member
+    And Bob is a B-team member
+
+  Scenario: A team member check the list of their teammates
+    When Mary checks the A-team's members
+    Then she sees Mary and Jack
+    And it took less than 500ms # a demo of how to include performance testing
+
+  Scenario: A team member fails checking another team's members
+    When Bob checks the A-team's members
+    Then Bob sees a "Not Found" error
+```
+
+And for admins:
+
+```gherkin
+Feature: An admin can manage their teams
+  As a team admin
+  I want to manage my team
+  So that I am autonomous and do not need to spam support
+
+  Background:
+    Given Mary is an A-team admin
+    And Jack is an A-team member
+    And Bob is a B-team member
+
+  Scenario: A team admin adds a new team member
+    When Mary adds Bob
+    Then the list contains Mary, Jack and Bob
+    And it took less than 500ms # a demo of how to include performance testing
+
+  Scenario: A team admin removes an existing team member
+    When Mary removes Jack
+    Then the list does not contain Jack
+    But the list contains Mary
+
+  Scenario: A team admin promotes a member as admin
+    When Mary promotes Jack as team admin
+    Then Jack becomes an A-team admin
+
+  Scenario: A team admin revokes admin rights of a member
+    When Mary promotes Jack as team admin
+    And Mary revokes Jack's admin rights
+    Then Jack is still an A-team member
+
+  # Limitations
+  Scenario: A team must have 1+ admin
+    When Mary is the only team admin
+    And Mary revokes Mary's admin rights
+    Then Mary sees a "cannot remove last admin" error
+
+  Scenario: A team admin adds a non-existent team member
+    When Mary adds Freddy
+    Then Mary sees an "unknown person" error
+
+  Scenario: A team admin removes a non-existing team member
+    When Mary removes Bob
+    Then the list still contains Mary and Jack
+
+  # Access control
+  Scenario: A non-admin cannot add a new team member
+    When Bob or Jack adds a new team member
+    Then he sees a "Forbidden" error
+
+  Scenario: A non-admin cannot remove a team member
+    When Bob or Jack removes a team member
+    Then he sees a "Forbidden" error
+```
