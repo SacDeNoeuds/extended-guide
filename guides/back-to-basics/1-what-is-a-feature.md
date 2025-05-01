@@ -162,6 +162,11 @@ Feature: Manage a team's members
     When Mary removes Bob
     Then the list still contains Mary and Jack
 
+  Scenario: A team has maximum 100 members
+    Given the A-team has 98 random other team members
+    When Mary adds Bob
+    Then Mary gets a "team is full" error
+
   # Access control
   Scenario: A non-admin cannot add a new team member
     When Bob or Jack adds a new team member
