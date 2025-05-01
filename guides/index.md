@@ -63,6 +63,7 @@ Therefore, this series will focus on 2 major aspects: domain modeling and how to
 ## Get Started
 
 For demo purposes, we will build a Grocery List project in various fashions. Here’s the roadmap:
+- [Back to basics](./back-to-basics/index.md)
 - [Designing a resilient system](./designing-a-resilient-system/index.md) to make conscious technical choices
 - [Domain modeling](./domain/index.md) to define concisely domain complexity
 - [Building the product using the server-first approach](./server-first/index.md) – AKA multi-page app

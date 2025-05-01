@@ -23,6 +23,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   themeConfig: {
     nav: [
+      { text: 'Back to basics', link: '/back-to-basics/' },
       { text: 'Domain Modeling', link: '/domain/' },
       {
         text: 'Designing a resilient system',
@@ -37,6 +38,38 @@ export default defineConfig({
     ],
 
     sidebar: [
+      {
+        text: 'Back to basics',
+        link: '/back-to-basics/',
+        items: [
+          {
+            text: 'What is a feature?',
+            link: '/back-to-basics/1-what-is-a-feature.html',
+          },
+          {
+            text: 'What is a bug?',
+            link: '/back-to-basics/2-what-is-a-bug.html',
+          },
+          {
+            text: 'What is a user story?',
+            link: '/back-to-basics/3-what-is-a-user-story.html',
+          },
+          {
+            text: 'What is documentation?',
+            link: '/back-to-basics/4-what-is-documentation.html',
+          },
+        ],
+      },
+      {
+        text: 'Libraries',
+        link: '/libraries/',
+        items: [
+          {
+            text: 'Documenting & Testing',
+            link: '/libraries/documenting-and-testing.html',
+          },
+        ],
+      },
       {
         text: 'Designing a resilient system',
         link: '/designing-a-resilient-system/',
