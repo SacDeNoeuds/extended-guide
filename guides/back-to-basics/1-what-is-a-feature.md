@@ -119,7 +119,7 @@ Feature: Get a list of team members
 And for admins:
 
 ```gherkin
-Feature: An admin can manage their teams
+Feature: Manage a team's members
   As a team admin
   I want to manage my team
   So that I am autonomous and do not need to spam support
