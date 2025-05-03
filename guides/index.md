@@ -64,10 +64,10 @@ Therefore, this series will focus on 2 major aspects: domain modeling and how to
 
 For demo purposes, we will build a Grocery List project in various fashions. Here’s the roadmap:
 - [Back to basics](./back-to-basics/index.md)
-- [Designing a resilient system](./designing-a-resilient-system/index.md) to make conscious technical choices
-- [Domain modeling](./domain/index.md) to define concisely domain complexity
-- [Building the product using the server-first approach](./server-first/index.md) – AKA multi-page app
-- [Building the product using the local-first approach](./spa-client-side/index.md) – AKA single-page app
+- [Designing a resilient system](./building-products/designing-a-resilient-system/index.md) to make conscious technical choices
+- [Domain modeling](./building-products/domain/index.md) to define concisely domain complexity
+- [Building the product using the server-first approach](./building-products/server-first/index.md) – AKA multi-page app
+- [Building the product using the local-first approach](./building-products/spa-client-side/index.md) – AKA single-page app
 - Traditional SPA + API – if I find the time 🚧
 
 The cool thing about this project is that both approaches are relevant, it all goes down to your expectations.

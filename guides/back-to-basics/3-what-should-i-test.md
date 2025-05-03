@@ -31,7 +31,7 @@ Tests the business will write are **acceptance tests**:
 >
 > Source: [Uncle Bob’s blog](https://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.html)
 
-Because the writers are non-technical people, I would recommend to use [Cucumber/Gherkin](https://cucumber.io/) – more insights about where to put these files in the [architecture post 🚧](./TODO).
+Because the writers are non-technical people, I would recommend to use [Cucumber/Gherkin](https://cucumber.io/) – more insights about where to put these files in the [architecture post](../building-products/designing-a-resilient-system/index.md).
 
 **Golden rule: NEVER introduce technical terms (cf "we are a guide, not decision-makers")**. You let the business define concepts, you do NOT influence them, and certainly not define _any_ concept on their behalf.
 

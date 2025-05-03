@@ -22,4 +22,39 @@ features:
 
 ## Architecture – Anatomy of a software
 
-Diagram to come 🚧
+A product is a collection of [features](../../back-to-basics/1-what-is-a-feature.md), exposed to various stakeholders like our customers (which may have different roles) or our internal teams (ie: for support).
+
+Those features take place in a certain _system_ (our product).
+
+## Product architecture
+
+```txt
+my-great-product/
+#
+```
+
+## A feature folder
+
+- How should we store those features?
+- What will those features depend on?
+
+Here is a proposal:
+
+```txt
+manage-team/
+├── behavior/
+│   ├── manage-team.feature
+│   └── manage-team.ts
+└── usability/
+    ├── api/
+    │   ├── manage-team-api-contract.ts
+    │   └── manage-team-api-handler.ts
+    └── ui/
+        ├── AddTeamMemberButton.php
+        ├── AddTeamMemberButton.react.tsx
+        ├── AddTeamMemberButton.solid.tsx
+        ├── AddTeamMemberButton.vue
+        ├── AddTeamMemberButton.react.tsx
+        ├── RemoveTeamMemberButton.solid.tsx
+        └── RemoveTeamMemberButton.vue
+```
