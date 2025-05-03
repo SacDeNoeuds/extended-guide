@@ -65,161 +65,169 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Libraries',
-        link: '/libraries/',
+        text: 'Building a library',
+        link: '/building-libraries/',
         items: [
           {
             text: 'Documenting & Testing',
-            link: '/libraries/documenting-and-testing.html',
+            link: '/building-libraries/documenting-and-testing.html',
           },
         ],
       },
       {
-        text: 'Designing a resilient system',
-        link: '/designing-a-resilient-system/',
+        text: 'Building a product',
         items: [
           {
-            text: 'What is technology',
-            link: '/designing-a-resilient-system/1-what-is-technology.html',
-          },
-          {
-            text: 'Technical choices',
-            link: '/designing-a-resilient-system/2-technical-choices.html',
-          },
-          {
-            text: 'How to choose dependencies',
-            link: '/designing-a-resilient-system/3-how-to-choose-dependencies.html',
-          },
-        ],
-      },
-      {
-        text: 'Domain Modeling',
-        link: '/domain/',
-        items: [
-          {
-            text: 'Branded Types',
-            link: '/domain/1-branded-types.html',
-          },
-          {
-            text: 'Specifying Constraints',
-            link: '/domain/2-specify-constraints.html',
-          },
-        ],
-      },
-      {
-        text: 'Server First',
-        link: '/server-first/',
-        items: [
-          {
-            text: 'Defining the server',
-            link: '/server-first/1-defining-the-server.html',
-          },
-          {
-            text: 'Support path schema',
-            link: '/server-first/2-support-path-schema.html',
-          },
-          {
-            text: 'Support query schema',
-            link: '/server-first/3-support-query-schema.html',
-          },
-          {
-            text: 'Support body schema',
-            link: '/server-first/4-support-body-schema.html',
-          },
-          {
-            text: 'Authentication',
-            link: '/server-first/5-authentication.html',
-          },
-          {
-            text: 'Redirects',
-            link: '/server-first/6-redirects.html',
-          },
-          {
-            text: 'Grocery List Project',
-            link: '/server-first/7-grocery-list-project.html',
-          },
-          {
-            text: 'Writing more adapters',
-            link: '/server-first/8-writing-more-adapters.html',
-          },
-          {
-            text: 'Going Further',
-            link: '/server-first/9-going-further.html',
-          },
-        ],
-      },
-      {
-        text: 'Local First',
-        link: '/spa-client-side/',
-        items: [
-          {
-            text: 'Setup',
+            text: 'Designing a resilient system',
+            link: '/building-products/designing-a-resilient-system/',
             items: [
               {
-                text: 'The Todo API',
-                link: '/spa-client-side/1-todo-api.html',
+                text: 'What is technology',
+                link: '/building-products/designing-a-resilient-system/1-what-is-technology.html',
+              },
+              {
+                text: 'The cost of technical choices',
+                link: '/building-products/designing-a-resilient-system/2-technical-choices.html',
+              },
+              {
+                text: 'How to choose dependencies',
+                link: '/building-products/designing-a-resilient-system/3-how-to-choose-dependencies.html',
               },
             ],
           },
           {
-            text: 'Defining the models',
+            text: 'Domain Modeling',
+            link: '/building-products/domain/',
             items: [
               {
-                text: 'The RemoteData concept',
-                link: '/spa-client-side/2-remote-data.html',
+                text: 'Branded Types',
+                link: '/building-products/domain/1-branded-types.html',
               },
               {
-                text: 'The reactivity system',
-                link: '/spa-client-side/3-reactivity-system.html',
-              },
-              {
-                text: 'The RemoteAction concept',
-                link: '/spa-client-side/4-remote-action.html',
-              },
-              {
-                text: 'Defining our AppModel',
-                link: '/spa-client-side/5-app-model.html',
+                text: 'Specifying Constraints',
+                link: '/building-products/domain/2-specify-constraints.html',
               },
             ],
           },
           {
-            text: 'Rendering the AppModel',
+            text: 'Server First',
+            link: '/building-products/server-first/',
             items: [
               {
-                text: 'With React components',
-                link: '/spa-client-side/6-react-app.html',
+                text: 'Defining the server',
+                link: '/building-products/server-first/1-defining-the-server.html',
               },
               {
-                text: 'With Vue components',
-                link: '/spa-client-side/7-vue-app.html',
+                text: 'Support path schema',
+                link: '/building-products/server-first/2-support-path-schema.html',
               },
               {
-                text: 'Rendering the React & Vue apps',
-                link: '/spa-client-side/8-rendering-the-apps.html',
+                text: 'Support query schema',
+                link: '/building-products/server-first/3-support-query-schema.html',
+              },
+              {
+                text: 'Support body schema',
+                link: '/building-products/server-first/4-support-body-schema.html',
+              },
+              {
+                text: 'Authentication',
+                link: '/building-products/server-first/5-authentication.html',
+              },
+              {
+                text: 'Redirects',
+                link: '/building-products/server-first/6-redirects.html',
+              },
+              {
+                text: 'Grocery List Project',
+                link: '/building-products/server-first/7-grocery-list-project.html',
+              },
+              {
+                text: 'Writing more adapters',
+                link: '/building-products/server-first/8-writing-more-adapters.html',
+              },
+              {
+                text: 'Going Further',
+                link: '/building-products/server-first/9-going-further.html',
               },
             ],
           },
           {
-            text: 'Adding Features',
+            text: 'Local First',
+            link: '/building-products/spa-client-side/',
             items: [
               {
-                text: 'Toggle a todo',
-                link: '/spa-client-side/9-toggle-a-todo.html',
+                text: 'Setup',
+                items: [
+                  {
+                    text: 'The Todo API',
+                    link: '/building-products/spa-client-side/1-todo-api.html',
+                  },
+                ],
               },
               {
-                text: 'Update a todo title',
-                link: '/spa-client-side/10-update-a-todo-title.html',
+                text: 'Defining the models',
+                items: [
+                  {
+                    text: 'The RemoteData concept',
+                    link: '/building-products/spa-client-side/2-remote-data.html',
+                  },
+                  {
+                    text: 'The reactivity system',
+                    link: '/building-products/spa-client-side/3-reactivity-system.html',
+                  },
+                  {
+                    text: 'The RemoteAction concept',
+                    link: '/building-products/spa-client-side/4-remote-action.html',
+                  },
+                  {
+                    text: 'Defining our AppModel',
+                    link: '/building-products/spa-client-side/5-app-model.html',
+                  },
+                ],
               },
               {
-                text: 'Delete a todo',
-                link: '/spa-client-side/11-delete-a-todo.html',
+                text: 'Rendering the AppModel',
+                items: [
+                  {
+                    text: 'With React components',
+                    link: '/building-products/spa-client-side/6-react-app.html',
+                  },
+                  {
+                    text: 'With Vue components',
+                    link: '/building-products/spa-client-side/7-vue-app.html',
+                  },
+                  {
+                    text: 'Rendering the React & Vue apps',
+                    link: '/building-products/spa-client-side/8-rendering-the-apps.html',
+                  },
+                ],
               },
-            ],
-          },
-          {
-            text: 'Modularization',
-            items: [
-              { text: 'Forms 🚧', link: '/spa-client-side/12-forms.html' },
+              {
+                text: 'Adding Features',
+                items: [
+                  {
+                    text: 'Toggle a todo',
+                    link: '/building-products/spa-client-side/9-toggle-a-todo.html',
+                  },
+                  {
+                    text: 'Update a todo title',
+                    link: '/building-products/spa-client-side/10-update-a-todo-title.html',
+                  },
+                  {
+                    text: 'Delete a todo',
+                    link: '/building-products/spa-client-side/11-delete-a-todo.html',
+                  },
+                ],
+              },
+              {
+                text: 'Modularization',
+                items: [
+                  {
+                    text: 'Forms 🚧',
+                    link: '/building-products/spa-client-side/12-forms.html',
+                  },
+                ],
+              },
             ],
           },
         ],
@@ -229,7 +237,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/SacDeNoeuds/model-view-demo',
+        link: 'https://github.com/SacDeNoeuds/extended-guide',
       },
     ],
   },
