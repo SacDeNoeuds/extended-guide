@@ -48,6 +48,8 @@ Do they have the same constraints (length, casing, integer/float range, …) ? P
 
 ## Branded types
 
+<!-- TODO: make this section smaller and/or move it to its own guide -->
+
 A branded type is a way to increase specificity on primitives, it serves 3 purposes:
 
 1. **Readability**: you no longer manipulate simple `string`s or `number`s but a `ListName`, `ItemName` or `ItemQuantity`. Those concepts are different and represented as such.
@@ -97,15 +99,22 @@ export type MemberId = Branded<string, 'MemberId'>
 export type MemberName = Branded<string, 'MemberName'>
 ```
 
-> [!NOTE]
+<details>
+  <summary>Domain-Driven Design Notes</summary>
+
+> [!TIP]
 > DDD definitions: If you crossed the concepts of "value object" and "entity" and did not get the difference, here it is:
 >
 > 1. Value objects: `ListName`, `ItemName`, `ItemQuantity`… -> 2 list names are equal if their values are equal. ListName "toto" === ListName "toto".
 > 2. Entities: `GroceryList`, `Member`. -> 2 members are identical if their `memberId` is the same. Entities have cycles, they evolve over time.
 
-The cycles I am referring to _can_ – and **should** – be represented. For instance here, I will represent an `ActiveGroceryList` and an `ArchivedGroceryList`. That way I will be able.
+</details>
+
+The cycles I am referring to _can_ – and **should** – be represented. For instance here, I will represent an `ActiveGroceryList` and an `ArchivedGroceryList`. That way I will be able to enforce possibilities into the type system (ie: I can’t archive an already archived list).
 
 ## Modeling entity cycle
+
+<!-- TODO: move this section to its own guide -->
 
 Take back the `GroceryList` concept. I have 2 versions of it which **cannot coexist**: `Active` and `Archived`. It cannot be both "archived" and "active".
 
@@ -129,6 +138,8 @@ archiveList(archivedList) // passing, but it should not !
 ```
 
 To overcome this, we usually apply a **discriminant** – I tend to use `kind`:
+
+<!-- TODO: change this, expose the Yacine’s way -->
 
 ```ts
 export interface ActiveGroceryList {

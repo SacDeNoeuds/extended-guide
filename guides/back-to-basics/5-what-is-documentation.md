@@ -58,6 +58,6 @@ We have to adopt various strategies depending the lifetime and target audience.
 </tr>
 </table>
 
-More on auto-generating documentation based on whether we talk about [a library](../building-libraries/documenting-and-testing.md) or [a full product 🚧](TODO).
+More on auto-generating documentation based on whether we talk about [a library](../building-libraries/documenting-and-testing.md) or [a full product](../building-products/domain/documenting-the-domain.md).
 
 The idea is always the same: find the source of truth, generate documentation from it.

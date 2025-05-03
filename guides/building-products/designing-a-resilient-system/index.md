@@ -24,9 +24,11 @@ features:
 
 A product is a collection of [features](../../back-to-basics/1-what-is-a-feature.md), exposed to various stakeholders like our customers (which may have different roles) or our internal teams (ie: for support).
 
-Those features take place in a certain _system_ (our product).
+Those features take place in a certain _system_ (our product). **This system** will constantly evolve over time, it **has to resilient by design**.
 
 ## Product architecture
+
+<!-- TODO: expose the feature-oriented architecture I would like to see -->
 
 ```txt
 my-great-product/
