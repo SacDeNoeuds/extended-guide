@@ -96,6 +96,10 @@ export default defineConfig({
             ],
           },
           {
+            text: 'Architecture',
+            link: '/building-products/architecture/index.md',
+          },
+          {
             text: 'Domain Modeling',
             link: '/building-products/domain/',
             items: [
