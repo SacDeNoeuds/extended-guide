@@ -30,10 +30,10 @@ Is it a concept that can live outside your company?
 
 ## OOP, that traitor
 
-To me, Object-Oriented Programming is a paradigm imported by the video game industry because it suited them there. But it does not suit regular business in my opinion.
+To me, Object-Oriented Programming is a stale paradigm imported by the video game industry because it suited them there. This industry now uses the [entity component system](https://en.wikipedia.org/wiki/Entity_component_system). In my opinion, it does not suit regular business projects.
 
 I can endure the immutability performance overhead in exchange for predictability and peace of mind. The trade-off is easily made.
 
-Yet, because OOP is such a major standard and TypeScript adoption is young (in comparison), there is not much documentation regarding how to model a system in TypeScript using function/data-oriented programming.
+Yet, because OOP is such a major standard and TypeScript adoption is young (in comparison to other languages), there is not much documentation regarding how to model a system in TypeScript using functional/data-oriented programming.
 
 That is the subject of this guide. How about we [get started](./1-branded-types.md)?

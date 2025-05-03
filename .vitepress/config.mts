@@ -107,8 +107,20 @@ export default defineConfig({
                 link: '/building-products/domain/1-branded-types.html',
               },
               {
+                text: 'Refining The Models',
+                link: '/building-products/domain/2-refining-the-models.html',
+              },
+              {
                 text: 'Specifying Constraints',
-                link: '/building-products/domain/2-specify-constraints.html',
+                link: '/building-products/domain/3-specifying-constraints.html',
+              },
+              {
+                text: 'Typing Entity Cycles',
+                link: '/building-products/domain/4-typing-entity-cycles.html',
+              },
+              {
+                text: 'Typing The Behavior',
+                link: '/building-products/domain/5-typing-the-behavior.html',
               },
             ],
           },

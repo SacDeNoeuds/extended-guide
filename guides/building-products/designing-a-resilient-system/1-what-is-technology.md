@@ -22,7 +22,7 @@ To me their main differentiator is on how data can be accessed (read): indexatio
 
 You have boring technology like SQL or key-value stores like Redis. Tested by time, large communities and good support.
 
-And you have more esoteric technologies like MongoDB/DynamoDB, BlockChain or ElasticSearch/Algolia in their times. Requires to learn new paradigms, potentially only with professional support.<br>
+And you have more esoteric technologies like MongoDB/DynamoDB, BlockChain or ElasticSearch/Algolia in their times. They require to learn new paradigms, potentially only with professional support.<br>
 NB: I like learning new stuff, but you know what I like better? Learning stuff I can re-use.
 
 **Bottom line**: Data is essential to any project, choose wisely. But more importantly, use some kind of "data store" or "repository", whatever you call it as long as it exists.<br>

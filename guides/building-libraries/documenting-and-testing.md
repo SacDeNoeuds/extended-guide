@@ -38,7 +38,7 @@ Once you have written all your JSDoc comments, your library is ready to be parse
 
 My strategy is to adopt intermediary steps: **Source code -> Markdown -> HTML**.
 
-It gives me flexibility ; I can change the markdown generator and my markdown website separately, depending on new products reaching the market.
+It gives me flexibility ; I can change the markdown generator and the markdown website separately, depending on new products reaching the market.
 
 #### Source Code -> Markdown:
 

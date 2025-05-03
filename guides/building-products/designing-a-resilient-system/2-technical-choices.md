@@ -1,10 +1,10 @@
-## Technical choices – Use the right tool for your problem
+# Technical choices – Use the right tool for your problem
 
 The first step to reduce accidental complexity is to reduce 🥁 … technology. Well thanks captain Obvious – you’re welcome.
 
 How can we reduce technology? By identifying our project needs and using tailored tools for them.
 
-### A case against single page apps
+## A case against single page apps
 
 How many single-page apps _do not **need**_ to be single page apps?<br>In other words, how many times the industry is using a bazooka to kill a bird?
 
@@ -27,29 +27,31 @@ What do we get in exchange:
 
 Well, let’s address those so-called advantages.
 
-#### 1. Smoothness
+### 1. Smoothness
 
 It takes a pretty big blast most of the time due to network queries being sent all over the place and taking quite some time. Yes you navigated smoothly, but you had nothing to show straight away.
 
-#### 2. Porting web app to mobile
+### 2. Porting web app to mobile
 
 This can also be achieved using other approaches, [Turbo Native (PHP)](https://native.hotwired.dev/) stated their case.
 
-#### 3. Complex fine-tuned user experiences
+And if you want to avoid WebViews, then you will have to rewrite some components anyway. So yeah, still not a win.
+
+### 3. Complex fine-tuned user experiences
 
 Those are terribly difficult to achieve, you better know what you are doing. In any case and depending on how complex your user flows are, you can do a lot using native CSS (ie: anchor tabs for forms with steppers), the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) for tooltips & dialogs, and custom elements / web components to fill the gaps anywhere needed.
 
-And if _ever_ it is still not enough, then use some React/Vue/… only for the pages you need, not your whole website!
+And if _ever_ it is still not enough, then use some React/Vue/… **only for the pages you need, not your whole website**!
 
-#### Examples of good single page apps candidates
+## Examples of good single page apps candidates
 
 - Google Mail
 - Figma
 - Trello
-- Spotify – the listener portal, not where professional upload their music
+- Spotify – the b2c portal to listen to music, not where professional upload their music
 - …
 
-#### Conclusion
+## Conclusion
 
 What justifies the cost of a single page app is:
 

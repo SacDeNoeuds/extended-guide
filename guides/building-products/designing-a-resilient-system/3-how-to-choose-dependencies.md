@@ -1,4 +1,4 @@
-## How to choose dependencies
+# How to choose dependencies
 
 An IT project will have graphical interfaces – AKA frontends: web/mobile apps –, backends, databases, potentially in different languages. Which means we start this game with already our share of major upgrades:
 
@@ -28,7 +28,12 @@ I could go on for a while.
 
 Any library like this you install will couple you further to the parent framework: The parent framework has a major version release? Your satellite library will have one too. 2+ major upgrades for the price of 1, yey 🙌
 
-There is **no good reason to install a framework satellite**, hiding behind ~~your laziness~~ the ease of use will not help.
+"I am not planning on changing my framework" is not a valid counter-argument.
+
+1. You may not have a choice. Talk to Sails.js or Ember developers.
+2. Not changing of framework doesn't mean you have to harvest every breaking change of every library on the way, you silly chap.
+
+In short: there is **no good reason to install a framework satellite**, hiding behind ~~your laziness~~ the ease of use will not help.
 
 Bottom line: favor framework-agnostic libraries, best-in-class are those with adapters like fullcalendar, body-parser, i18next/FormatJS/Fluent, floating-ui, etc….
 
