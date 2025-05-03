@@ -24,13 +24,16 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Back to basics', link: '/back-to-basics/' },
-      { text: 'Domain Modeling', link: '/domain/' },
       {
-        text: 'Designing a resilient system',
-        link: '/designing-a-resilient-system/',
+        text: 'Building a library',
+        link: '/building-libraries/',
       },
-      { text: 'server-first', link: '/server-first/' },
-      { text: 'local-first', link: '/spa-client-side/' },
+      {
+        text: 'Building a product',
+        link: '/building-products/designing-a-resilient-system/',
+      },
+      { text: 'server-first', link: '/building-products/server-first/' },
+      { text: 'local-first', link: '/building-products/spa-client-side/' },
       {
         text: 'GitHub',
         link: 'https://github.com/SacDeNoeuds/extended-guide',

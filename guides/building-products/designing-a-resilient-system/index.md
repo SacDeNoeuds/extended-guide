@@ -60,3 +60,7 @@ manage-team/
         ├── RemoveTeamMemberButton.solid.tsx
         └── RemoveTeamMemberButton.vue
 ```
+
+## Now that our architecture is in place
+
+Ready to dive in? Let’s explore [the cost of technology](./1-what-is-technology.md).

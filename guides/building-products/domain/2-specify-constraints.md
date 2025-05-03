@@ -79,4 +79,6 @@ import {
 
 Mmh. I will need that schema after all… locally. As long as my **grocery list module** does not expose schema internals, I’ll be fine:
 
+<!-- TODO: -->
+
 🚧

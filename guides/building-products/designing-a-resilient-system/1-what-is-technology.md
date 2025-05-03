@@ -1,6 +1,6 @@
 ## The cost of technology
 
-> [!INFO]
+> [!IMPORTANT]
 > Each tool or technology comes with a cost… of maintenance.
 
 I have read this, experienced it. Which led to ask myself: how avoidable is that? At what cost? And what is "technology" anyway? I investigated.
