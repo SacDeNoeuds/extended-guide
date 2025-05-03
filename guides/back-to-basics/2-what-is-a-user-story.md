@@ -2,7 +2,7 @@
 
 ## What they are for
 
-Agility and planning:
+The serve agility and planning purposes:
 
 - Be able to develop when requirements change often.
 - They are a way of remembering that a piece of work _might_ need to be done, without committing to actually doing it, or diving into the details too soon.
@@ -20,3 +20,23 @@ The emerging standard.
 > As a **_type of user_** – the role<br>
 > I want **_capability_** – the feature<br>
 > So that **_business value_** - the benefit
+
+## Examples
+
+#### Listing the members of a team:
+
+> **As** a team member
+>
+> **I want** to check my teammates contact info
+>
+> **So that** I can contact them in case of emergency
+
+Here appears the question "why would a team member check their teammates' contact info?". This question is important by just rising, because if you do not find any valid reason (hence business value), then you do not build such a feature. Time saved, yey!
+
+#### Managing a team (adding/removing members):
+
+> **As** a team admin
+>
+> **I want** to manage my team
+>
+> **So that** I am autonomous and do not need to spam support

@@ -47,16 +47,20 @@ export default defineConfig({
             link: '/back-to-basics/1-what-is-a-feature.html',
           },
           {
-            text: 'What is a bug?',
-            link: '/back-to-basics/2-what-is-a-bug.html',
+            text: 'What is a user story?',
+            link: '/back-to-basics/2-what-is-a-user-story.html',
           },
           {
-            text: 'What is a user story?',
-            link: '/back-to-basics/3-what-is-a-user-story.html',
+            text: 'What should I test?',
+            link: '/back-to-basics/3-what-should-i-test.html',
+          },
+          {
+            text: 'What is a bug?',
+            link: '/back-to-basics/4-what-is-a-bug.html',
           },
           {
             text: 'What is documentation?',
-            link: '/back-to-basics/4-what-is-documentation.html',
+            link: '/back-to-basics/5-what-is-documentation.html',
           },
         ],
       },

@@ -22,16 +22,3 @@ Those are developer mistakes or infrastructure issues:
 
 - Syntax errors at runtime, like `TypeError`
 - DB cannot connect
-
-## Who is responsible of which aspect?
-
-Developers (and QA) are responsible of 4 aspects: [usability](./1-what-is-a-feature.md#_2-usability), [compatibility](./1-what-is-a-feature.md#_3-compatibility), [performance](./1-what-is-a-feature.md#_4-performance) and [security](./1-what-is-a-feature.md#_5-security). Any bug on those are developers shortcomings or mistakes.
-
-As for the [Behavior](#_1-behavior), this responsibility is shared between all stakeholders:
-
-- Developers, of course
-- Product owners (if any)
-- QA (if any)
-- **Customers**
-
-To build valuable features and prevent behavior issues, we rely on [User Stories](./3-what-is-a-user-story.md).

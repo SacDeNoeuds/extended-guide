@@ -88,91 +88,21 @@ The code should be executed in a reasonable amount of time. This can be measured
 
 ### 5. Security
 
-We have to make sure that our features or invulnerable to SQL injections or XSS for instance.
+We have to make sure that our features are invulnerable to SQL injections or XSS for instance.
 Where to test that? It depends, sorry.
 
-## Full dive
+## Who is responsible of which aspect?
 
-The number of scenarios can rapidly grow 😅.
+| Aspect                             | Who is responsible                                                                                             |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [Behavior](#_1-behavior)           | All stakeholders:<br>- Developers<br>- Product owners (if any)<br>- QA (if any)<br>- **Customers** (if any 🤭) |
+| [Usability](#_2-usability)         | Developers & Designers (for UIs)                                                                               |
+| [Compatibility](#_3-compatibility) | Developers                                                                                                     |
+| [Performance](#_4-performance)     | Developers & DevOps                                                                                            |
+| [Security](#_5-security)           | Developers & DevOps                                                                                            |
 
-```gherkin
-Feature: Get a list of team members
-  As a team member
-  I want to see my teammates
-  So that I can contact them in case of emergency
+Compatibility, performance and security involve exclusively technical people. Any bug on those are developers/devops shortcomings or mistakes.
 
-  Background:
-    Given Mary is an A-team admin
-    And Jack is an A-team member
-    And Bob is a B-team member
+However, behavior is the only aspect involving business stakeholders, because it is the part bringing the business value.
 
-  Scenario: A team member check the list of their teammates
-    When Mary checks the A-team's members
-    Then she sees Mary and Jack
-    And it took less than 500ms # a demo of how to include performance testing
-
-  Scenario: A team member fails checking another team's members
-    When Bob checks the A-team's members
-    Then Bob sees a "Not Found" error
-```
-
-And for admins:
-
-```gherkin
-Feature: Manage a team's members
-  As a team admin
-  I want to manage my team
-  So that I am autonomous and do not need to spam support
-
-  Background:
-    Given Mary is an A-team admin
-    And Jack is an A-team member
-    And Bob is a B-team member
-
-  Scenario: A team admin adds a new team member
-    When Mary adds Bob
-    Then the list contains Mary, Jack and Bob
-    And it took less than 500ms # a demo of how to include performance testing
-
-  Scenario: A team admin removes an existing team member
-    When Mary removes Jack
-    Then the list does not contain Jack
-    But the list contains Mary
-
-  Scenario: A team admin promotes a member as admin
-    When Mary promotes Jack as team admin
-    Then Jack becomes an A-team admin
-
-  Scenario: A team admin revokes admin rights of a member
-    When Mary promotes Jack as team admin
-    And Mary revokes Jack's admin rights
-    Then Jack is still an A-team member
-
-  # Limitations
-  Scenario: A team must have 1+ admin
-    When Mary is the only team admin
-    And Mary revokes Mary's admin rights
-    Then Mary sees a "cannot remove last admin" error
-
-  Scenario: A team admin adds a non-existent team member
-    When Mary adds Freddy
-    Then Mary sees an "unknown person" error
-
-  Scenario: A team admin removes a non-existing team member
-    When Mary removes Bob
-    Then the list still contains Mary and Jack
-
-  Scenario: A team has maximum 100 members
-    Given the A-team has 98 random other team members
-    When Mary adds Bob
-    Then Mary gets a "team is full" error
-
-  # Access control
-  Scenario: A non-admin cannot add a new team member
-    When Bob or Jack adds a new team member
-    Then he sees a "Forbidden" error
-
-  Scenario: A non-admin cannot remove a team member
-    When Bob or Jack removes a team member
-    Then he sees a "Forbidden" error
-```
+To build great features full business value – and prevent behavior from going hazardous –, we can rely on [User Stories](./2-what-is-a-user-story.md).
