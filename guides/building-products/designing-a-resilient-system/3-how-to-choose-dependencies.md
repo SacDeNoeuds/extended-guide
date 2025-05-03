@@ -1,6 +1,6 @@
 ## How to choose dependencies
 
-An IT project will have graphical interfaces – AKA§ frontends: web/mobile apps –, backends, databases, potentially in different languages. Which means we start this game with already our share of major upgrades:
+An IT project will have graphical interfaces – AKA frontends: web/mobile apps –, backends, databases, potentially in different languages. Which means we start this game with already our share of major upgrades:
 
 - Language upgrades
 - Database upgrades

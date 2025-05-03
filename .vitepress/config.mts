@@ -235,6 +235,15 @@ export default defineConfig({
           },
         ],
       },
+      {
+        text: 'Small bits',
+        items: [
+          {
+            text: 'Non-violable states',
+            link: '/small-bits/2025-05-03-non-violable-states.html',
+          },
+        ],
+      },
     ],
 
     socialLinks: [
