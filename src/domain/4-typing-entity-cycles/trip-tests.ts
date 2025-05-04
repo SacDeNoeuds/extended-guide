@@ -22,5 +22,5 @@ submitTripBrief(archivedTrip.brief) // Fails, cannot submit an archived trip.
 // testing `removeFromMarket`:
 removeFromMarket(activeTrip.toLaunch) // OK
 removeFromMarket(archivedTrip.toLaunch) // Fails, cannot remove from market an archived trip.
-removeFromMarket(activeTrip.brief) // Fails, cannot remove from market on trip brief.
+removeFromMarket(activeTrip.brief) // Fails, cannot remove from market a trip brief.
 removeFromMarket(activeTrip.toOperate) // Fails, cannot remove from market a trip to operate.

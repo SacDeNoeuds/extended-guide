@@ -15,7 +15,7 @@ Great, things are a bit clearer now. Let’s start modeling our entities, and mo
 export interface GroceryList {
   id: string // id for machines – readonly
   name: string // id for humans – editable
-  archivedAt: Date | undefined
+  archiveDate: Date | undefined
   items: Map<string, number> // Map<ItemName, ItemQuantity>
   memberIds: Set<string> // Set<MemberId>
 }
@@ -48,13 +48,12 @@ Do they have the same constraints (length, casing, integer/float range, …) ? P
 
 ## Branded types
 
-A branded type is a way to increase specificity on primitives, it serves 3 purposes:
+A branded type is a way to increase specificity on primitives, it serves 4 purposes:
 
 1. **Readability**: you no longer manipulate simple `string`s or `number`s but a `ListName`, `ItemName` or `ItemQuantity`. Those concepts are different and represented as such.
 2. **Guarantee** that the type is correct and has been verified, usually at our system’s boundaries (API route handler or client for instance).
 3. **Hints**: a branded type only exist in our safe domain world we defined, where every behavior is intended and predictable.
-
-Finally, it **prevents accidental comparisons**: In our case, before branding my types, I was able to compare `listName` and `itemName` because both are strings, which is would be a particularly suspicious to do, right?
+4. **Prevent accidental comparisons**: In our case, before branding my types, I was able to compare a grocery list `id` with a `memberId`, or a `listName` with a `itemName`, even an `listName` with an list `id`. Because they are all strings. If I was to make such comparisons, that would be a particularly suspicious, wouldn’t it?
 
 Now that this specificity is enforced via the TypeScript type system, any comparison will be raised by TS:
 

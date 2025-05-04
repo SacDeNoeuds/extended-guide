@@ -12,8 +12,8 @@ export declare function submitTripBrief(
 
 // from `launch` to `operate` stage:
 /**
- * After a certain deadline (60 days before the trip start date, usually), we remove
- * the trip from the market.
+ * After a certain deadline (60 days before the trip start date, usually),
+ * we remove the trip from the market.
  * If it sold enough, it moves to `operate` stage
  * If it has not sold enough, we archive it.
  */

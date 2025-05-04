@@ -7,8 +7,8 @@ export interface TripBrief {
   name: TripName | undefined
   startDate: TripStartDate | undefined
   endDate: TripEndDate | undefined
+
   archiveDate: Date | undefined
-  // …
 }
 
 export interface TripToLaunch {
@@ -18,8 +18,8 @@ export interface TripToLaunch {
   name: TripName
   startDate: TripStartDate
   endDate: TripEndDate
+
   archiveDate: Date | undefined
-  // …
 }
 
 export interface TripToOperate {

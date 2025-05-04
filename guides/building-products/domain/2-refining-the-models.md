@@ -8,7 +8,7 @@ import type { Branded } from '…'
 export interface GroceryList {
   id: ListId
   name: ListName
-  archivedDate: Date | undefined
+  archiveDate: Date | undefined
   items: Map<ItemName, ItemQuantity>
   memberIds: Set<MemberId>
 }

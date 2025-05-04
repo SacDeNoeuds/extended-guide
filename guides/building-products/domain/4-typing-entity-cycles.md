@@ -12,7 +12,7 @@ This will help me to constrain certain behaviors and prevent invalid operations 
 
 ## More complex stuff – the cycles of a trip
 
-Let’s say my company allows your users to create trips, which my will sell and operate on their behalf. According to the business, here’s the flow:
+Let’s say my company allows your users to create trips, which my company will sell and operate on their behalf. According to the business, here’s the flow:
 
 1. Brief (collect trip info)
 2. Launch (sell, marketing)

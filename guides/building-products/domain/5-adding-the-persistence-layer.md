@@ -4,10 +4,12 @@
 
 ```ts
 export interface GroceryListRepository {
-  listActive: () => Promise<ActiveGroceryList[]>
-  listArchived: () => Promise<ArchivedGroceryList[]>
   findById: (id: GroceryListId) => Promise<GroceryList | undefined>
   set: (editor: MemberId, groceryList: GroceryList) => Promise<GroceryList>
+
+  // add more methods later, as necessary. ie:
+  listActive: () => Promise<ActiveGroceryList[]>
+  listArchived: () => Promise<ArchivedGroceryList[]>
 }
 ```
 
