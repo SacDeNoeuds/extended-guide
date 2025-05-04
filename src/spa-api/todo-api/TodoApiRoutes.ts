@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { HttpError } from '../definition/HttpError'
 import { MimeType } from '../definition/MimeType'
 import { defineRoute } from '../definition/route'

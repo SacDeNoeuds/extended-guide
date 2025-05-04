@@ -1,7 +1,7 @@
 /* @jsxImportSource hono/jsx */
 import { respondWith } from '@/server-first/definition/response'
 import pipe from 'just-pipe'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { Authenticate } from '../authenticate'
 import { Html } from '../components/Html'
 import { GroceryList, GroceryListRepository } from '../grocery-list'

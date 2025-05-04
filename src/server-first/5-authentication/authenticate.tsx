@@ -1,5 +1,5 @@
 /* @jsxImportSource hono/jsx */
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { respondWith } from '../definition/response'
 
 export type Authenticate<Name> = (headers: Headers) => Promise<{ name: Name }>

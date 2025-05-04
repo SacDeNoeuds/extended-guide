@@ -1,6 +1,6 @@
 import { Branded } from '../branded'
 import { MemberId } from './member'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 
 export interface GroceryList {
   id: ListId

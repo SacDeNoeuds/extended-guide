@@ -1,7 +1,7 @@
 /* @jsxImportSource hono/jsx */
 import { respondWith } from '@/server-first/definition/response'
 import * as cookie from 'cookie'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { Authenticate } from '../authenticate'
 import { GroceryListForm } from '../components/GroceryListForm'
 import { Html } from '../components/Html'

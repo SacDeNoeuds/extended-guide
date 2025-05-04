@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { makeGreetHandler } from './greet-handler'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { makeAuthenticate } from './authenticate'
 
 describe('greetHandler – with authentication', () => {

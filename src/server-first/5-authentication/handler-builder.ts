@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { PathParameters } from '../definition/PathParameters'
 import { HttpMethod } from '../definition/html-route'
 import { Handler, HandlerInput } from './handler'

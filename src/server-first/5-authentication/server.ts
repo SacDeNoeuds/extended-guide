@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { makeAuthenticate } from './authenticate'
 import { makeGreetHandler } from './greet-handler'
 import { createH3NodeServer } from './h3-adapter'

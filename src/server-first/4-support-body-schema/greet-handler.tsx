@@ -1,6 +1,6 @@
 /** @jsxImportSource hono/jsx */
 import { delay } from '@/utils/delay'
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { respondWith } from '../definition/response'
 import { HandlerBuilder } from './handler-builder'
 

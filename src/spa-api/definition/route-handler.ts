@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import type { PathParameters } from './PathParameters'
 import type { RouteLike } from './route'
 import type { Or } from './types'

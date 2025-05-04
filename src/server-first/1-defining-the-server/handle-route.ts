@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { PathParameters } from '../definition/PathParameters'
 import { HtmlRoute } from '../definition/html-route'
 

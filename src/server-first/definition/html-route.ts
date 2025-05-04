@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 
 export type HttpMethod = 'GET' | 'POST'
 

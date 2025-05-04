@@ -1,4 +1,4 @@
-import * as x from 'unhoax'
+import { x } from 'unhoax'
 import { MimeType, MimeTypeName } from './MimeType'
 
 // add any other method as required.
