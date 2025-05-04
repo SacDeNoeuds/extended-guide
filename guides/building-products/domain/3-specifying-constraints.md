@@ -31,8 +31,29 @@ export const itemNameSchema = pipe(
 )
 
 // Now I can validate my boundaries:
-const itemName = itemNameSchema.parse('valid item name')
+const itemName = itemNameSchema.parse('Pastas')
 itemName // { success: true, value: ItemName }
+```
+
+## `ItemQuantity` constraints using schemas
+
+```ts
+import pipe from 'just-pipe'
+import { x } from 'unhoax'
+import { Branded } from 'path/to/branded'
+import { castAs } from '@/domain/cast-as'
+
+export type ItemQuantity = Branded<number, 'ItemQuantity'>
+
+export const itemQuantitySchema = pipe(
+  x.number,
+  x.min(0.01, 'ItemQuantity'),
+  x.map(castAs<number, ItemQuantity>),
+)
+
+// Now I can validate my boundaries:
+const quantity = itemQuantitySchema.parse(12)
+quantity // { success: true, value: ItemQuantity }
 ```
 
 ## Can I do better?

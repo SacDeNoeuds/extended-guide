@@ -8,14 +8,13 @@ import type { Branded } from '…'
 export interface GroceryList {
   id: ListId
   name: ListName
-  archivedAt: ArchivedAt
+  archivedDate: Date | undefined
   items: Map<ItemName, ItemQuantity>
   memberIds: Set<MemberId>
 }
 
 export type ListId = Branded<string, 'ListId'>
 export type ListName = Branded<string, 'ListName'>
-export type ArchivedAt = Branded<Date, 'ArchivedAt'>
 export type ItemName = Branded<string, 'ItemName'>
 export type ItemQuantity = Branded<number, 'ItemQuantity'>
 ```
