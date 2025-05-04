@@ -1,14 +1,11 @@
-type ArchivedStatus = { state: 'archived'; date: Date }
-type ActiveStatus = { state: 'active' }
-
 export interface GroceryList {
   id: string
   // …
-  status: ArchivedStatus | ActiveStatus
+  archiveDate: Date | undefined
 }
 
-export type ArchivedGroceryList = GroceryList & { status: ArchivedStatus }
-export type ActiveGroceryList = GroceryList & { status: ActiveStatus }
+export type ArchivedGroceryList = GroceryList & { archiveDate: Date }
+export type ActiveGroceryList = GroceryList & { archiveDate: undefined }
 
 // Let’s try it:
 declare function archiveList(list: ActiveGroceryList): ArchivedGroceryList

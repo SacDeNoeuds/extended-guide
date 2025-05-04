@@ -103,24 +103,24 @@ export default defineConfig({
             link: '/building-products/domain/',
             items: [
               {
-                text: 'Branded Types',
+                text: 'Branded types',
                 link: '/building-products/domain/1-branded-types.html',
               },
               {
-                text: 'Refining The Models',
+                text: 'Refining the models',
                 link: '/building-products/domain/2-refining-the-models.html',
               },
               {
-                text: 'Specifying Constraints',
+                text: 'Specifying constraints',
                 link: '/building-products/domain/3-specifying-constraints.html',
               },
               {
-                text: 'Typing Entity Cycles',
+                text: 'Typing entity cycles',
                 link: '/building-products/domain/4-typing-entity-cycles.html',
               },
               {
-                text: 'Typing The Behavior',
-                link: '/building-products/domain/5-typing-the-behavior.html',
+                text: 'Adding the persistence layer',
+                link: '/building-products/domain/5-adding-the-persistence-layer.html',
               },
             ],
           },
