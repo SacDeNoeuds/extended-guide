@@ -55,3 +55,5 @@ export function makeArchiveGroceryList(ports: Ports): ArchiveGroceryList {
 There you go :D
 
 Here I introduced the concept of `Result`, I invite you to visit the [Railway Programming](../../small-bits/2025-05-04-railway-programming.md) post.
+
+<!-- TODO: rewrite this in Railway Programming -->
