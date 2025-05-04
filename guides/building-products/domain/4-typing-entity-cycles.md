@@ -23,14 +23,16 @@ Let’s say my company allows your users to create trips, which my will sell and
 3. Operate (manage guests, departures, arrivals, etc.)
 4. Done (collect feedback on how the trip went).
 
-The trip can be archived at `Brief` and `Launch` but not after.
-
-Our type system can represent this flow:
+### Step 1: Typing our entities according to their stages
 
 <!-- include [code:ts] ./domain/4-typing-entity-cycles/trip.ts -->
 
-Let’s test our type-encoded stages:
+### Step 2: Representing this flow using our staged entities
+
+<!-- include [code:ts] ./domain/4-typing-entity-cycles/trip-behavior.ts -->
+
+### Step 3: Testing our type-encoded stages
 
 <!-- include [code:ts] ./domain/4-typing-entity-cycles/trip-tests.ts -->
 
-Boom! Type-safety at its maximum 😎.
+🎉 Type-safety at its maximum.
