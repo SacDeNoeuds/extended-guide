@@ -262,6 +262,10 @@ export default defineConfig({
             text: 'Non-violable states',
             link: '/small-bits/2025-05-03-non-violable-states.html',
           },
+          {
+            text: 'Railway Programming',
+            link: '/small-bits/2025-05-04-railway-programming.html',
+          },
         ],
       },
     ],
