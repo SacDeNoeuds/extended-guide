@@ -122,6 +122,14 @@ export default defineConfig({
                 text: 'Adding the persistence layer',
                 link: '/building-products/domain/5-adding-the-persistence-layer.html',
               },
+              {
+                text: 'Documenting for business',
+                link: '/building-products/domain/6-documenting-for-business.html',
+              },
+              {
+                text: 'Documenting for developers',
+                link: '/building-products/domain/7-documenting-for-developers.html',
+              },
             ],
           },
           {
