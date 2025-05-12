@@ -69,7 +69,7 @@ effect(() => {
   isModalOpened // [!code --]
   theModalContent // [!code ++]
     ? openModal(theModalContent)
-    : closeModal() // [!code --]
+    : closeModal()
 })
 
 function onButtonClick() {
