@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /designing-a-resilient-system/
+      link: /back-to-basics/
 
 features:
   - title: Multi-page app / server-first approach
